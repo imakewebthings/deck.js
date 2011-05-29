@@ -69,18 +69,44 @@
 	function updateStates() {
 		var oc = options.classes,
 		$container = $(options.selectors.container),
-		old = $container.data('onSlide');
+		old = $container.data('onSlide'),
+		$all = $();
 		
+		// Container state
 		$container.removeClass(oc.onPrefix + old)
 			.addClass(oc.onPrefix + current)
 			.data('onSlide', current);
-		$.each(slides, function(i, $e) {
-			$e.toggleClass(oc.before, i < current - 1)
-				.toggleClass(oc.previous, i === current - 1)
-				.toggleClass(oc.current, i === current)
-				.toggleClass(oc.next, i === current + 1)
-				.toggleClass(oc.after, i > current + 1);
+		
+		// Remove previous states
+		$.each(slides, function(i, el) {
+			$all = $all.add(el);
 		});
+		$all.removeClass([
+			oc.before,
+			oc.previous,
+			oc.current,
+			oc.next,
+			oc.after
+		].join(" "));
+		
+		// Add new states back in
+		slides[current].addClass(oc.current);
+		if (current > 0) {
+			slides[current-1].addClass(oc.previous);
+		}
+		if (current + 1 < slides.length) {
+			slides[current+1].addClass(oc.next);
+		}
+		if (current > 1) {
+			$.each(slides.slice(0, current - 1), function(i, el) {
+				el.addClass(oc.before);
+			});
+		}
+		if (current + 2 < slides.length) {
+			$.each(slides.slice(current+2), function(i, el) {
+				el.addClass(oc.after);
+			})
+		}
 	}
 	
 	$[pd] = function(method, arg) {

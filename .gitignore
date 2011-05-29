@@ -1,4 +1,3 @@
 .DS_Store
-test/spec-1-api.js
-test/spec-2-shell.js
-test/spec-3-tests.js
+.sass-cache/
+progress/
