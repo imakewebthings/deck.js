@@ -1,5 +1,5 @@
 // Go tests, go
-describe('PitchDeck', function() {
+describe('Deck JS', function() {
 	describe('standard html structure', function() {
 		beforeEach(function() {
 			loadFixtures('standard.html');
@@ -7,105 +7,105 @@ describe('PitchDeck', function() {
 
 		describe('init(selector)', function() {
 			it('should create slides', function() {
-				$.pitchdeck('.slide');
-				expect($.pitchdeck('getSlides').length).toEqual($('.slide').length);
+				$.deck('.slide');
+				expect($.deck('getSlides').length).toEqual($('.slide').length);
 			});
 		});
 
 		describe('init([selectors])', function() {
 			it('should create slides', function() {
-				$.pitchdeck([
+				$.deck([
 					'.slide1',
 					'.slide2',
 					'.slide3',
 					'.slide4',
 					'.slide5'
 				]);
-				expect($.pitchdeck('getSlides').length).toEqual($('.slide').length);
+				expect($.deck('getSlides').length).toEqual($('.slide').length);
 			});
 		});
 
 		describe('navigation functions', function() {
 			beforeEach(function() {
-				$.pitchdeck('.slide');
+				$.deck('.slide');
 			});
 
 			describe('go(i)', function() {
 				it('should go to the i slide (0 based index)', function() {
-					$.pitchdeck('go', 3);
-					expect($.pitchdeck('getSlide')).toHaveClass('slide4');
+					$.deck('go', 3);
+					expect($.deck('getSlide')).toHaveClass('slide4');
 				});
 
 				it('should go nowhere if i is NaN', function() {
-					$.pitchdeck('go', 'foobar');
-					expect($.pitchdeck('getSlide')).toHaveClass('slide1');
+					$.deck('go', 'foobar');
+					expect($.deck('getSlide')).toHaveClass('slide1');
 				});
 
 				it('should go nowhere if i is out of bounds', function() {
-					$.pitchdeck('go', 5);
-					expect($.pitchdeck('getSlide')).toHaveClass('slide1');
+					$.deck('go', 5);
+					expect($.deck('getSlide')).toHaveClass('slide1');
 				});
 			});
 
 			describe('next()', function() {
 				it('should go to the next slide', function() {
-					$.pitchdeck('next');
-					expect($.pitchdeck('getSlide')).toHaveClass('slide2');
+					$.deck('next');
+					expect($.deck('getSlide')).toHaveClass('slide2');
 				});
 
 				it('should go nowhere if on the last slide', function() {
-					$.pitchdeck('go', 4);
-					$.pitchdeck('next');
-					expect($.pitchdeck('getSlide')).toHaveClass('slide5');
+					$.deck('go', 4);
+					$.deck('next');
+					expect($.deck('getSlide')).toHaveClass('slide5');
 				});
 			});
 
 			describe('prev()', function() {
 				it('should go to the previous slide', function() {
-					$.pitchdeck('go', 2);
-					$.pitchdeck('prev');
-					expect($.pitchdeck('getSlide')).toHaveClass('slide2');
+					$.deck('go', 2);
+					$.deck('prev');
+					expect($.deck('getSlide')).toHaveClass('slide2');
 				});
 
 				it('should go nowhere if on the first slide', function() {
-					$.pitchdeck('prev');
-					expect($.pitchdeck('getSlide')).toHaveClass('slide1');
+					$.deck('prev');
+					expect($.deck('getSlide')).toHaveClass('slide1');
 				});
 			});
 		});
 
 		describe('getters', function() {
 			beforeEach(function() {
-				$.pitchdeck('.slide');
+				$.deck('.slide');
 			});
 
 			describe('getSlide()', function() {
 				it('should get the current slide', function() {
-					expect($.pitchdeck('getSlide')).toHaveClass('slide1');
-					$.pitchdeck('go', 2);
-					expect($.pitchdeck('getSlide')).toHaveClass('slide3');
+					expect($.deck('getSlide')).toHaveClass('slide1');
+					$.deck('go', 2);
+					expect($.deck('getSlide')).toHaveClass('slide3');
 				});
 			});
 
 			describe('getSlide(i)', function() {
 				it('should get slide number i (0 based index)', function() {
-					expect($.pitchdeck('getSlide', 1)).toHaveClass('slide2');
-					expect($.pitchdeck('getSlide', 3)).toHaveClass('slide4');
+					expect($.deck('getSlide', 1)).toHaveClass('slide2');
+					expect($.deck('getSlide', 3)).toHaveClass('slide4');
 				});
 
 				it('should return null if i is NaN', function() {
-					expect($.pitchdeck('getSlide', 'barfoo')).toBeNull();
+					expect($.deck('getSlide', 'barfoo')).toBeNull();
 				});
 
 				it('should return null if i is out of bounds', function() {
-					expect($.pitchdeck('getSlide', 6)).toBeNull();
+					expect($.deck('getSlide', 6)).toBeNull();
 				});
 			});
 
 			describe('getSlides()', function() {
 				it('should return an array of jQuery objects for each slide', function() {
 					var expectation = [],
-					slides = $.pitchdeck('getSlides');
+					slides = $.deck('getSlides');
 					$('.slide').each(function() {
 						expectation.push($(this));
 					});
@@ -115,20 +115,20 @@ describe('PitchDeck', function() {
 			
 			describe('getContainer()', function() {
 				it('should return a jQuery object with the container element(s)', function() {
-					expect($.pitchdeck('getContainer')).toBe(defaults.selectors.container);
+					expect($.deck('getContainer')).toBe(defaults.selectors.container);
 				});
 			});
 			
 			describe('getOptions()', function() {
 				it('should return the current options object', function() {
-					expect($.pitchdeck('getOptions')).toEqual(defaults);
+					expect($.deck('getOptions')).toEqual(defaults);
 				});
 			});
 		});
 
 		describe('container states', function() {
 			beforeEach(function() {
-				$.pitchdeck('.slide');
+				$.deck('.slide');
 			});
 
 			it('should start at state 0', function() {
@@ -136,11 +136,11 @@ describe('PitchDeck', function() {
 			});
 
 			it('should change states with the slide number', function() {
-				$.pitchdeck('next');
+				$.deck('next');
 				expect($(defaults.selectors.container)).toHaveClass(defaults.classes.onPrefix + '1');
-				$.pitchdeck('go', 3);
+				$.deck('go', 3);
 				expect($(defaults.selectors.container)).toHaveClass(defaults.classes.onPrefix + '3');
-				$.pitchdeck('prev');
+				$.deck('prev');
 				expect($(defaults.selectors.container)).toHaveClass(defaults.classes.onPrefix + '2');
 			});
 		});
@@ -150,7 +150,7 @@ describe('PitchDeck', function() {
 
 			beforeEach(function() {
 				$d.unbind('keydown');
-				$.pitchdeck('.alt-slide', {
+				$.deck('.alt-slide', {
 					classes: {
 						after: 'alt-after',
 						before: 'alt-before',
@@ -177,17 +177,17 @@ describe('PitchDeck', function() {
 				});
 
 				it('should use the specified before class', function() {
-					$.pitchdeck('go', 4);
+					$.deck('go', 4);
 					expect($('.alt-slide1, .alt-slide2, .alt-slide3')).toHaveClass('alt-before');
 				});
 
 				it('should use the specified container class', function() {
-					$.pitchdeck('go', 2);
+					$.deck('go', 2);
 					expect($('.alt-container')).toHaveClass('alt-on-2');
 				});
 
 				it('should use the specified current class', function() {
-					expect($.pitchdeck('getSlide')).toHaveClass('alt-current');
+					expect($.deck('getSlide')).toHaveClass('alt-current');
 				});
 
 				it('should use the specified next class', function() {
@@ -195,7 +195,7 @@ describe('PitchDeck', function() {
 				});
 
 				it('should use the specified previous class', function() {
-					$.pitchdeck('next');
+					$.deck('next');
 					expect($('.alt-slide1')).toHaveClass('alt-prev');
 				});
 			});
@@ -210,14 +210,14 @@ describe('PitchDeck', function() {
 				it('should go to the next slide using the specified key', function() {
 					e.which = 87; // 'w'
 					$d.trigger(e);
-					expect($.pitchdeck('getSlide')).toHaveClass('alt-slide2');
+					expect($.deck('getSlide')).toHaveClass('alt-slide2');
 				});
 
 				it('should go to the previous slide using the specified key', function() {
-					$.pitchdeck('next');
+					$.deck('next');
 					e.which = 69; // 'e'
 					$d.trigger(e);
-					expect($.pitchdeck('getSlide')).toHaveClass('alt-slide1');
+					expect($.deck('getSlide')).toHaveClass('alt-slide1');
 				});
 			});
 		});
@@ -226,34 +226,34 @@ describe('PitchDeck', function() {
 			var $d = $(document);
 
 			beforeEach(function() {
-				$.pitchdeck('.slide');
-				$.pitchdeck('go', 1);
-				spyOnEvent($d, 'pitchdeck.change');
+				$.deck('.slide');
+				$.deck('go', 1);
+				spyOnEvent($d, 'deck.change');
 			});
 
-			describe('pitchdeck.change', function() {
+			describe('deck.change', function() {
 				it('should fire on go(i)', function() {
-					$.pitchdeck('go', 3);
-					expect('pitchdeck.change').toHaveBeenTriggeredOn($d);
+					$.deck('go', 3);
+					expect('deck.change').toHaveBeenTriggeredOn($d);
 				});
 
 				it('should fire on next()', function() {
-					$.pitchdeck('next');
-					expect('pitchdeck.change').toHaveBeenTriggeredOn($d);
+					$.deck('next');
+					expect('deck.change').toHaveBeenTriggeredOn($d);
 				});
 
 				it('should fire on prev()', function() {
-					$.pitchdeck('prev');
-					expect('pitchdeck.change').toHaveBeenTriggeredOn($d);
+					$.deck('prev');
+					expect('deck.change').toHaveBeenTriggeredOn($d);
 				});
 
 				it('should pass parameters with from and to indices', function() {
-					$d.bind('pitchdeck.change', function(e, from, to) {
+					$d.bind('deck.change', function(e, from, to) {
 						expect(from).toEqual(1);
 						expect(to).toEqual(3);
 					});
-					$.pitchdeck('go', 3);
-					$d.unbind('pitchdeck.change');
+					$.deck('go', 3);
+					$d.unbind('deck.change');
 				});
 			});
 		});
@@ -262,7 +262,7 @@ describe('PitchDeck', function() {
 	describe('complex html structure', function() {
 		beforeEach(function() {
 			loadFixtures('complex.html');
-			$.pitchdeck([
+			$.deck([
 				'.slide1',
 				'.slide2',
 				'.slide3',
@@ -274,7 +274,7 @@ describe('PitchDeck', function() {
 				'.slide9',
 				'.slide10',
 			]);
-			$.pitchdeck('go', 2);
+			$.deck('go', 2);
 		});
 		
 		describe('compound state classes', function() {
@@ -314,7 +314,7 @@ describe('PitchDeck', function() {
 		});
 		
 		it('should remove old state classes', function() {
-			$.pitchdeck('go', 4);
+			$.deck('go', 4);
 			expect($('.slide3').not('.slide5')).not.toHaveClass(defaults.classes.current);
 			expect($('.slide2').not('.slide4')).not.toHaveClass(defaults.classes.previous);
 			expect($('.slide4').not('.slide6')).not.toHaveClass(defaults.classes.next);

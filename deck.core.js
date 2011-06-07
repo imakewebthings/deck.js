@@ -5,8 +5,8 @@
 	$d = $(document),
 	current,
 	events = {
-		change: 'pitchdeck.change',
-		initialize: 'pitchdeck.init'
+		change: 'deck.change',
+		initialize: 'deck.init'
 	},
 	options = {},
 	updateStates = function() {
@@ -73,7 +73,7 @@
 				});
 			}
 			
-			$d.bind('keydown.pitchdeck', function(e) {
+			$d.bind('keydown.deck', function(e) {
 				switch (e.which) {
 					case options.keys.next:
 						methods.next();
@@ -85,7 +85,7 @@
 			});
 			
 			updateStates();
-			$d.trigger('pitchdeck.init');
+			$d.trigger('deck.init');
 		},
 		
 		go: function(index) {
@@ -138,17 +138,17 @@
 	
 	$[pd].defaults = {
 		classes: {
-			after: 'pitchdeck-after',
-			before: 'pitchdeck-before',
-			childCurrent: 'pitchdeck-child-current',
-			current: 'pitchdeck-current',
-			next: 'pitchdeck-next',
+			after: 'deck-after',
+			before: 'deck-before',
+			childCurrent: 'deck-child-current',
+			current: 'deck-current',
+			next: 'deck-next',
 			onPrefix: 'on-slide-',
-			previous: 'pitchdeck-previous'
+			previous: 'deck-previous'
 		},
 		
 		selectors: {
-			container: '.pitchdeck-container'
+			container: '.deck-container'
 		},
 		
 		keys: {
@@ -156,4 +156,4 @@
 			previous: 37 // left arrow key
 		}
 	};
-})(jQuery, 'pitchdeck', document);
+})(jQuery, 'deck', document);

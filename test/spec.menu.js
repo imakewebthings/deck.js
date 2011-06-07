@@ -1,21 +1,21 @@
-describe('PitchDeck Menu', function() {
+describe('Deck JS Menu', function() {
 	beforeEach(function() {
 		loadFixtures('standard.html');
-		$.pitchdeck('.slide');
+		$.deck('.slide');
 	});
 	
 	describe('showMenu', function() {
 		it('should show the menu', function() {
 			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
-			$.pitchdeck('showMenu');
+			$.deck('showMenu');
 			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.menu);
 		});
 	});
 	
 	describe('hideMenu', function() {
 		it('should hide the menu', function() {
-			$.pitchdeck('showMenu');
-			$.pitchdeck('hideMenu');
+			$.deck('showMenu');
+			$.deck('hideMenu');
 			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
 		});
 	});
@@ -23,9 +23,9 @@ describe('PitchDeck Menu', function() {
 	describe('toggleMenu', function() {
 		it('should toggle menu on and off', function() {
 			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
-			$.pitchdeck('toggleMenu');
+			$.deck('toggleMenu');
 			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.menu);
-			$.pitchdeck('toggleMenu');
+			$.deck('toggleMenu');
 			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
 		});
 	});

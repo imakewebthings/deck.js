@@ -2,7 +2,7 @@
 	var $d = $(document);
 	
 	// Extend defaults/options
-	$[pd].defaults.classes.menu = 'pitchdeck-menu';
+	$[pd].defaults.classes.menu = 'deck-menu';
 	$[pd].defaults.keys.menu = 77; // m
 
 	$[pd]('extend', 'showMenu', function() {
@@ -18,12 +18,12 @@
 	});
 
 	// Bind key events
-	$d.bind('pitchdeck.init', function() {
-		$d.bind('keydown.pitchdeck', function(e) {
+	$d.bind('deck.init', function() {
+		$d.bind('keydown.deck', function(e) {
 			if (e.which == $[pd]('getOptions').keys.menu) {
 				$[pd]('toggleMenu');
 			}
 		});
 	});
-})(jQuery, 'pitchdeck');
+})(jQuery, 'deck');
 
