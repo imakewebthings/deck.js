@@ -1,7 +1,3 @@
-//SETTINGS, VARS, UTILITY FUNCTIONS
-jasmine.getFixtures().fixturesPath = 'fixtures';
-var defaults = $.pitchdeck.defaults;
-
 // Go tests, go
 describe('PitchDeck', function() {
 	describe('standard html structure', function() {
@@ -108,12 +104,24 @@ describe('PitchDeck', function() {
 
 			describe('getSlides()', function() {
 				it('should return an array of jQuery objects for each slide', function() {
-					var expectation = [];
+					var expectation = [],
+					slides = $.pitchdeck('getSlides');
 					$('.slide').each(function() {
 						expectation.push($(this));
 					});
-					slides = $.pitchdeck('getSlides');
 					expect(slides).toEqual(expectation);
+				});
+			});
+			
+			describe('getContainer()', function() {
+				it('should return a jQuery object with the container element(s)', function() {
+					expect($.pitchdeck('getContainer')).toBe(defaults.selectors.container);
+				});
+			});
+			
+			describe('getOptions()', function() {
+				it('should return the current options object', function() {
+					expect($.pitchdeck('getOptions')).toEqual(defaults);
 				});
 			});
 		});
@@ -298,6 +306,10 @@ describe('PitchDeck', function() {
 				$('.slide5, .slide6, .slide7, .slide8, .slide9, .slide10').each(function(i, el) {
 					expect($(el)).toHaveClass(defaults.classes.after);
 				});
+			});
+			
+			it('should apply child-current class', function() {
+				expect($('.slide2').not('.slide10')).toHaveClass(defaults.classes.childCurrent);
 			});
 		});
 		

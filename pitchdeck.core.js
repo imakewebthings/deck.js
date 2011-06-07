@@ -5,70 +5,14 @@
 	$d = $(document),
 	current,
 	events = {
-		change: 'pitchdeck.change'
+		change: 'pitchdeck.change',
+		initialize: 'pitchdeck.init'
 	},
 	options = {},
-	methods = {
-		init: function(elements, opts) {
-			$.extend(options, $[pd].defaults, opts);
-			slides = [];
-			current = 0;
-			
-			if ($.isArray(elements)) {
-				$.each(elements, function(i, e) {
-					slides.push($(e));
-				});
-			}
-			else {
-				$(elements).each(function(i, e) {
-					slides.push($(e));
-				});
-			}
-			
-			$d.bind('keydown', function(e) {
-				switch (e.which) {
-					case options.keys.next:
-						methods.next();
-						break;
-					case options.keys.previous:
-						methods.prev();
-						break;
-				}
-			});
-			
-			updateStates();
-		},
-		
-		go: function(index) {
-			if (typeof index != 'number' || index < 0 || index >= slides.length) return;
-			
-			$d.trigger(events.change, [current, index]);
-			current = index;
-			updateStates();
-		},
-		
-		next: function() {
-			methods.go(current+1);
-		},
-		
-		prev: function() {
-			methods.go(current-1);
-		},
-		
-		getSlide: function(index) {
-			var i = index ? index : current;
-			if (typeof i != 'number' || i < 0 || i >= slides.length) return null;
-			return slides[i];
-		},
-		
-		getSlides: function() {
-			return slides;
-		}
-	};
-	
-	function updateStates() {
+	updateStates = function() {
 		var oc = options.classes,
-		$container = $(options.selectors.container),
+		osc = options.selectors.container,
+		$container = $(osc),
 		old = $container.data('onSlide'),
 		$all = $();
 		
@@ -76,6 +20,10 @@
 		$container.removeClass(oc.onPrefix + old)
 			.addClass(oc.onPrefix + current)
 			.data('onSlide', current);
+		
+		// Remove and re-add child-current classes for nesting
+		$('.' + oc.current).parentsUntil(osc).removeClass(oc.childCurrent);
+		slides[current].parentsUntil(osc).addClass(oc.childCurrent);
 		
 		// Remove previous states
 		$.each(slides, function(i, el) {
@@ -105,13 +53,83 @@
 		if (current + 2 < slides.length) {
 			$.each(slides.slice(current+2), function(i, el) {
 				el.addClass(oc.after);
-			})
+			});
 		}
-	}
+	},
+	methods = {
+		init: function(elements, opts) {
+			$.extend(options, $[pd].defaults, opts);
+			slides = [];
+			current = 0;
+			
+			if ($.isArray(elements)) {
+				$.each(elements, function(i, e) {
+					slides.push($(e));
+				});
+			}
+			else {
+				$(elements).each(function(i, e) {
+					slides.push($(e));
+				});
+			}
+			
+			$d.bind('keydown.pitchdeck', function(e) {
+				switch (e.which) {
+					case options.keys.next:
+						methods.next();
+						break;
+					case options.keys.previous:
+						methods.prev();
+						break;
+				}
+			});
+			
+			updateStates();
+			$d.trigger('pitchdeck.init');
+		},
+		
+		go: function(index) {
+			if (typeof index != 'number' || index < 0 || index >= slides.length) return;
+			
+			$d.trigger(events.change, [current, index]);
+			current = index;
+			updateStates();
+		},
+		
+		next: function() {
+			methods.go(current+1);
+		},
+		
+		prev: function() {
+			methods.go(current-1);
+		},
+		
+		getSlide: function(index) {
+			var i = index ? index : current;
+			if (typeof i != 'number' || i < 0 || i >= slides.length) return null;
+			return slides[i];
+		},
+		
+		getSlides: function() {
+			return slides;
+		},
+		
+		getContainer: function() {
+			return $(options.selectors.container);
+		},
+		
+		getOptions: function() {
+			return options;
+		},
+		
+		extend: function(name, f) {
+			methods[name] = f;
+		}
+	};
 	
 	$[pd] = function(method, arg) {
 		if (methods[method]) {
-			return methods[method](arg);
+			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
 		}
 		else {
 			return methods.init(method, arg);
@@ -122,6 +140,7 @@
 		classes: {
 			after: 'pitchdeck-after',
 			before: 'pitchdeck-before',
+			childCurrent: 'pitchdeck-child-current',
 			current: 'pitchdeck-current',
 			next: 'pitchdeck-next',
 			onPrefix: 'on-slide-',
@@ -136,5 +155,5 @@
 			next: 39, // right arrow key
 			previous: 37 // left arrow key
 		}
-	}
+	};
 })(jQuery, 'pitchdeck', document);
