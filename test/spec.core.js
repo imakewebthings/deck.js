@@ -149,7 +149,6 @@ describe('Deck JS', function() {
 			var $d = $(document);
 
 			beforeEach(function() {
-				$d.unbind('keydown');
 				$.deck('.alt-slide', {
 					classes: {
 						after: 'alt-after',
@@ -204,7 +203,7 @@ describe('Deck JS', function() {
 				var e;
 
 				beforeEach(function() {
-					e = jQuery.Event('keydown');
+					e = jQuery.Event('keydown.deck');
 				});
 
 				it('should go to the next slide using the specified key', function() {

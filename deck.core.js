@@ -4,8 +4,10 @@
 	var slides,
 	$d = $(document),
 	current,
+	keysbound = false,
 	events = {
 		change: 'deck.change',
+		keysbound: 'deck.keysbound',
 		initialize: 'deck.init'
 	},
 	options = {},
@@ -73,19 +75,25 @@
 				});
 			}
 			
-			$d.bind('keydown.deck', function(e) {
-				switch (e.which) {
-					case options.keys.next:
-						methods.next();
-						break;
-					case options.keys.previous:
-						methods.prev();
-						break;
-				}
-			});
+			// Only deal with init events and bindings once
+			if (!keysbound) {
+				$d.bind('keydown.deck', function(e) {
+					switch (e.which) {
+						case options.keys.next:
+							methods.next();
+							break;
+						case options.keys.previous:
+							methods.prev();
+							break;
+					}
+				});
+				
+				$d.trigger(events.keysbound);
+				keysbound = true;
+			}
 			
 			updateStates();
-			$d.trigger('deck.init');
+			$d.trigger(events.initialize);
 		},
 		
 		go: function(index) {
