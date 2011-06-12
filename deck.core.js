@@ -60,7 +60,7 @@
 	},
 	methods = {
 		init: function(elements, opts) {
-			$.extend(options, $[pd].defaults, opts);
+			$.extend(true, options, $[pd].defaults, opts);
 			slides = [];
 			current = 0;
 			

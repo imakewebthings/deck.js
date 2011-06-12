@@ -9,9 +9,7 @@
 
 	$[pd]('extend', 'showGoTo', function() {
 		$[pd]('getContainer').addClass($[pd]('getOptions').classes.goto);
-		$d.one('keyup', function() {
-			$($[pd]('getOptions').selectors.gotoInput).focus();
-		});
+		$($[pd]('getOptions').selectors.gotoInput).focus();
 	});
 
 	$[pd]('extend', 'hideGoTo', function() {
@@ -27,6 +25,7 @@
 	$d.bind('deck.keysbound', function() {
 		$d.bind('keydown.deck', function(e) {
 			if (e.which == $[pd]('getOptions').keys.goto) {
+				e.preventDefault();
 				$[pd]('toggleGoTo');
 			}
 		});
