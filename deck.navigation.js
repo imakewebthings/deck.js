@@ -5,6 +5,7 @@
 	$[pd].defaults.classes.navDisabled = 'deck-disabled';
 	$[pd].defaults.selectors.nextLink = '.deck-next-link';
 	$[pd].defaults.selectors.previousLink = '.deck-prev-link';
+	$[pd].defaults.navDelay = 1000;
 
 	// Bind key events
 	$d.bind('deck.init', function() {
