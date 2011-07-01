@@ -1,11 +1,8 @@
 // Go tests, go
 describe('Deck JS', function() {
-	zzz = 0;
-	
 	describe('standard html structure', function() {
 		beforeEach(function() {
 			loadFixtures('standard.html');
-			zzz++;
 		});
 
 		describe('init(selector)', function() {
