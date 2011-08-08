@@ -1,0 +1,243 @@
+/*
+
+The core CSS files are written for decks to be standalone pages.
+If you are embedding a deck in an existing page, you may wish to
+remove or change some of the styles below.
+
+*/
+
+/* HTML5 ✰ Boilerplate (http://html5boilerplate.com/) */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; content: none; }
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+table { border-collapse: collapse; border-spacing: 0; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+input, select { vertical-align: middle; }
+
+body { font:13px/1.231 sans-serif; *font-size:small; }
+select, input, textarea, button { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+a:hover, a:active { outline: none; }
+ul, ol { margin-left: 2em; }
+ol { list-style-type: decimal; }
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+td { vertical-align: top; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 15px; }
+textarea { overflow: auto; } 
+.ie6 legend, .ie7 legend { margin-left: -7px; } 
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+button, input, select, textarea { margin: 0; }
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red; }
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+a:link { -webkit-tap-highlight-color: #FF5E99; }
+button {  width: auto; overflow: visible; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+body, select, input, textarea { color: #444; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+
+/* End HTML5 ✰ Boilerplate */
+
+
+body, html {
+	height:100%;
+	font-size:16px;
+	line-height:1.25;
+}
+
+.deck-container {
+	position:relative;
+	height:100%;
+	width:70%;
+	margin:0 auto;
+	padding:0 48px;
+	
+	.js & {
+		visibility:hidden;
+	}
+	
+	.ready & {
+		visibility:visible;
+	}
+
+	h1 {
+		font-size:4.5em;
+		text-align:center;
+		padding-top:1em;
+	}
+
+	h2 {
+		font-size:2.25em;
+		padding-top:.5em;
+		margin:0 0 .66666em 0;
+		border-bottom:3px solid #888;
+	}
+
+	h3 {
+		font-size:1.4375em;
+		margin-bottom:.30435em;
+	}
+
+	h4 {
+		font-size:1.25em;
+		margin-bottom:.25em;
+	}
+
+	h5 {
+		font-size:1.125em;
+		margin-bottom:.2222em;
+	}
+
+	h6 {
+		font-size:1em;
+	}
+
+	img, iframe, video {
+		display:block;
+		max-width:100%;
+	}
+
+	video, iframe, img {
+		display:block;
+		margin:0 auto;
+	}
+
+	p, blockquote, iframe, img, ul, ol, pre, video {
+		margin-bottom:1em;
+	}
+
+	pre {
+		border:1px solid #888;
+	}
+
+	em {
+		font-style:italic;
+	}
+}
+
+.slide {
+	width:auto;
+	min-height:100%;
+	position:relative;
+}
+
+.deck-before, .deck-previous, .deck-next, .deck-after {
+	position:absolute;
+	left:-999em;
+	top:-999em;
+}
+
+.deck-current {
+	z-index:2;
+}
+
+.slide .slide {
+	visibility:hidden;
+	position:static;
+}
+
+.deck-child-current {
+	position:static;
+	z-index:2;
+	
+	.slide {
+		visibility:hidden;
+	}
+	
+	
+	.deck-previous, .deck-before, .deck-current {
+		visibility:visible;
+	}
+}
+
+
+
+@media all and (orientation:portrait) {
+
+}
+
+@media all and (orientation:landscape) {
+
+}
+
+@media screen and (max-device-width: 480px) {
+  
+  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
+  -ms-filter: none !important; } 
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } 
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+
+ 	.slide {
+		position:static !important;
+		visibility:visible !important;
+		display:block !important;
+	}
+	
+	.deck-container > .slide {
+		page-break-after: always;
+	}
+	
+	.deck-container {
+		display:block !important;
+	}
+	
+	script {
+		display:none;
+	}
+}

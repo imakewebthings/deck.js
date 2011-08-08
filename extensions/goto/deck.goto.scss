@@ -1,0 +1,48 @@
+.goto-form {
+	position:absolute;
+	z-index:3;
+	bottom:10px;
+	left:50%;
+	width:13.75em;
+	height:1.75em;
+	margin:0 0 0 -6.875em;
+	line-height:1.75em;
+	padding:0.625em;
+	display:none;
+	background:#ccc;
+	overflow:hidden;
+	
+	.borderradius & {
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+		border-radius:10px;
+	}
+	
+	.deck-goto & {
+		display:block;
+	}
+	
+	label {
+		font-weight:bold;
+	}
+	
+	label, input {
+		float:left;
+	}
+	
+	input[type="submit"] {
+		margin-top:0.25em;
+	}
+}
+
+#goto-slide {
+	width:4.375em;
+	margin:0 0.625em;
+	height:1.4375em;
+}
+
+@media print {
+	.goto-form, #goto-slide {
+		display:none !important;
+	}
+}

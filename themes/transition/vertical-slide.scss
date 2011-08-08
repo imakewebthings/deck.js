@@ -1,0 +1,105 @@
+@mixin translate($x: 0, $y: 0, $z: 0) {
+	-webkit-transform:translate3d($x, $y, $z);
+	-moz-transform:translate($x, $y);
+	-ms-transform:translate($x, $y);
+	transform:translate3d($x, $y, $z);
+}
+
+@mixin rotate($deg) {
+	-webkit-transform:rotate($deg);
+	-moz-transform:rotate($deg);
+	-ms-transform:rotate($deg);
+	transform:rotate($deg);
+}
+
+@mixin transition($prop, $duration, $easing: ease-in-out, $delay: 0ms) {
+	-webkit-transition:$prop $duration $easing $delay;
+	-moz-transition:$prop $duration $easing $delay;
+	-ms-transition:$prop $duration $easing $delay;
+	transition:$prop $duration $easing $delay;
+}
+
+.csstransitions.csstransforms {
+	.deck-container > .slide {
+		-webkit-transition:-webkit-transform 500ms ease-in-out;
+		-moz-transition:-moz-transform 500ms ease-in-out;
+		transition:transform 500ms ease-in-out;
+	}
+	
+	.deck-container:not(.deck-menu) {
+		> .slide {
+			position:absolute;
+			top:0;
+			left:0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			width:100%;
+			padding:0 48px;
+			
+			.slide {
+				position:relative;
+				left:0;
+				top:0;
+				-webkit-transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+				-moz-transition:-moz-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+				transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+			}
+
+			.deck-before, .deck-previous, .deck-current {
+				@include translate;
+			}
+
+			.deck-next, .deck-after {
+				visibility:visible;
+				@include translate(0, 1600px);
+			}
+
+			.deck-before, .deck-previous {
+				opacity:0.4;
+			}
+		}
+
+		> .deck-previous {
+			@include translate(0, -200%);
+		}
+
+		> .deck-before {
+			@include translate(0, -400%);
+		}
+
+		> .deck-next {
+			@include translate(0, 200%);
+		}
+
+		> .deck-after {
+			@include translate(0, 400%);
+		}
+		
+		> .deck-before, > .deck-previous {
+			.slide {
+				visibility:visible;
+			}
+		}
+
+		> .deck-child-current {
+			@include translate;
+		}
+	}
+	
+	.deck-prev-link {
+		left:auto;
+		right:0;
+		top:59px;
+		@include rotate(90deg);
+	}
+	
+	.deck-next-link {
+		top:99px;
+		@include rotate(90deg);
+	}
+}
+
+body {
+	overflow-y:hidden;
+}

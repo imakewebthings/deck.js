@@ -1,4 +1,4 @@
-describe('Deck JS Status Indicator', function() {
+describe('Deck JS Navigation Buttons', function() {
 	beforeEach(function() {
 		loadFixtures('standard.html');
 		$.deck('.slide');
@@ -6,13 +6,17 @@ describe('Deck JS Status Indicator', function() {
 	
 	it('should go to the next slide if next link is clicked', function() {
 		$(defaults.selectors.nextLink).click();
-		expect($.deck('getSlide')).toHaveClass('slide2');
+		setTimeout(function() {
+			expect($.deck('getSlide')).toHaveClass('slide2');
+		}, 0);
 	});
 	
 	it('should go to the previous slide if previous link is clicked', function() {
 		$.deck('go', 2);
 		$(defaults.selectors.previousLink).click();
-		expect($.deck('getSlide')).toHaveClass('slide2');
+		setTimeout(function() {
+			expect($.deck('getSlide')).toHaveClass('slide2');
+		}, 0);
 	});
 	
 	it('should add the disabled class to the previous link if on first slide', function() {

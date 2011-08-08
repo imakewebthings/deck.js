@@ -1,0 +1,52 @@
+.theme-menu {
+	display:none;
+	position:fixed;
+	z-index:3;
+	bottom:10px;
+	left:10px;
+	height:20px;
+	line-height:20px;
+	padding:5px;
+	border:1px solid #ddd;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	overflow:hidden;
+	background:#fff;
+	
+	.js & {
+		display:block;
+	}
+	
+	h2 {
+		float:left;
+		font-size:20px;
+		border:0;
+		padding:5px 10px;
+		height:20px;
+		position:relative;
+		top:-5px;
+		left:-5px;
+		background:#ccc;
+	}
+	
+	label {
+		float:left;
+		display:block;
+		font-size:12px;
+		vertical-align:baseline;
+		margin:0 4px 0 15px;
+	}
+	
+	select {
+		float:left;
+		display:block;
+	}
+}
+
+@media print {
+	.theme-menu {
+		display:none !important;
+	}
+}
+

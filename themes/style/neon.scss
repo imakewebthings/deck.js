@@ -1,0 +1,131 @@
+body {
+	background:#000;
+}
+
+.deck-container {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	font-size:1.25em;
+	background:#000;
+	color:#aaa;
+	
+	.slide {
+		background:#000;
+	}
+	
+	h1 {
+		color:#0af;
+		font-weight:normal;
+		font-weight:100;
+		text-shadow:0 0 50px #0af, 0 0 3px #fff;
+	}
+
+	h2 {
+		color:#af0;
+		border-bottom-color:#ccc;
+		font-weight:normal;
+		font-weight:100;
+		text-shadow:0 0 15px #af0, 0 0 2px #fff;
+		border-bottom:1px solid #333;
+	}
+
+	h3 {
+		color:#fff;
+		font-weight:normal;
+		font-weight:100;
+		text-shadow:0 0 10px #fff, 0 0 2px #fff;
+	}
+
+	pre {
+		border-color:#333;
+		
+		code {
+			color:#fff;
+		}
+	}
+
+	code {
+		color:#f0a;
+	}
+
+	blockquote {
+		font-size:2em;
+		padding:15px 30px;
+		color:#fff;
+		border-left:5px solid #fff;
+
+		p {
+			margin:0;
+		}
+
+		cite {
+			font-size:.5em;
+			font-style:normal;
+			font-weight:normal;
+			font-weight:100;
+			color:#aaa;
+			text-shadow:0 0 15px #fff, 0 0 2px #fff;
+		}
+	}
+	
+	::-moz-selection{ background:#a0f; }
+	::selection { background:#a0f; }
+	
+	a {
+		&, &:active, &:visited {
+			color:#f0a;
+			text-decoration:none;
+		}
+		
+		&:hover, &:focus {
+			text-decoration:underline;
+		}
+	}
+	
+	.deck-prev-link, .deck-next-link {
+		background:#f0a;
+		text-shadow:0 0 3px #fff;
+		line-height:26px;
+		
+		.csstransitions & {
+			-webkit-transition:text-indent 100ms ease-in-out;
+			-moz-transition:text-indent 100ms ease-in-out;
+			-ms-transition:text-indent 100ms ease-in-out;
+			-o-transition:text-indent 100ms ease-in-out;
+			transition:text-indent 100ms ease-in-out;
+		}
+		
+		&, &:active, &:visited {
+			color:#fff;
+		}
+		
+		&:hover, &:focus {
+			text-decoration:none;
+			
+			.boxshadow & {
+				-webkit-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				-moz-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+			}
+		}
+	}
+	
+	.deck-status {
+		font-size:0.6666em;
+	}
+	
+	&.deck-menu {
+		.deck-current {
+			background:#444;
+			
+			.boxshadow & {
+				background:#000;
+				-webkit-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				-moz-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				-webkit-border-radius:5px;
+				-moz-border-radius:5px;
+				border-radius:5px;
+			}
+		}
+	}
+}
