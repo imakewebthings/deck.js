@@ -1,3 +1,6 @@
+.csstransitions.csstransforms .deck-container {
+  overflow-y: hidden;
+}
 .csstransitions.csstransforms .deck-container > .slide {
   -webkit-transition: -webkit-transform 500ms ease-in-out;
   -moz-transition: -moz-transform 500ms ease-in-out;
@@ -85,8 +88,4 @@
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
-}
-
-html {
-  overflow-y: hidden;
 }

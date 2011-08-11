@@ -20,10 +20,14 @@
 }
 
 .csstransitions.csstransforms {
-	.deck-container > .slide {
-		-webkit-transition:-webkit-transform 500ms ease-in-out;
-		-moz-transition:-moz-transform 500ms ease-in-out;
-		transition:transform 500ms ease-in-out;
+	.deck-container {
+		overflow-y:hidden;
+		
+		> .slide {
+			-webkit-transition:-webkit-transform 500ms ease-in-out;
+			-moz-transition:-moz-transform 500ms ease-in-out;
+			transition:transform 500ms ease-in-out;
+		}
 	}
 	
 	.deck-container:not(.deck-menu) {
@@ -98,8 +102,4 @@
 		top:99px;
 		@include rotate(90deg);
 	}
-}
-
-html {
-	overflow-y:hidden;
 }
