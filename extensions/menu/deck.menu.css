@@ -10,7 +10,9 @@
 }
 .deck-menu .slide {
   background: #eee;
-  position: static;
+  position: relative;
+  left: 0;
+  top: 0;
   visibility: visible;
 }
 .deck-menu iframe, .deck-menu img, .deck-menu video {
