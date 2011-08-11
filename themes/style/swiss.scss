@@ -78,4 +78,14 @@
 	.deck-status {
 		font-size:0.6666em;
 	}
+	
+	&.deck-menu {
+		.slide {
+			background:#eee;
+		}
+		
+		.deck-current {
+			background:#ddf;
+		}
+	}
 }

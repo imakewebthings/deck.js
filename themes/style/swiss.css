@@ -67,3 +67,9 @@
 .deck-container .deck-status {
   font-size: 0.6666em;
 }
+.deck-container.deck-menu .slide {
+  background: #eee;
+}
+.deck-container.deck-menu .deck-current {
+  background: #ddf;
+}
