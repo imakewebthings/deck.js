@@ -1,11 +1,8 @@
-body, .deck-container {
-  background: #000;
-}
-
 .deck-container {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-size: 1.25em;
   color: #aaa;
+  background: #000;
 }
 .deck-container .slide {
   background: #000;

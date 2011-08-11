@@ -1,4 +1,6 @@
-body, .deck-container {
+.deck-container {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 1.25em;
   background: #f4fafe;
   /* Old browsers */
   background: -moz-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
@@ -13,11 +15,6 @@ body, .deck-container {
   /* IE10+ */
   background: linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
   /* W3C */
-}
-
-.deck-container {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  font-size: 1.25em;
 }
 .deck-container > .slide {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);

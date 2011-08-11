@@ -1,9 +1,4 @@
-body, html {
-  margin: 0;
-  padding: 0;
-}
-
-.theme-menu {
+.deck-container .theme-menu {
   display: none;
   position: fixed;
   z-index: 3;
@@ -19,11 +14,12 @@ body, html {
   overflow: hidden;
   background: #fff;
   font-family: sans-serif;
+  color: #888;
 }
-.js .theme-menu {
+.js .deck-container .theme-menu {
   display: block;
 }
-.theme-menu h2 {
+.deck-container .theme-menu h2 {
   float: left;
   font-size: 20px;
   border: 0;
@@ -34,15 +30,19 @@ body, html {
   top: -5px;
   left: -5px;
   background: #ccc;
+  color: #444;
+  text-shadow: none;
+  font-family: sans-serif;
+  font-weight: bold;
 }
-.theme-menu label {
+.deck-container .theme-menu label {
   float: left;
   display: block;
   font-size: 12px;
   vertical-align: baseline;
   margin: 0 4px 0 15px;
 }
-.theme-menu select {
+.deck-container .theme-menu select {
   float: left;
   display: block;
 }
