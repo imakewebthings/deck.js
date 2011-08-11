@@ -46,8 +46,8 @@ body, .deck-container {
 		}
 	}
 	
-	::-moz-selection{ background:#c00; }
-	::selection { background:#c00; }
+	::-moz-selection{ background:#c00; color:#fff; }
+	::selection { background:#c00; color:#fff; }
 	
 	a {
 		&, &:active, &:visited {

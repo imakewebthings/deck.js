@@ -152,8 +152,8 @@ body, .deck-container {
 		@include border-radius(5px);
 	}
 	
-	::-moz-selection{ background:#08455f; }
-	::selection { background:#08455f; }
+	::-moz-selection{ background:#08455f; color:#fff; }
+	::selection { background:#08455f; color:#fff; }
 	
 	a {
 		&, &:active, &:visited {

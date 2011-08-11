@@ -40,9 +40,11 @@ body, .deck-container {
 }
 .deck-container ::-moz-selection {
   background: #c00;
+  color: #fff;
 }
 .deck-container ::selection {
   background: #c00;
+  color: #fff;
 }
 .deck-container a, .deck-container a:active, .deck-container a:visited {
   color: #c00;
