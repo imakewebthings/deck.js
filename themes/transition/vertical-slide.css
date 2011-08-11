@@ -75,7 +75,7 @@
 }
 .csstransitions.csstransforms .deck-prev-link {
   left: auto;
-  right: 2px;
+  right: 8px;
   top: 59px;
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);

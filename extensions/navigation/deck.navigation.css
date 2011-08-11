@@ -23,10 +23,10 @@
   color: #fff;
 }
 .deck-container .deck-prev-link {
-  left: 2px;
+  left: 8px;
 }
 .deck-container .deck-next-link {
-  right: 2px;
+  right: 8px;
 }
 .deck-container:hover .deck-prev-link, .deck-container:hover .deck-next-link {
   display: block;
