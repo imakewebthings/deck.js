@@ -71,6 +71,6 @@
   transform: translate3d(0, 0, 0);
 }
 
-body {
+html {
   overflow-x: hidden;
 }

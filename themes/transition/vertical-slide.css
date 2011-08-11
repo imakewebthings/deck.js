@@ -87,6 +87,6 @@
   transform: rotate(90deg);
 }
 
-body {
+html {
   overflow-y: hidden;
 }
