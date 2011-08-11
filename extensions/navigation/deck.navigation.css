@@ -22,17 +22,17 @@
 .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
   color: #fff;
 }
-.deck-container:hover .deck-container .deck-prev-link, .deck-container:hover .deck-container .deck-next-link {
-  display: block;
-}
-.deck-container:hover .deck-container .deck-prev-link.deck-nav-disabled, .deck-container:hover .deck-container .deck-next-link.deck-nav-disabled {
-  display: none;
-}
 .deck-container .deck-prev-link {
   left: 0;
 }
 .deck-container .deck-next-link {
   right: 0;
+}
+.deck-container:hover .deck-prev-link, .deck-container:hover .deck-next-link {
+  display: block;
+}
+.deck-container:hover .deck-prev-link.deck-nav-disabled, .deck-container:hover .deck-next-link.deck-nav-disabled {
+  display: none;
 }
 
 @media print {

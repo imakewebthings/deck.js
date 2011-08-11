@@ -28,14 +28,6 @@
 		&:active, &:visited {
 			color:#fff;
 		}
-
-		.deck-container:hover & {
-			display:block;
-
-			&.deck-nav-disabled {
-				display:none;
-			}
-		}
 	}
 
 	.deck-prev-link {
@@ -44,6 +36,14 @@
 
 	.deck-next-link {
 		right:0;
+	}
+	
+	&:hover .deck-prev-link, &:hover .deck-next-link {
+		display:block;
+
+		&.deck-nav-disabled {
+			display:none;
+		}
 	}
 }
 
