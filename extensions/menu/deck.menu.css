@@ -1,1 +1,21 @@
-.deck-menu > .slide{float:left;width:22%;height:22%;min-height:0;margin:1%;font-size:0.22em;overflow:hidden;padding:0 0.5%}.deck-menu .slide{background:#eee;position:static;visibility:visible}.deck-menu iframe,.deck-menu img,.deck-menu video{max-width:100%}.deck-menu .deck-current{background:#ddf}
+.deck-menu > .slide {
+  float: left;
+  width: 22%;
+  height: 22%;
+  min-height: 0;
+  margin: 1%;
+  font-size: 0.22em;
+  overflow: hidden;
+  padding: 0 0.5%;
+}
+.deck-menu .slide {
+  background: #eee;
+  position: static;
+  visibility: visible;
+}
+.deck-menu iframe, .deck-menu img, .deck-menu video {
+  max-width: 100%;
+}
+.deck-menu .deck-current {
+  background: #ddf;
+}
