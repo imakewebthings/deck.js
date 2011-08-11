@@ -222,6 +222,18 @@ html {
 		font-weight:bold;
 		text-align:center;
 		padding-top:1em;
+		
+		.csstransforms & {
+			padding:0 48px;
+			position:absolute;
+			left:0;
+			right:0;
+			top:50%;
+			-webkit-transform:translate3d(0, -50%, 0);
+			-moz-transform:translate(0, -50%);
+			-ms-transform:translate(0, -50%);
+			transform:translate3d(0, -50%, 0);
+		}
 	}
 
 	h2 {

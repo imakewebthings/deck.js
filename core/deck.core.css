@@ -177,6 +177,17 @@ html {
   text-align: center;
   padding-top: 1em;
 }
+.csstransforms .deck-container h1 {
+  padding: 0 48px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translate3d(0, -50%, 0);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate3d(0, -50%, 0);
+}
 .deck-container h2 {
   font-size: 2.25em;
   font-weight: bold;
