@@ -10,6 +10,7 @@ html {
   padding: 0 48px;
   font-size: 16px;
   line-height: 1.25;
+  overflow: hidden;
   /* Resets and base styles from HTML5 Boilerplate */
   /* End HTML5 Boilerplate adaptations */
 }
@@ -266,6 +267,10 @@ html {
 }
 .deck-child-current .deck-previous, .deck-child-current .deck-before, .deck-child-current .deck-current {
   visibility: visible;
+}
+
+body.deck-container {
+  overflow: visible;
 }
 
 @media all and (orientation:portrait) {}
