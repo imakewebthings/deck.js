@@ -1,11 +1,10 @@
+body, .deck-container {
+	background:#fff;
+}
+
 .deck-container {
 	font-family: "Helvetica Neue", sans-serif;
 	font-size:1.25em;
-	background:#fff;
-	
-	.slide {
-		background:#fff;
-	}
 	
 	h1 {
 		color:#000;

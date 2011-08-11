@@ -52,10 +52,6 @@
 				opacity:0.4;
 			}
 		}
-		
-		.slide {
-			@include translate;
-		}
 
 		> .deck-previous {
 			@include translate(-200%);

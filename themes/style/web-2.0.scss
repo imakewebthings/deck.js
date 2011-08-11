@@ -18,7 +18,7 @@
 	box-shadow:$x $y $blur $color;
 }
 
-body {
+body, .deck-container {
 	background: rgb(244,250,254); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(244,250,254,1) 0%, rgba(204,240,240,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,250,254,1)), color-stop(100%,rgba(204,240,240,1))); /* Chrome,Safari4+ */
@@ -34,13 +34,6 @@ body {
 	
 	> .slide {
 		text-shadow:1px 1px 1px rgba(255,255,255,.5);
-		background: rgb(244,250,254); /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(244,250,254,1) 0%, rgba(204,240,240,1) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,250,254,1)), color-stop(100%,rgba(204,240,240,1))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, rgba(244,250,254,1) 0%,rgba(204,240,240,1) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, rgba(244,250,254,1) 0%,rgba(204,240,240,1) 100%); /* Opera11.10+ */
-		background: -ms-linear-gradient(top, rgba(244,250,254,1) 0%,rgba(204,240,240,1) 100%); /* IE10+ */
-		background: linear-gradient(top, rgba(244,250,254,1) 0%,rgba(204,240,240,1) 100%); /* W3C */
 	}
 	
 	h1, h2, h3, h4, h5, h6 {
