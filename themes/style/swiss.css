@@ -6,6 +6,9 @@ body, .deck-container {
   font-family: "Helvetica Neue", sans-serif;
   font-size: 1.25em;
 }
+.deck-container .slide {
+  background: #fff;
+}
 .deck-container h1 {
   color: #000;
 }
