@@ -149,7 +149,6 @@
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #fff;
   opacity: 0.5;
-  line-height: 26px;
 }
 .deck-container .deck-prev-link, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
   color: #599;

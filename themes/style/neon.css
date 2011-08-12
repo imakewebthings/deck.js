@@ -69,7 +69,6 @@
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #f0a;
   text-shadow: 0 0 3px #fff;
-  line-height: 26px;
 }
 .csstransitions .deck-container .deck-prev-link, .csstransitions .deck-container .deck-next-link {
   -webkit-transition: text-indent 100ms ease-in-out;
