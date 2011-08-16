@@ -2,6 +2,7 @@
 	-webkit-transform:translate3d($x, $y, $z);
 	-moz-transform:translate($x, $y);
 	-ms-transform:translate($x, $y);
+	-o-transform:translate($x, $y);
 	transform:translate3d($x, $y, $z);
 }
 
@@ -9,6 +10,7 @@
 	-webkit-transition:$prop $duration $easing $delay;
 	-moz-transition:$prop $duration $easing $delay;
 	-ms-transition:$prop $duration $easing $delay;
+	-o-transition:$prop $duration $easing $delay;
 	transition:$prop $duration $easing $delay;
 }
 
@@ -18,6 +20,8 @@
 	.deck-container > .slide {
 		-webkit-transition:-webkit-transform 500ms ease-in-out;
 		-moz-transition:-moz-transform 500ms ease-in-out;
+		-ms-transition:-ms-transform 500ms ease-in-out;
+		-o-transition:-o-transform 500ms ease-in-out;
 		transition:transform 500ms ease-in-out;
 	}
 	
@@ -38,6 +42,8 @@
 				top:0;
 				-webkit-transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 				-moz-transition:-moz-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+				-ms-transition:-ms-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+				-o-transition:-o-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 				transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 			}
 

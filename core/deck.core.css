@@ -187,6 +187,7 @@ html {
   -webkit-transform: translate3d(0, -50%, 0);
   -moz-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
   transform: translate3d(0, -50%, 0);
 }
 .deck-container h2 {

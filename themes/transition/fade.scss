@@ -2,6 +2,7 @@
 	-webkit-transform:translate3d($x, $y, $z);
 	-moz-transform:translate($x, $y);
 	-ms-transform:translate($x, $y);
+	-o-transform:translate($x, $y);
 	transform:translate3d($x, $y, $z);
 }
 
@@ -9,6 +10,7 @@
 	-webkit-transition:$prop $duration $easing $delay;
 	-moz-transition:$prop $duration $easing $delay;
 	-ms-transition:$prop $duration $easing $delay;
+	-o-transition:$prop $duration $easing $delay;
 	transition:$prop $duration $easing $delay;
 }
 

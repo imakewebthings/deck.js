@@ -81,14 +81,6 @@
 		background:#f0a;
 		text-shadow:0 0 3px #fff;
 		
-		.csstransitions & {
-			-webkit-transition:text-indent 100ms ease-in-out;
-			-moz-transition:text-indent 100ms ease-in-out;
-			-ms-transition:text-indent 100ms ease-in-out;
-			-o-transition:text-indent 100ms ease-in-out;
-			transition:text-indent 100ms ease-in-out;
-		}
-		
 		&, &:hover, &:focus, &:active, &:visited {
 			color:#fff;
 		}
