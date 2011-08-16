@@ -314,6 +314,7 @@ html {
 .slide .slide {
 	visibility:hidden;
 	position:static;
+	min-height:0;
 }
 
 .deck-child-current {
@@ -323,7 +324,6 @@ html {
 	.slide {
 		visibility:hidden;
 	}
-	
 	
 	.deck-previous, .deck-before, .deck-current {
 		visibility:visible;

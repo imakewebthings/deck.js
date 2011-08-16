@@ -256,6 +256,7 @@ html {
 .slide .slide {
   visibility: hidden;
   position: static;
+  min-height: 0;
 }
 
 .deck-child-current {
