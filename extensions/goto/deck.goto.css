@@ -3,9 +3,8 @@
   z-index: 3;
   bottom: 10px;
   left: 50%;
-  width: 13.75em;
   height: 1.75em;
-  margin: 0 0 0 -6.875em;
+  margin: 0 0 0 -7.125em;
   line-height: 1.75em;
   padding: 0.625em;
   display: none;
@@ -21,10 +20,8 @@
   font-weight: bold;
 }
 .deck-container .goto-form label, .deck-container .goto-form input {
-  float: left;
-}
-.deck-container .goto-form input[type="submit"] {
-  margin-top: 0.25em;
+  display: inline-block;
+  font-family: inherit;
 }
 
 .deck-goto .goto-form {
