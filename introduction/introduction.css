@@ -45,6 +45,7 @@
 .deck-container .theme-menu select {
   float: left;
   display: block;
+  font-size: 14px;
 }
 
 @media print {

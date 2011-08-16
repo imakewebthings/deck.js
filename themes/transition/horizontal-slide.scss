@@ -13,6 +13,8 @@
 }
 
 .csstransitions.csstransforms {
+	overflow:hidden;
+	
 	.deck-container > .slide {
 		-webkit-transition:-webkit-transform 500ms ease-in-out;
 		-moz-transition:-moz-transform 500ms ease-in-out;
@@ -79,8 +81,4 @@
 			@include translate;
 		}
 	}
-}
-
-html {
-	overflow-x:hidden;
 }
