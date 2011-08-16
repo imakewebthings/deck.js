@@ -67,7 +67,7 @@
 	::selection { background:#a0f; }
 	
 	a {
-		&, &:active, &:visited {
+		&, &:hover, &:focus, &:active, &:visited {
 			color:#f0a;
 			text-decoration:none;
 		}
@@ -89,7 +89,7 @@
 			transition:text-indent 100ms ease-in-out;
 		}
 		
-		&, &:active, &:visited {
+		&, &:hover, &:focus, &:active, &:visited {
 			color:#fff;
 		}
 		

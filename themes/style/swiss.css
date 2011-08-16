@@ -46,7 +46,7 @@
   background: #c00;
   color: #fff;
 }
-.deck-container a, .deck-container a:active, .deck-container a:visited {
+.deck-container a, .deck-container a:hover, .deck-container a:focus, .deck-container a:active, .deck-container a:visited {
   color: #c00;
   text-decoration: none;
 }
@@ -56,7 +56,7 @@
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #ccc;
 }
-.deck-container .deck-prev-link, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
+.deck-container .deck-prev-link, .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
   color: #fff;
 }
 .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {

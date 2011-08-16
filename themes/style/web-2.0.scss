@@ -154,7 +154,7 @@
 	::selection { background:#08455f; color:#fff; }
 	
 	a {
-		&, &:active, &:visited {
+		&, &:hover, &:focus, &:active, &:visited {
 			color:#599;
 			text-decoration:none;
 		}
@@ -168,7 +168,7 @@
 		background:#fff;
 		opacity:0.5;
 		
-		&, &:active, &:visited {
+		&, &:hover, &:focus, &:active, &:visited {
 			color:#599;
 		}
 		

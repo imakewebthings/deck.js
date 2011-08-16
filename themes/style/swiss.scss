@@ -51,7 +51,7 @@
 	::selection { background:#c00; color:#fff; }
 	
 	a {
-		&, &:active, &:visited {
+		&, &:hover, &:focus, &:active, &:visited {
 			color:#c00;
 			text-decoration:none;
 		}
@@ -64,7 +64,7 @@
 	.deck-prev-link, .deck-next-link {
 		background:#ccc;
 		
-		&, &:active, &:visited {
+		&, &:hover, &:focus, &:active, &:visited {
 			color:#fff;
 		}
 		
