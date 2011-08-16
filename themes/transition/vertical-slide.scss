@@ -21,7 +21,7 @@
 
 .csstransitions.csstransforms {
 	.deck-container {
-		overflow:hidden;
+		overflow-y:hidden;
 		
 		> .slide {
 			-webkit-transition:-webkit-transform 500ms ease-in-out;
