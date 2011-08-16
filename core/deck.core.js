@@ -154,9 +154,11 @@ that use the API provided by core.
 				switch (e.which) {
 					case options.keys.next:
 						methods.next();
+						e.preventDefault();
 						break;
 					case options.keys.previous:
 						methods.prev();
+						e.preventDefault();
 						break;
 				}
 			});
