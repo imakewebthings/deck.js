@@ -91,6 +91,7 @@ html {
 }
 .deck-container ul, .deck-container ol {
   margin-left: 2em;
+  vertical-align: top;
 }
 .deck-container ol {
   list-style-type: decimal;
@@ -236,6 +237,9 @@ html {
 }
 .deck-container em {
   font-style: italic;
+}
+.deck-container li {
+  padding: .25em 0;
 }
 
 .slide {

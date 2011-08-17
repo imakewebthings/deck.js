@@ -108,6 +108,7 @@ html {
 	
 	ul, ol {
 		margin-left:2em;
+		vertical-align:top;
 	}
 	
 	ol {
@@ -293,6 +294,10 @@ html {
 
 	em {
 		font-style:italic;
+	}
+	
+	li {
+		padding:.25em 0;
 	}
 }
 
