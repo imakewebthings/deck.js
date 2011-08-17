@@ -240,6 +240,7 @@ html {
 }
 .deck-container li {
   padding: .25em 0;
+  vertical-align: middle;
 }
 
 .slide {
