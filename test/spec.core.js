@@ -3,6 +3,9 @@ describe('Deck JS', function() {
 	describe('standard html structure', function() {
 		beforeEach(function() {
 			loadFixtures('standard.html');
+			if (Modernizr.history) {
+				history.replaceState({}, "", "#")
+			}
 		});
 
 		describe('init(selector)', function() {
@@ -247,12 +250,14 @@ describe('Deck JS', function() {
 				});
 
 				it('should pass parameters with from and to indices', function() {
-					$d.bind('deck.change', function(e, from, to) {
+					var f = function(e, from, to) {
 						expect(from).toEqual(1);
 						expect(to).toEqual(3);
-					});
+					};
+					
+					$d.bind('deck.change', f);
 					$.deck('go', 3);
-					$d.unbind('deck.change');
+					$d.unbind('deck.change', f);
 				});
 			});
 		});
@@ -261,6 +266,9 @@ describe('Deck JS', function() {
 	describe('complex html structure', function() {
 		beforeEach(function() {
 			loadFixtures('complex.html');
+			if (Modernizr.history) {
+				history.replaceState({}, "", "#")
+			}
 			$.deck([
 				'.slide1',
 				'.slide2',

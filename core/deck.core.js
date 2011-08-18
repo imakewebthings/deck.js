@@ -133,7 +133,7 @@ that use the API provided by core.
 		]);
 		*/	
 		init: function(elements, opts) {
-			$.extend(true, options, $[deck].defaults, opts);
+			options = $.extend(true, {}, $[deck].defaults, opts);
 			slides = [];
 			current = 0;
 			

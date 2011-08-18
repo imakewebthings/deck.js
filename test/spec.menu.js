@@ -3,6 +3,9 @@ describe('Deck JS Menu', function() {
 	
 	beforeEach(function() {
 		loadFixtures('standard.html');
+		if (Modernizr.history) {
+			history.replaceState({}, "", "#")
+		}
 		$.deck('.slide');
 	});
 	
