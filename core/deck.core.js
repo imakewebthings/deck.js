@@ -213,8 +213,7 @@ that use the API provided by core.
 		specified, the current slide is returned.
 		*/
 		getSlide: function(index) {
-			console.log(index);
-			var i = typeof index !== undefined ? index : current;
+			var i = typeof index !== 'undefined' ? index : current;
 			if (typeof i != 'number' || i < 0 || i >= slides.length) return null;
 			return slides[i];
 		},
