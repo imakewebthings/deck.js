@@ -1,0 +1,12 @@
+.deck-permalink {
+  display: none;
+  position: absolute;
+  width: 48px;
+  text-align: center;
+  bottom: 30px;
+  right: 0;
+  z-index: 4;
+}
+.no-history .deck-container:hover .deck-permalink {
+  display: block;
+}
