@@ -1,13 +1,15 @@
-.deck-permalink {
-	display:none;
-	position:absolute;
-	width:48px;
-	text-align:center;
-	bottom:30px;
-	right:0;
-	z-index:4;
-	
-	.no-history .deck-container:hover & {
-		display:block;
+.deck-container {
+	.deck-permalink {
+		display:none;
+		position:absolute;
+		z-index:4;
+		bottom:30px;
+		right:0;
+		width:48px;
+		text-align:center;
+
+		.no-history .deck-container:hover & {
+			display:block;
+		}
 	}
 }

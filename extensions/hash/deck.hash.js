@@ -7,7 +7,7 @@ https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
 */
 
 /*
-This module adds deep linking to individual slides, hooks up internal links
+This module adds deep linking to individual slides, enables internal links
 to slides within decks, and updates the address bar with the hash as the user
 moves through the deck. A permalink anchor is also updated. Standard themes
 hide this link in browsers that support the History API, and show it for
