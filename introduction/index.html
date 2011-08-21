@@ -53,11 +53,11 @@
 	</select>
 </div>
 
-<div class="slide">
+<div class="slide" id="title-slide">
 	<h1>Getting Started with deck.js</h1>
 </div>
 
-<div class="slide">
+<div class="slide" id="how-to-overview">
 	<h2>How to Make a Deck</h2>
 	<ol>
 		<li>
@@ -75,7 +75,7 @@
 	</ol>
 </div>
 
-<div class="slide">
+<div class="slide" id="markup">
 	<h2>The Markup</h2>
 	<p>Slides are just HTML elements with a class of <code>slide</code>.</p>
 	<pre><code>&lt;div class=&quot;slide&quot;&gt;
@@ -94,7 +94,7 @@
 &lt;/div&gt;</code></pre>
 </div>
 
-<div class="slide">
+<div class="slide" id="themes">
 	<h2>Style Themes</h2>
 	<p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
 	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
@@ -103,32 +103,36 @@
 	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
 </div>
 
-<div class="slide">
+<div class="slide" id="extensions">
 	<h2>Extensions</h2>
 	<p>Core gives you basic slide functionality with left and right arrow navigation, but you may want&nbsp;more.</p>
 	
 	<ul>
-		<li class="slide">
+		<li class="slide" id="extensions-goto">
 			<strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
 		</li>
+		
+		<li class="slide" id="extensions-hash">
+			<strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
+		</li>
 
-		<li class="slide">
+		<li class="slide" id="extensions-menu">
 			<strong>deck.menu</strong>: Adds a menu view, letting you see all slides in a grid. Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal&nbsp;view.
 		</li>
 
-		<li class="slide">
+		<li class="slide" id="extensions-navigation">
 			<strong>deck.navigation</strong>: Adds clickable left and right buttons for the less keyboard inclined.
 		</li>
 
-		<li class="slide">
+		<li class="slide" id="extensions-status">
 			<strong>deck.status</strong>: Adds a page number indicator. (current/total)
 		</li>
 	</ul>
 	
-	<p class="slide">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files.</p>
+	<p class="slide" id="extension-folders">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files.</p>
 </div>
 
-<div class="slide">
+<div class="slide" id="nested">
 	<h2>Nested Slides</h2>
 	<p>That last slide had a few steps.  To create substeps in slides, just nest them:</p>
 	<pre><code>&lt;div class=&quot;slide&quot;&gt;
@@ -146,13 +150,13 @@
 &lt;/div&gt;</code></pre>
 </div>
 
-<div class="slide">
+<div class="slide" id="elements-images">
 	<h2>Other Elements: Images</h2>
 	<img src="http://placekitten.com/600/375" alt="Kitties">
 	<pre><code>&lt;img src=&quot;http://placekitten.com/600/375&quot; alt=&quot;Kitties&quot;&gt;</code></pre>
 </div>
 
-<div class="slide">
+<div class="slide" id="elements-blockquotes">
 	<h2>Other Elements: Blockquotes</h2>
 	<blockquote cite="http://example.org">
 		<p>Food is an important part of a balanced diet.</p>
@@ -165,7 +169,7 @@
 </div>
 
 
-<div class="slide">
+<div class="slide" id="elements-videos">
 	<h2>Other Elements: Video Embeds</h2>
 	<p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
 	
@@ -174,7 +178,7 @@
 	<pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
 </div>
 
-<div class="slide">
+<div class="slide" id="digging-deeper">
 	<h2>Digging Deeper</h2>
 	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
 </div>
