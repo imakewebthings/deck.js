@@ -6,6 +6,9 @@ describe('Deck JS Quick Go-To', function() {
 		if (Modernizr.history) {
 			history.replaceState({}, "", "#")
 		}
+		else {
+			window.location.hash = '#';
+		}
 		$.deck('.slide');
 	});
 	

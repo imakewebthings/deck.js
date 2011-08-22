@@ -4,6 +4,9 @@ describe('Deck JS Navigation Buttons', function() {
 		if (Modernizr.history) {
 			history.replaceState({}, "", "#")
 		}
+		else {
+			window.location.hash = '#';
+		}
 		$.deck('.slide');
 	});
 	
