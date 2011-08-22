@@ -7,6 +7,7 @@
   width: 48px;
   text-align: center;
 }
-.no-history .deck-container:hover .deck-container .deck-permalink {
+
+.no-history .deck-container:hover .deck-permalink {
   display: block;
 }

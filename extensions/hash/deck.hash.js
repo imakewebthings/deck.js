@@ -100,6 +100,11 @@ the hashPrefix option.
 	
 	/* Deals with internal links in modern browsers */
 	$window.bind('hashchange.deck', function(e) {
-		goByHash(e.originalEvent.newURL);
+		if (e.originalEvent.newURL) {
+			goByHash(e.originalEvent.newURL);
+		}
+		else {
+			goByHash(window.location.hash);
+		}
 	});
 })(jQuery, 'deck', this);
