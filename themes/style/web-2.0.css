@@ -15,6 +15,7 @@
   /* IE10+ */
   background: linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
   /* W3C */
+  background-attachment: fixed;
 }
 .deck-container > .slide {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
