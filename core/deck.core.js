@@ -163,6 +163,20 @@ that use the API provided by core.
 				}
 			});
 			
+			/*
+			Kick iframe videos, which dont like to redraw w/ transforms.
+			Remove this if Webkit ever fixes it.
+			 */
+			$.each(slides, function(i, $el) {
+				$el.unbind('webkitTransitionEnd').bind('webkitTransitionEnd',
+				function(event) {
+					var embeds = $(this).find('iframe').css('opacity', 0);
+					window.setTimeout(function() {
+						embeds.css('opacity', 1);
+					}, 100);
+				});
+			});
+			
 			updateStates();
 			$d.trigger(events.initialize);
 		},
