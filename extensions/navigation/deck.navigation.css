@@ -20,6 +20,10 @@
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
+.touch .deck-container .deck-prev-link, .touch .deck-container .deck-next-link {
+  display: block;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
   color: #fff;
 }

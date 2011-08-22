@@ -20,6 +20,9 @@ html {
 .ready .deck-container {
   visibility: visible;
 }
+.touch .deck-container {
+  -webkit-text-size-adjust: none;
+}
 .deck-container div, .deck-container span, .deck-container object, .deck-container iframe,
 .deck-container h1, .deck-container h2, .deck-container h3, .deck-container h4, .deck-container h5, .deck-container h6, .deck-container p, .deck-container blockquote, .deck-container pre,
 .deck-container abbr, .deck-container address, .deck-container cite, .deck-container code, .deck-container del, .deck-container dfn, .deck-container em, .deck-container img, .deck-container ins, .deck-container kbd, .deck-container q, .deck-container samp,
@@ -85,6 +88,9 @@ html {
 }
 .deck-container pre, .deck-container code, .deck-container kbd, .deck-container samp {
   font-family: monospace, sans-serif;
+}
+.deck-container a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .deck-container a:hover, .deck-container a:active {
   outline: none;
@@ -171,7 +177,7 @@ html {
   color: #036;
 }
 .deck-container a:link {
-  -webkit-tap-highlight-color: #FF5E99;
+  -webkit-tap-highlight-color: #fff;
 }
 .deck-container h1 {
   font-size: 4.5em;

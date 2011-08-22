@@ -20,6 +20,10 @@ html {
 		visibility:visible;
 	}
 	
+	.touch & {
+		-webkit-text-size-adjust:none;
+	}
+	
 	/* Resets and base styles from HTML5 Boilerplate */
 	div, span, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -101,6 +105,8 @@ html {
 	}
 	
 	a {
+		-webkit-tap-highlight-color:rgba(0,0,0,0);
+		
 		&:hover, &:active {
 			outline:none;
 		}
@@ -214,7 +220,7 @@ html {
 		}
 		
 		&:link {
-			-webkit-tap-highlight-color: #FF5E99;
+			-webkit-tap-highlight-color: #fff;
 		}
 	}
 	/* End HTML5 Boilerplate adaptations */
