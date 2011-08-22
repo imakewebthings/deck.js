@@ -293,6 +293,11 @@ body.deck-container {
     text-shadow: none !important;
     filter: none !important;
     -ms-filter: none !important;
+    -webkit-box-reflect: none !important;
+    -moz-box-reflect: none !important;
+  }
+  * :before, * :after {
+    display: none !important;
   }
 
   a, a:visited {
@@ -342,6 +347,21 @@ body.deck-container {
     position: static !important;
     visibility: visible !important;
     display: block !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -o-transform: none !important;
+    -ms-transform: none !important;
+    transform: none !important;
+  }
+
+  h1 {
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -o-transform: none !important;
+    -ms-transform: none !important;
+    transform: none !important;
+    padding: 0 !important;
+    position: static !important;
   }
 
   .deck-container > .slide {
@@ -349,6 +369,8 @@ body.deck-container {
   }
 
   .deck-container {
+    width: 100% !important;
+    padding: 0 !important;
     display: block !important;
   }
 
