@@ -63,7 +63,7 @@
 	
 	.deck-prev-link, .deck-next-link {
 		background:#ccc;
-		font-family:sans-serif;
+		font-family:serif; // sans-serif arrows x-browser fail
 		
 		&, &:hover, &:focus, &:active, &:visited {
 			color:#fff;

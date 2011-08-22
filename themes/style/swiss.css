@@ -55,7 +55,7 @@
 }
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #ccc;
-  font-family: sans-serif;
+  font-family: serif;
 }
 .deck-container .deck-prev-link, .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
   color: #fff;
