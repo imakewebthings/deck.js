@@ -42,6 +42,7 @@ on the deck container.
 	*/
 	$[deck]('extend', 'showMenu', function() {
 		$[deck]('getContainer').addClass($[deck]('getOptions').classes.menu);
+		$[deck]('getContainer').scrollTop($[deck]('getSlide').offset().top);
 	});
 
 	/*
@@ -52,6 +53,7 @@ on the deck container.
 	*/
 	$[deck]('extend', 'hideMenu', function() {
 		$[deck]('getContainer').removeClass($[deck]('getOptions').classes.menu);
+		$[deck]('getContainer').scrollTop(0);
 	});
 
 	/*
@@ -60,7 +62,8 @@ on the deck container.
 	Toggles between showing and hiding the slide menu.
 	*/
 	$[deck]('extend', 'toggleMenu', function() {
-		$[deck]('getContainer').toggleClass($[deck]('getOptions').classes.menu);
+		$[deck]('getContainer').hasClass($[deck]('getOptions').classes.menu) ?
+		$[deck]('hideMenu') : $[deck]('showMenu');
 	});
 
 	$d.bind('deck.init', function() {
@@ -70,6 +73,9 @@ on the deck container.
 				$[deck]('toggleMenu');
 			}
 		});
+	})
+	.bind('deck.change', function(e, from, to) {
+		$[deck]('getContainer').scrollTop($[deck]('getSlide', to).offset().top);
 	});
 })(jQuery, 'deck');
 
