@@ -75,7 +75,10 @@ on the deck container.
 		});
 	})
 	.bind('deck.change', function(e, from, to) {
-		$[deck]('getContainer').scrollTop($[deck]('getSlide', to).offset().top);
+		var container = $[deck]('getContainer');
+		if (container.hasClass($[deck]('getOptions').classes.menu)) {
+			container.scrollTop($[deck]('getSlide', to).offset().top);
+		}
 	});
 })(jQuery, 'deck');
 
