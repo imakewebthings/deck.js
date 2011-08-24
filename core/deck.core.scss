@@ -362,7 +362,17 @@ body.deck-container {
 
 
 @media print {
-  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; 	-webkit-box-reflect:none !important; -moz-box-reflect:none !important;
+  * {
+	background: transparent !important;
+	color: black !important;
+	text-shadow: none !important;
+	filter:none !important;
+	-ms-filter: none !important;
+	-webkit-box-reflect:none !important;
+	-moz-box-reflect:none !important;
+	-webkit-box-shadow:none !important;
+	-moz-box-shadow:none !important;
+	box-shadow:none !important;
 	
 	:before, :after {
 		display:none !important;
@@ -406,6 +416,7 @@ body.deck-container {
 	
 	.deck-container {
 		width:100% !important;
+		height:auto !important;
 		padding:0 !important;
 		display:block !important;
 	}
