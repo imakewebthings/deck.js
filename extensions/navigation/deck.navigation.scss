@@ -25,10 +25,6 @@
 		.borderradius & {
 			@include border-radius(16px);
 		}
-		
-		.touch & {
-			display:none;
-		}
 
 		&:hover, &:focus, &:active, &:visited {
 			color:#fff;
@@ -46,7 +42,7 @@
 	&:hover .deck-prev-link, &:hover .deck-next-link {
 		display:block;
 
-		&.deck-nav-disabled {
+		&.deck-nav-disabled, .touch & {
 			display:none;
 		}
 	}

@@ -20,9 +20,6 @@
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
-.touch .deck-container .deck-prev-link, .touch .deck-container .deck-next-link {
-  display: none;
-}
 .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
   color: #fff;
 }
@@ -35,7 +32,7 @@
 .deck-container:hover .deck-prev-link, .deck-container:hover .deck-next-link {
   display: block;
 }
-.deck-container:hover .deck-prev-link.deck-nav-disabled, .deck-container:hover .deck-next-link.deck-nav-disabled {
+.deck-container:hover .deck-prev-link.deck-nav-disabled, .touch .deck-container:hover .deck-prev-link, .deck-container:hover .deck-next-link.deck-nav-disabled, .touch .deck-container:hover .deck-next-link {
   display: none;
 }
 
