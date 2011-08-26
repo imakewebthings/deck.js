@@ -17,6 +17,16 @@ Unit tests are written with [Jasmine](http://pivotal.github.com/jasmine/) and [j
 
 deck.js has been tested with jQuery 1.6+ and works in IE7+, Chrome, FF, Safari, and Opera. The more capable browsers receive greater enhancements, but a basic cutaway slideshow will work for all browsers listed above. Please don't give your presentations in IE6.
 
+## Printing
+
+Core includes stripped down black and white print styles for the standard slide template that is suitable for handouts.
+
+## Awesome People
+
+Big thanks to the folks who have contributed code to the project:
+
+- [jbuck](https://github.com/jbuck) - Touch controls.
+
 ## License
 
 Copyright (c) 2011 Caleb Troughton
