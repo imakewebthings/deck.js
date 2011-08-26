@@ -35,4 +35,4 @@ Dual licensed under the [MIT license](https://github.com/imakewebthings/deck.js/
 
 ## In the Works
 
-- Add touch gesture controls to certain modules.
+- Auto resizing of slides to the browser size.
