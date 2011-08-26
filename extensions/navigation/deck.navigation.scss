@@ -27,8 +27,7 @@
 		}
 		
 		.touch & {
-			display:block;
-			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			display:none;
 		}
 
 		&:hover, &:focus, &:active, &:visited {
