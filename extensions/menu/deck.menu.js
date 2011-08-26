@@ -76,7 +76,8 @@ on the deck container.
 
 	$d.bind('deck.init', function() {
 		var opts = $[deck]('getOptions'),
-		touchEndTime = 0;
+		touchEndTime = 0,
+		currentSlide;
 		
 		// Bind key events
 		$d.bind('keydown.deck', function(e) {
@@ -86,14 +87,20 @@ on the deck container.
 		});
 		
 		// Double tap to toggle slide menu for touch devices
-		$[deck]('getContainer').bind('touchend.deck', function(e) {
+		$[deck]('getContainer').bind('touchstart.deck', function(e) {
+			currentSlide = $[deck]('getSlide');
+		})
+		.bind('touchend.deck', function(e) {
 			var now = Date.now();
+			
+			// Ignore this touch event if it caused a nav change (swipe)
+			if (currentSlide !== $[deck]('getSlide')) return;
 			
 			if (now - touchEndTime < opts.touch.doubletapWindow) {
 				$[deck]('toggleMenu');
+				e.preventDefault();
 			}
 			touchEndTime = now;
-			e.preventDefault();
 		});
 	})
 	.bind('deck.change', function(e, from, to) {
