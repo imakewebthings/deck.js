@@ -133,9 +133,15 @@ that use the API provided by core.
 		]);
 		*/	
 		init: function(elements, opts) {
+			var startTouch,
+			$c,
+			tolerance;
+			
 			options = $.extend(true, {}, $[deck].defaults, opts);
 			slides = [];
 			current = 0;
+			$c = $[deck]('getContainer');
+			tolerance = options.touch.swipeTolerance;
 			
 			// Fill slides array depending on parameter type
 			if ($.isArray(elements)) {
@@ -164,40 +170,33 @@ that use the API provided by core.
 			});
 			
 			/* Bind touch events for swiping between slides on touch devices */
-			var startTouch;
-			$[deck]('getContainer').bind('touchstart', function(t) {
+			$c.unbind('touchstart.deck').bind('touchstart.deck', function(e) {
 				if (!startTouch) {
-					var touch = t.originalEvent.targetTouches[0];
-					startTouch = {identifier: touch.identifier,
-					                 screenX: touch.screenX,
-					                 screenY: touch.screenY};
+					startTouch = $.extend({}, e.originalEvent.targetTouches[0]);
 				}
-			});
-			$[deck]('getContainer').bind('touchmove', function(t) {
-				t.preventDefault();
-				var tar = t.originalEvent.changedTouches;
-				for (var i = 0; i < tar.length; i++) {
-					var touch = tar[i];
-					if (startTouch && touch.identifier === startTouch.identifier) {
-						if (touch.screenX - startTouch.screenX > 100 || touch.screenY - startTouch.screenY > 100) {
+			})
+			.unbind('touchmove.deck').bind('touchmove.deck', function(e) {
+				$.each(e.originalEvent.changedTouches, function(i, t) {
+					if (startTouch && t.identifier === startTouch.identifier) {
+						if (t.screenX - startTouch.screenX > tolerance || t.screenY - startTouch.screenY > tolerance) {
 							$[deck]('prev');
 							startTouch = undefined;
-						} else if (touch.screenX - startTouch.screenX < -100 || touch.screenY - startTouch.screenY < -100) {
+						}
+						else if (t.screenX - startTouch.screenX < -1 * tolerance || t.screenY - startTouch.screenY < -1 * tolerance) {
 							$[deck]('next');
 							startTouch = undefined;
 						}
+						return false;
 					}
-				}
-				
-			});
-			$[deck]('getContainer').bind('touchend', function(t) {
-				var tar = t.originalEvent.changedTouches;
-				for (var i = 0; i < tar.length; i++) {
-					var touch = tar[i];
-					if (startTouch && touch.identifier === startTouch.identifier) {
+				});
+				e.preventDefault();
+			})
+			.unbind('touchend.deck').bind('touchend.deck', function(t) {
+				$.each(t.originalEvent.changedTouches, function(i, t) {
+					if (startTouch && t.identifier === startTouch.identifier) {
 						startTouch = undefined;
 					}
-				}
+				});
 			});
 			
 			/*
@@ -373,6 +372,10 @@ that use the API provided by core.
 		
 	options.keys.previous
 		The numeric keycode used to go to the previous slide.
+		
+	options.touch.swipeTolerance
+		The number of pixels the users finger must travel to produce a swipe
+		gesture.
 	*/
 	$[deck].defaults = {
 		classes: {
@@ -392,6 +395,10 @@ that use the API provided by core.
 		keys: {
 			next: 39, // right arrow key
 			previous: 37 // left arrow key
+		},
+		
+		touch: {
+			swipeTolerance: 100
 		}
 	};
 	
