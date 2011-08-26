@@ -163,6 +163,43 @@ that use the API provided by core.
 				}
 			});
 			
+			/* Bind touch events for swiping between slides on touch devices */
+			var startTouch;
+			$[deck]('getContainer').bind('touchstart', function(t) {
+				if (!startTouch) {
+					var touch = t.originalEvent.targetTouches[0];
+					startTouch = {identifier: touch.identifier,
+					                 screenX: touch.screenX,
+					                 screenY: touch.screenY};
+				}
+			});
+			$[deck]('getContainer').bind('touchmove', function(t) {
+				t.preventDefault();
+				var tar = t.originalEvent.changedTouches;
+				for (var i = 0; i < tar.length; i++) {
+					var touch = tar[i];
+					if (startTouch && touch.identifier === startTouch.identifier) {
+						if (touch.screenX - startTouch.screenX > 100 || touch.screenY - startTouch.screenY > 100) {
+							$[deck]('prev');
+							startTouch = undefined;
+						} else if (touch.screenX - startTouch.screenX < -100 || touch.screenY - startTouch.screenY < -100) {
+							$[deck]('next');
+							startTouch = undefined;
+						}
+					}
+				}
+				
+			});
+			$[deck]('getContainer').bind('touchend', function(t) {
+				var tar = t.originalEvent.changedTouches;
+				for (var i = 0; i < tar.length; i++) {
+					var touch = tar[i];
+					if (startTouch && touch.identifier === startTouch.identifier) {
+						startTouch = undefined;
+					}
+				}
+			});
+			
 			/*
 			Kick iframe videos, which dont like to redraw w/ transforms.
 			Remove this if Webkit ever fixes it.

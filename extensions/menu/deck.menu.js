@@ -73,6 +73,15 @@ on the deck container.
 				$[deck]('toggleMenu');
 			}
 		});
+		
+		var touchEndTime;
+		$[deck]('getContainer').bind('touchend', function(t) {
+			if (Date.now() - touchEndTime < 400) {
+				$[deck]('toggleMenu');
+			}
+			touchEndTime = Date.now();
+			t.preventDefault();
+		});
 	})
 	.bind('deck.change', function(e, from, to) {
 		var container = $[deck]('getContainer');
