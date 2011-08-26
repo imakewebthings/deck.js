@@ -398,7 +398,7 @@ that use the API provided by core.
 		},
 		
 		touch: {
-			swipeTolerance: 100
+			swipeTolerance: 60
 		}
 	};
 	
