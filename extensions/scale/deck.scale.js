@@ -13,34 +13,37 @@ https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
 	var $d = $(document),
 	$w = $(window),
 	baseHeight,
-	didResize,
+	timer, // Timeout id for debouncing
 	
 	scaleDeck = function() {
 		var obh = $[deck]('getOptions').baseHeight,
-		container = $[deck]('getContainer'),
+		$container = $[deck]('getContainer'),
 		height = $w.height(),
 		slides = $[deck]('getSlides'),
-		scale;
+		scale,
+		transform;
 		
-		// Use tallest slide as base height if not set manually
-		baseHeight = obh ? obh : (function() {
-			var greatest = 0;
-			
-			$.each(slides, function(i, $slide) {
-				greatest = Math.max(greatest, $slide.outerHeight());
-			});
-			
-			return greatest;
-		})();
-		
-		scale = height / baseHeight;
-		
-		if (!$[deck]('getOptions').scaleUp && scale > 1) {
+		if (!$container.hasClass($[deck]('getOptions').classes.scale)) {
 			scale = 1;
 		}
+		else {
+			// Use tallest slide as base height if not set manually
+			baseHeight = obh ? obh : (function() {
+				var greatest = 0;
+
+				$.each(slides, function(i, $slide) {
+					greatest = Math.max(greatest, $slide.outerHeight());
+				});
+
+				return greatest;
+			})();
+			
+			scale = height / baseHeight;
+		}
 		
+		transform = scale >= 1 ? 'none' : 'scale(' + scale + ')';
 		$.each('Webkit Moz O ms Khtml'.split(' '), function(i, prefix) {
-			container.css(prefix + 'Transform', 'scale(' + scale + ')');
+			$container.css(prefix + 'Transform', transform);
 		});
 	};
 
@@ -53,34 +56,57 @@ https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
 		classes: {
 			scale: 'deck-scale'
 		},
-		baseHeight: 0,
-		scaleThrottle: 500,
-		scaleUp: false
+		
+		keys: {
+			scale: 83 // s
+		},
+		
+		baseHeight: null,
+		scaleDebounce: 200
+	});
+	
+	$[deck]('extend', 'removeScale', function() {
+		$[deck]('getContainer').removeClass($[deck]('getOptions').classes.scale);
+		scaleDeck();
+	});
+	
+	$[deck]('extend', 'scale', function() {
+		$[deck]('getContainer').addClass($[deck]('getOptions').classes.scale);
+		scaleDeck();
+	});
+	
+	$[deck]('extend', 'toggleScale', function() {
+		var $c = $[deck]('getContainer');
+		$[deck]($c.hasClass($[deck]('getOptions').classes.scale) ?
+			'removeScale' : 'scale'); 
 	});
 
 	$d.bind('deck.init', function() {
-		// Only care about scaling non-embedded presentations
-		if (!$[deck]('getContainer').is('body')) return;
+		var opts = $[deck]('getOptions');
 		
-		$[deck]('getContainer').addClass($[deck]('getOptions').classes.scale);
+		// Only care about scaling in modern browsers
+		if (!Modernizr.csstransforms) return;
 		
-		// Throttle scaling on resize
+		// Scaling enabled at start
+		$[deck]('getContainer').addClass(opts.classes.scale);
+		
+		// Debounce the resize scaling
 		$w.unbind('resize.deckscale').bind('resize.deckscale', function() {
-			if (!didResize) {
-				didResize = true;
-				window.setTimeout(function() {
-					scaleDeck();
-					didResize = false;
-				}, $[deck]('getOptions').scaleThrottle);
-			}
+			window.clearTimeout(timer);
+			timer = window.setTimeout(scaleDeck, opts.scaleDebounce);
 		})
 		// Scale once on load, in case images or something change layout
 		.unbind('load.deckscale').bind('load.deckscale', scaleDeck);
 		
+		// Bind key events
+		$d.unbind('keydown.deckscale').bind('keydown.deckscale', function(e) {
+			if (e.which === opts.keys.scale) {
+				$[deck]('toggleScale');
+			}
+		});
+		
 		// Scale once on init
 		scaleDeck();
 	});
-	
-	// Scale again on load, in case images or anything else changed layout
 })(jQuery, 'deck', this);
 

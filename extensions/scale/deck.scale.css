@@ -1,4 +1,5 @@
-.deck-container.deck-scale {
+.csstransforms .deck-container.deck-scale {
+  width: auto;
   -webkit-transform-origin: 50% 0;
   -moz-transform-origin: 50% 0;
   -o-transform-origin: 50% 0;
