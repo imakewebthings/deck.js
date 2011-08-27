@@ -14,6 +14,14 @@
 	transition:$prop $duration $easing $delay;
 }
 
+@mixin transform($val) {
+	-webkit-transform:$val;
+	-moz-transform:$val;
+	-ms-transform:$val;
+	-o-transform:$val;
+	transform:$val;
+}
+
 .csstransitions.csstransforms {
 	overflow-x:hidden;
 	
@@ -45,10 +53,6 @@
 				-ms-transition:-ms-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 				-o-transition:-o-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 				transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-			}
-
-			.deck-before, .deck-previous, .deck-current {
-				@include translate;
 			}
 
 			.deck-next, .deck-after {
@@ -84,7 +88,7 @@
 		}
 
 		> .deck-child-current {
-			@include translate;
+			@include transform(none);
 		}
 	}
 }

@@ -28,13 +28,6 @@
   -o-transition: -o-transform 500ms ease-in-out, opacity 500ms ease-in-out;
   transition: -webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 }
-.csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-before, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-previous, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-current {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate3d(0, 0, 0);
-}
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-next, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-after {
   visibility: visible;
   -webkit-transform: translate3d(0, 1600px, 0);
@@ -78,11 +71,11 @@
   visibility: visible;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-child-current {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate3d(0, 0, 0);
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
 }
 .csstransitions.csstransforms .deck-prev-link {
   left: auto;

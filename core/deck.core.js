@@ -204,12 +204,14 @@ that use the API provided by core.
 			Remove this if Webkit ever fixes it.
 			 */
 			$.each(slides, function(i, $el) {
-				$el.unbind('webkitTransitionEnd').bind('webkitTransitionEnd',
+				$el.unbind('webkitTransitionEnd.deck').bind('webkitTransitionEnd.deck',
 				function(event) {
-					var embeds = $(this).find('iframe').css('opacity', 0);
-					window.setTimeout(function() {
-						embeds.css('opacity', 1);
-					}, 100);
+					if ($el.hasClass($[deck]('getOptions').classes.current)) {
+						var embeds = $(this).find('iframe').css('opacity', 0);
+						window.setTimeout(function() {
+							embeds.css('opacity', 1);
+						}, 100);
+					}
 				});
 			});
 			
@@ -404,5 +406,30 @@ that use the API provided by core.
 	
 	$d.ready(function() {
 		$('html').addClass('ready');
+	});
+	
+	/*
+	FF + Transforms + Flash video don't get along...
+	Firefox will reload and start playing certain videos after a
+	transform.  Blanking the src when a previously shown slide goes out
+	of view prevents this.
+	*/
+	$d.bind('deck.change', function(e, from, to) {
+		var oldFrames = $[deck]('getSlide', from).find('iframe'),
+		newFrames = $[deck]('getSlide', to).find('iframe');
+		
+		oldFrames.each(function() {
+			var $this = $(this);
+			$this.data('deck-src', $this.attr('src')).attr('src', '');
+		});
+		
+		newFrames.each(function() {
+			var $this = $(this),
+			originalSrc = $this.data('deck-src');
+			
+			if (originalSrc) {
+				$this.attr('src', originalSrc);
+			}
+		});
 	});
 })(jQuery, 'deck', document);
