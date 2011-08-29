@@ -100,7 +100,7 @@ the hashPrefix option.
 	
 	/* Deals with internal links in modern browsers */
 	$window.bind('hashchange.deck', function(e) {
-		if (e.originalEvent.newURL) {
+		if (e.originalEvent && e.originalEvent.newURL) {
 			goByHash(e.originalEvent.newURL);
 		}
 		else {
