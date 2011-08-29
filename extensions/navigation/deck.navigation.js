@@ -40,7 +40,9 @@ This module adds clickable previous and next links to the deck.
 	});
 
 	$d.bind('deck.init', function() {
-		var opts = $[deck]('getOptions');
+		var opts = $[deck]('getOptions'),
+		nextSlide = $[deck]('getSlide', 1),
+		nextId = nextSlide ? nextSlide.attr('id') : undefined;
 		
 		// Setup prev/next link events
 		$(opts.selectors.previousLink)
@@ -57,16 +59,25 @@ This module adds clickable previous and next links to the deck.
 			e.preventDefault();
 		});
 		
-		// Start on first slide, previous link is disabled
+		// Start on first slide, previous link is disabled, set next link href
 		$(opts.selectors.previousLink).addClass(opts.classes.navDisabled);
+		$(opts.selectors.nextLink).attr('href', '#' + (nextId ? nextId : ''));
 	})
-	/* Update disabled states on deck change if last/first slide */
+	/* Updates link hrefs, and disabled states if last/first slide */
 	.bind('deck.change', function(e, from, to) {
 		var opts = $[deck]('getOptions'),
-		last = $[deck]('getSlides').length - 1;
+		last = $[deck]('getSlides').length - 1,
+		prevSlide = $[deck]('getSlide', to - 1),
+		nextSlide = $[deck]('getSlide', to + 1),
+		prevId = prevSlide ? prevSlide.attr('id') : undefined;
+		nextId = nextSlide ? nextSlide.attr('id') : undefined;
 		
-		$(opts.selectors.previousLink).toggleClass(opts.classes.navDisabled, !to);
-		$(opts.selectors.nextLink).toggleClass(opts.classes.navDisabled, to == last);
+		$(opts.selectors.previousLink)
+			.toggleClass(opts.classes.navDisabled, !to)
+			.attr('href', '#' + (prevId ? prevId : ''));
+		$(opts.selectors.nextLink)
+			.toggleClass(opts.classes.navDisabled, to == last)
+			.attr('href', '#' + (nextId ? nextId : ''));
 	});
 })(jQuery, 'deck');
 
