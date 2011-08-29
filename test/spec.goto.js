@@ -93,7 +93,7 @@ describe('Deck JS Quick Go-To', function() {
 		var e;
 
 		beforeEach(function() {
-			e = jQuery.Event('keydown.deck');
+			e = jQuery.Event('keydown.deckgoto');
 		});
 		
 		it('should toggle the go-to helper if the specified key is pressed', function() {

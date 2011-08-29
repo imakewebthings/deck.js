@@ -46,15 +46,15 @@ This module adds clickable previous and next links to the deck.
 		
 		// Setup prev/next link events
 		$(opts.selectors.previousLink)
-		.unbind('click.deck')
-		.bind('click.deck', function(e) {
+		.unbind('click.decknavigation')
+		.bind('click.decknavigation', function(e) {
 			$[deck]('prev');
 			e.preventDefault();
 		});
 		
 		$(opts.selectors.nextLink)
-		.unbind('click.deck')
-		.bind('click.deck', function(e) {
+		.unbind('click.decknavigation')
+		.bind('click.decknavigation', function(e) {
 			$[deck]('next');
 			e.preventDefault();
 		});
@@ -76,7 +76,7 @@ This module adds clickable previous and next links to the deck.
 			.toggleClass(opts.classes.navDisabled, !to)
 			.attr('href', '#' + (prevId ? prevId : ''));
 		$(opts.selectors.nextLink)
-			.toggleClass(opts.classes.navDisabled, to == last)
+			.toggleClass(opts.classes.navDisabled, to === last)
 			.attr('href', '#' + (nextId ? nextId : ''));
 	});
 })(jQuery, 'deck');

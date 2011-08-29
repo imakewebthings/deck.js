@@ -83,7 +83,7 @@ the hashPrefix option.
 		if (!Modernizr.hashchange) {
 			/* Set up internal links using click for the poor browsers
 			without a hashchange event. */
-			$internals.bind('click.deck', function(e) {
+			$internals.unbind('click.deckhash').bind('click.deckhash', function(e) {
 				goByHash($(this).attr('href'));
 			});
 		}
@@ -99,7 +99,7 @@ the hashPrefix option.
 	});
 	
 	/* Deals with internal links in modern browsers */
-	$window.bind('hashchange.deck', function(e) {
+	$window.bind('hashchange.deckhash', function(e) {
 		if (e.originalEvent && e.originalEvent.newURL) {
 			goByHash(e.originalEvent.newURL);
 		}

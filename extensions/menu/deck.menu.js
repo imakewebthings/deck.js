@@ -80,17 +80,17 @@ on the deck container.
 		currentSlide;
 		
 		// Bind key events
-		$d.bind('keydown.deck', function(e) {
-			if (e.which == opts.keys.menu) {
+		$d.unbind('keydown.deckmenu').bind('keydown.deckmenu', function(e) {
+			if (e.which === opts.keys.menu) {
 				$[deck]('toggleMenu');
 			}
 		});
 		
 		// Double tap to toggle slide menu for touch devices
-		$[deck]('getContainer').bind('touchstart.deck', function(e) {
+		$[deck]('getContainer').unbind('touchstart.deckmenu').bind('touchstart.deckmenu', function(e) {
 			currentSlide = $[deck]('getSlide');
 		})
-		.bind('touchend.deck', function(e) {
+		.unbind('touchend.deckmenu').bind('touchend.deckmenu', function(e) {
 			var now = Date.now();
 			
 			// Ignore this touch event if it caused a nav change (swipe)

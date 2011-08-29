@@ -42,7 +42,7 @@ describe('Deck JS Menu', function() {
 		var e;
 
 		beforeEach(function() {
-			e = jQuery.Event('keydown.deck');
+			e = jQuery.Event('keydown.deckmenu');
 		});
 		
 		it('should toggle the menu if the specified key is pressed', function() {

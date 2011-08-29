@@ -43,7 +43,7 @@ that use the API provided by core.
 		$.deck.defaults.keys.myExtensionKeycode = 70; // 'h'
 		$d.bind('deck.init', function() {
 		   $d.bind('keydown.deck', function(event) {
-		      if (event.which == $.deck.getOptions().keys.myExtensionKeycode) {
+		      if (event.which === $.deck.getOptions().keys.myExtensionKeycode) {
 		         // Rock out
 		      }
 		   });
