@@ -14,17 +14,17 @@ describe('Deck JS Status Indicator', function() {
 		expect($.deck('getContainer')).toHaveClass(defaults.classes.scale);
 	});
 	
-	describe('removeScale()', function() {
+	describe('disableScale()', function() {
 		it('should remove the scale class from the container', function() {
-			$.deck('removeScale');
+			$.deck('disableScale');
 			expect($.deck('getContainer')).not.toHaveClass(defaults.classes.scale);
 		});
 	});
 	
-	describe('scale()', function() {
+	describe('enableScale()', function() {
 		it('should add the scale class to the container', function() {
-			$.deck('removeScale');
-			$.deck('scale');
+			$.deck('disableScale');
+			$.deck('enableScale');
 			expect($.deck('getContainer')).toHaveClass(defaults.classes.scale);
 		});
 	});
