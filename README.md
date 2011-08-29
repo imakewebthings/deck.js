@@ -32,7 +32,3 @@ Big thanks to the folks who have contributed code to the project:
 Copyright (c) 2011 Caleb Troughton
 
 Dual licensed under the [MIT license](https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt) and [GPL license](https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt).
-
-## In the Works
-
-- Auto resizing of slides to the browser size.
