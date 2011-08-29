@@ -96,21 +96,21 @@ works fine.
 	});
 	
 	/*
-	jQuery.deck('removeScale')
+	jQuery.deck('disableScale')
 	
 	Disables scaling and removes the scale class from the deck container.
 	*/
-	$[deck]('extend', 'removeScale', function() {
+	$[deck]('extend', 'disableScale', function() {
 		$[deck]('getContainer').removeClass($[deck]('getOptions').classes.scale);
 		scaleDeck();
 	});
 	
 	/*
-	jQuery.deck('scale')
+	jQuery.deck('enableScale')
 	
 	Enables scaling and adds the scale class to the deck container.
 	*/
-	$[deck]('extend', 'scale', function() {
+	$[deck]('extend', 'enableScale', function() {
 		$[deck]('getContainer').addClass($[deck]('getOptions').classes.scale);
 		scaleDeck();
 	});
@@ -123,7 +123,7 @@ works fine.
 	$[deck]('extend', 'toggleScale', function() {
 		var $c = $[deck]('getContainer');
 		$[deck]($c.hasClass($[deck]('getOptions').classes.scale) ?
-			'removeScale' : 'scale'); 
+			'disableScale' : 'enableScale'); 
 	});
 
 	$d.bind('deck.init', function() {
