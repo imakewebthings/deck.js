@@ -107,6 +107,12 @@ the deck container.
 			
 			e.preventDefault();
 		});
+		
+		$($[deck]('getOptions').selectors.gotoInput)
+		.unbind('keydown.deckgoto')
+		.bind('keydown.deckgoto', function(e) {
+			e.stopPropagation();
+		});
 	});
 })(jQuery, 'deck');
 

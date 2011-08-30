@@ -394,8 +394,10 @@ that use the API provided by core.
 		},
 		
 		keys: {
-			next: 39, // right arrow key
-			previous: 37 // left arrow key
+			// enter, space, page down, right arrow, down arrow,
+			next: [13, 32, 34, 39, 40],
+			// backspace, page up, left arrow, up arrow
+			previous: [8, 33, 37, 38]
 		},
 		
 		touch: {
