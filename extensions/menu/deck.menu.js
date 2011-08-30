@@ -81,7 +81,7 @@ on the deck container.
 		
 		// Bind key events
 		$d.unbind('keydown.deckmenu').bind('keydown.deckmenu', function(e) {
-			if (e.which === opts.keys.menu) {
+			if (e.which === opts.keys.menu || $.inArray(e.which, opts.keys.menu) > -1) {
 				$[deck]('toggleMenu');
 			}
 		});

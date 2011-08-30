@@ -157,15 +157,13 @@ that use the API provided by core.
 			
 			/* Remove any previous bindings, and rebind key events */
 			$d.unbind('keydown.deck').bind('keydown.deck', function(e) {
-				switch (e.which) {
-					case options.keys.next:
-						methods.next();
-						e.preventDefault();
-						break;
-					case options.keys.previous:
-						methods.prev();
-						e.preventDefault();
-						break;
+				if (e.which === options.keys.next || $.inArray(e.which, options.keys.next) > -1) {
+					methods.next();
+					e.preventDefault();
+				}
+				else if (e.which === options.keys.previous || $.inArray(e.which, options.keys.previous) > -1) {
+					methods.prev();
+					e.preventDefault();
 				}
 			});
 			

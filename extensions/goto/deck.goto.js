@@ -84,7 +84,9 @@ the deck container.
 	$d.bind('deck.init', function() {
 		// Bind key events
 		$d.unbind('keydown.deckgoto').bind('keydown.deckgoto', function(e) {
-			if (e.which === $[deck]('getOptions').keys.goto) {
+			var key = $[deck]('getOptions').keys.goto;
+			
+			if (e.which === key ||$.inArray(e.which, key) > -1) {
 				e.preventDefault();
 				$[deck]('toggleGoTo');
 			}
