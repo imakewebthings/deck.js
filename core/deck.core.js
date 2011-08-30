@@ -197,7 +197,8 @@ that use the API provided by core.
 						startTouch = undefined;
 					}
 				});
-			});
+			})
+			.scrollLeft(0).scrollTop(0);
 			
 			/*
 			Kick iframe videos, which dont like to redraw w/ transforms.
