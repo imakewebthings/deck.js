@@ -17,6 +17,14 @@ Unit tests are written with [Jasmine](http://pivotal.github.com/jasmine/) and [j
 
 deck.js has been tested with jQuery 1.6+ and works in IE7+, Chrome, FF, Safari, and Opera. The more capable browsers receive greater enhancements, but a basic cutaway slideshow will work for all browsers listed above. Please don't give your presentations in IE6.
 
+## Known Bug(s)
+
+There is an issue with certain builds of Chrome that result in a solid blue background and generally broken decks.  This is a bug in Chrome ([Issue 91518](http://code.google.com/p/chromium/issues/detail?id=91518)) that stems from hardware acceleration of 3d transforms.  Current workarounds:
+
+- Use a different browser. This problem doesn't exist in Safari, FF, Opera.
+- Disable hardware compositing by setting `--disable-accelerated-compositing` in the Chrome loading options
+- Replace instances of `translate3d` with `translate` in the CSS of your decks (though this will slow down performance on iOS devices and Safari.)
+
 ## Printing
 
 Core includes stripped down black and white print styles for the standard slide template that is suitable for handouts.
