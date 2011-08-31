@@ -170,7 +170,7 @@
 .rgba .deck-container.deck-menu .slide {
   background: rgba(0, 0, 0, 0.1);
 }
-.deck-container.deck-menu .slide.deck-current, .rgba .deck-container.deck-menu .slide.deck-current {
+.deck-container.deck-menu .slide.deck-current, .rgba .deck-container.deck-menu .slide.deck-current, .no-touch .deck-container.deck-menu .slide:hover {
   background: #fff;
 }
 .deck-container .goto-form {

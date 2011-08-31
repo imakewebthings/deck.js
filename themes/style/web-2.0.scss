@@ -192,7 +192,7 @@
 				background:rgba(0,0,0,.1);
 			}
 			
-			&.deck-current, .rgba &.deck-current {
+			&.deck-current, .rgba &.deck-current, .no-touch &:hover {
 				background:#fff;
 			}
 		}

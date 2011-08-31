@@ -103,3 +103,12 @@
   -moz-box-shadow: 0 0 20px #f0a, 0 0 5px #fff;
   box-shadow: 0 0 20px #f0a, 0 0 5px #fff;
 }
+.no-touch .deck-container.deck-menu .slide:hover {
+  background: #444;
+}
+.no-touch.boxshadow .deck-container.deck-menu .slide:hover {
+  background: #000;
+  -webkit-box-shadow: 0 0 20px #f0a, 0 0 5px #fff;
+  -moz-box-shadow: 0 0 20px #f0a, 0 0 5px #fff;
+  box-shadow: 0 0 20px #f0a, 0 0 5px #fff;
+}

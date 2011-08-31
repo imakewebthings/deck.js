@@ -70,6 +70,6 @@
 .deck-container.deck-menu .slide {
   background: #eee;
 }
-.deck-container.deck-menu .deck-current {
+.deck-container.deck-menu .deck-current, .no-touch .deck-container.deck-menu .slide:hover {
   background: #ddf;
 }

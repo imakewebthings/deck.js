@@ -16,13 +16,14 @@
 		left:0;
 		top:0;
 		visibility:visible;
+		cursor:pointer;
 	}
 	
 	iframe, img, video {
 		max-width:100%;
 	}
 	
-	.deck-current {
+	.deck-current, .no-touch & .slide:hover {
 		background:#ddf;
 	}
 }
