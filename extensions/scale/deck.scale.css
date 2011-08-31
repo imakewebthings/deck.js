@@ -6,3 +6,11 @@
   -ms-transform-origin: 50% 0;
   transform-origin: 50% 0;
 }
+.csstransforms .deck-container.deck-scale.deck-menu {
+  width: 70%;
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  -o-transform: none !important;
+  -ms-transform: none !important;
+  transform: none !important;
+}
