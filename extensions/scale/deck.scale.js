@@ -144,6 +144,7 @@ works fine.
 		$d.unbind('keydown.deckscale').bind('keydown.deckscale', function(e) {
 			if (e.which === opts.keys.scale || $.inArray(e.which, opts.keys.scale) > -1) {
 				$[deck]('toggleScale');
+				e.preventDefault();
 			}
 		});
 		
