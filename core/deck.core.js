@@ -143,6 +143,9 @@ that use the API provided by core.
 			$c = $[deck]('getContainer');
 			tolerance = options.touch.swipeTolerance;
 			
+			// Hide the deck while states are being applied to kill transitions
+			$c.addClass(options.classes.loading);
+			
 			// Fill slides array depending on parameter type
 			if ($.isArray(elements)) {
 				$.each(elements, function(i, e) {
@@ -215,6 +218,9 @@ that use the API provided by core.
 			});
 			
 			updateStates();
+			
+			// Show deck again now that slides are in place
+			$c.removeClass(options.classes.loading);
 			$d.trigger(events.initialize);
 		},
 		
@@ -350,6 +356,14 @@ that use the API provided by core.
 	options.classes.current
 		This class is added to the current slide.
 		
+	options.classes.loading
+		This class is applied to the deck container during loading phases and is
+		primarily used as a way to short circuit transitions between states
+		where such transitions are distracting or unwanted.  For example, this
+		class is applied during deck initialization and then removed to prevent
+		all the slides from appearing stacked and transitioning into place
+		on load.
+		
 	options.classes.next
 		This class is added to the slide immediately following the 'current'
 		slide.
@@ -384,6 +398,7 @@ that use the API provided by core.
 			before: 'deck-before',
 			childCurrent: 'deck-child-current',
 			current: 'deck-current',
+			loading: 'deck-loading',
 			next: 'deck-next',
 			onPrefix: 'on-slide-',
 			previous: 'deck-previous'
