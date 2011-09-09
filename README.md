@@ -11,6 +11,13 @@ A JavaScript library for building modern HTML presentations. deck.js is flexible
 
 Check out the [documentation page](http://imakewebthings.github.com/deck.js/docs) for more information on the methods, events, and options available in core and all the included extensions.  A sample standard slide deck is included in the package under the `introduction` folder.  You can also [view that sample deck](http://imakewebthings.github.com/deck.js/introduction) online to play with the available style and transition themes.
 
+## More Extensions
+
+Here are some useful extensions others have written for deck.js.  If you have an extension, please send me a link and I'll add it to this list.
+
+- [deck.js-codemirror](https://github.com/iros/deck.js-codemirror) by [iros](https://github.com/iros): Integrates [codemirror](http://codemirror.net/) into deck.js, giving you editable, executable, syntax highlighted code snippets right inside your slides.
+- [deck.remote.js](https://github.com/seppo0010/deck.remote.js) by [seppo0010](https://github.com/seppo0010): Uses node.js to give speakers a remote view to control slides, keep notes, and preview previous+next slides.
+
 ## Tests & Support
 
 Unit tests are written with [Jasmine](http://pivotal.github.com/jasmine/) and [jasmine-jquery](https://github.com/velesin/jasmine-jquery). You can [run them here](http://imakewebthings.github.com/deck.js/test).
