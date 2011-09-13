@@ -60,6 +60,7 @@
 		> .deck-child-current {
 			opacity:1;
 			visibility:visible;
+			pointer-events:auto;
 			
 			.deck-next, .deck-after {
 				visibility:hidden;

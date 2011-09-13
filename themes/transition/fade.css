@@ -37,6 +37,7 @@
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-child-current {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-child-current .deck-next, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-child-current .deck-after {
   visibility: hidden;
