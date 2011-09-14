@@ -224,6 +224,13 @@ describe('Deck JS', function() {
 					$d.trigger(e);
 					expect($.deck('getSlide')).toHaveClass('alt-slide1');
 				});
+				
+				it('should not trigger events that originate within editable elements', function() {
+					e = jQuery.Event('keydown');
+					e.which = 87;
+					$('.alt-slide1 input').trigger(e);
+					expect($.deck('getSlide')).toHaveClass('alt-slide1');
+				});
 			});
 		});
 

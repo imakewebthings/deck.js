@@ -135,7 +135,10 @@ that use the API provided by core.
 		init: function(elements, opts) {
 			var startTouch,
 			$c,
-			tolerance;
+			tolerance,
+			esp = function(e) {
+				e.stopPropagation();
+			};
 			
 			options = $.extend(true, {}, $[deck].defaults, opts);
 			slides = [];
@@ -199,7 +202,10 @@ that use the API provided by core.
 					}
 				});
 			})
-			.scrollLeft(0).scrollTop(0);
+			.scrollLeft(0).scrollTop(0)
+			/* Stop propagation of key events within editable elements of slides */
+			.undelegate('input, textarea, select, button, meter, progress, [contentEditable]', 'keydown', esp)
+			.delegate('input, textarea, select, button, meter, progress, [contentEditable]', 'keydown', esp);
 			
 			/*
 			Kick iframe videos, which dont like to redraw w/ transforms.
