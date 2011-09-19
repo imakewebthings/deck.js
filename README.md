@@ -17,7 +17,7 @@ If you have an extension, theme, or project related to or using deck.js, please 
 
 - [deck.js-codemirror](https://github.com/iros/deck.js-codemirror) by [iros](https://github.com/iros): Integrates [codemirror](http://codemirror.net/) into deck.js, giving you editable, executable, syntax highlighted code snippets right inside your slides.
 - [deck.remote.js](https://github.com/seppo0010/deck.remote.js) by [seppo0010](https://github.com/seppo0010): Uses node.js to give speakers a remote view to control slides, keep notes, and preview previous+next slides.
-- [deckjs-remote](https://github.com/chrisjaure/deckjs-remote) by [chrisjaure](https://github.com/chrisjaure): Control your deck remotely through a node.js service. Presenters can use the service publicly available at http://deckjs-remote.no.de or host it themselves.
+- [deckjs-remote](https://github.com/chrisjaure/deckjs-remote) by [chrisjaure](https://github.com/chrisjaure): Control your deck remotely through a node.js service. Presenters can use the [publicly available service](http://deckjs-remote.no.de) or host it themselves.
 - [deckem](https://github.com/DamonOehlman/deckem) by [DamonOehlman](https://github.com/DamonOehlman): [Jade](http://jade-lang.com/) templating for deck.js.
 
 ## Tests & Support
