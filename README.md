@@ -19,6 +19,8 @@ If you have an extension, theme, or project related to or using deck.js, please 
 - [deck.remote.js](https://github.com/seppo0010/deck.remote.js) by [seppo0010](https://github.com/seppo0010): Uses node.js to give speakers a remote view to control slides, keep notes, and preview previous+next slides.
 - [deckjs-remote](https://github.com/chrisjaure/deckjs-remote) by [chrisjaure](https://github.com/chrisjaure): Control your deck remotely through a node.js service. Presenters can use the [publicly available service](http://deckjs-remote.no.de) or host it themselves.
 - [deckem](https://github.com/DamonOehlman/deckem) by [DamonOehlman](https://github.com/DamonOehlman): [Jade](http://jade-lang.com/) templating for deck.js.
+- [markdown2deckjs](https://github.com/ulf/markdown2deckjs) by [ulf](https://github.com/ulf): Write your slides in Markdown and convert them into a full working deck.
+- [deck.gotonumkey.js](https://github.com/KingHenne/deck.gotonumkey.js) by [KingHenne](https://github.com/KingHenne): A small extension that lets you jump to any slide by pressing the corresponding number key(s). 
 
 ## Tests & Support
 
