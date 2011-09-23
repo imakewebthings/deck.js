@@ -35,6 +35,9 @@ the hashPrefix option.
 				return false;
 			}
 		});
+		
+		// If we don't set these to 0 the container scrolls due to hashchange
+		$[deck]('getContainer').scrollLeft(0).scrollTop(0);
 	};
 	
 	/*
