@@ -359,29 +359,19 @@ describe('Deck JS', function() {
 
 		});
 
-                it('should support remove and return iframe srcs', function() {
-                  $.deck('go', 4);
-                  expect($.deck('getSlide').find('iframe').attr('src')).toEqual('iframe_simple.html');
-                  $.deck('next');
-                  expect($('.slide5').find('iframe').attr('src')).toEqual('');
+		it('should remove/restore iframe sources when leaving/entering a slide', function() {
+			$.deck('go', 4);
+        	expect($.deck('getSlide').find('iframe').attr('src')).toEqual('iframe_simple.html');
+        	$.deck('next');
+        	expect($('.slide5').find('iframe').attr('src')).toEqual('');
+            $.deck('prev');
+            expect($('.slide5').find('iframe').attr('src')).toEqual('iframe_simple.html');
+        });
 
-                  $.deck('prev');
-                  expect($('.slide5').find('iframe').attr('src')).toEqual('iframe_simple.html');
-
-                });
-
-
-                it('should support iframes without sources', function() {
-                  $.deck('go', 5);
-                  expect($.deck('getSlide')).toHaveClass('slide6');
-                  expect($.deck('getSlide').find('iframe').attr('src')).toBeUndefined();
-                  $.deck('next');
-                  expect($.deck('getSlide')).toHaveClass('slide7');
-                });
-
-
-      });
-
-		
-
+		it('should not store blank iframe sources', function() {
+		  $.deck('go', 6);
+		  $.deck('next');
+		  expect($.deck('getSlide').find('iframe').data('src')).toBeUndefined();
+		});
+	});
 });

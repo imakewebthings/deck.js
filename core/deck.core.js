@@ -441,11 +441,12 @@ that use the API provided by core.
 		newFrames = $[deck]('getSlide', to).find('iframe');
 		
 		oldFrames.each(function() {
-	                var $this = $(this);
-                        var curSrc = $this.attr('src');
-                        if(curSrc) {
-                          $this.data('deck-src', curSrc).attr('src', '');
-                        }
+	    	var $this = $(this),
+	    	curSrc = $this.attr('src');
+            
+            if(curSrc) {
+            	$this.data('deck-src', curSrc).attr('src', '');
+            }
 		});
 		
 		newFrames.each(function() {
