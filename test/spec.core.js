@@ -337,4 +337,51 @@ describe('Deck JS', function() {
 			expect($('.slide4').not('.slide6')).not.toHaveClass(defaults.classes.next);
 		});
 	});
+
+	describe('iframes', function() {
+		beforeEach(function() {
+			loadFixtures('iframes.html');
+			if (Modernizr.history) {
+				history.replaceState({}, "", "#")
+			}
+			$.deck([
+				'.slide1',
+				'.slide2',
+				'.slide3',
+				'.slide4',
+				'.slide5',
+				'.slide6',
+				'.slide7',
+				'.slide8',
+				'.slide9',
+				'.slide10',
+			]);
+
+		});
+
+                it('should support remove and return iframe srcs', function() {
+                  $.deck('go', 4);
+                  expect($.deck('getSlide').find('iframe').attr('src')).toEqual('iframe_simple.html');
+                  $.deck('next');
+                  expect($('.slide5').find('iframe').attr('src')).toEqual('');
+
+                  $.deck('prev');
+                  expect($('.slide5').find('iframe').attr('src')).toEqual('iframe_simple.html');
+
+                });
+
+
+                it('should support iframes without sources', function() {
+                  $.deck('go', 5);
+                  expect($.deck('getSlide')).toHaveClass('slide6');
+                  expect($.deck('getSlide').find('iframe').attr('src')).toBeUndefined();
+                  $.deck('next');
+                  expect($.deck('getSlide')).toHaveClass('slide7');
+                });
+
+
+      });
+
+		
+
 });
