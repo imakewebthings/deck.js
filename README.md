@@ -11,16 +11,9 @@ A JavaScript library for building modern HTML presentations. deck.js is flexible
 
 Check out the [documentation page](http://imakewebthings.github.com/deck.js/docs) for more information on the methods, events, and options available in core and all the included extensions.  A sample standard slide deck is included in the package under the `introduction` folder.  You can also [view that sample deck](http://imakewebthings.github.com/deck.js/introduction) online to play with the available style and transition themes.
 
-## More Extensions and Related Projects
+## Extensions, Themes, and Related Projects
 
-If you have an extension, theme, or project related to or using deck.js, please send me a link and I'll add it to this list.
-
-- [deck.js-codemirror](https://github.com/iros/deck.js-codemirror) by [iros](https://github.com/iros): Integrates [codemirror](http://codemirror.net/) into deck.js, giving you editable, executable, syntax highlighted code snippets right inside your slides.
-- [deck.remote.js](https://github.com/seppo0010/deck.remote.js) by [seppo0010](https://github.com/seppo0010): Uses node.js to give speakers a remote view to control slides, keep notes, and preview previous+next slides.
-- [deckjs-remote](https://github.com/chrisjaure/deckjs-remote) by [chrisjaure](https://github.com/chrisjaure): Control your deck remotely through a node.js service. Presenters can use the [publicly available service](http://deckjs-remote.no.de) or host it themselves.
-- [deckem](https://github.com/DamonOehlman/deckem) by [DamonOehlman](https://github.com/DamonOehlman): [Jade](http://jade-lang.com/) templating for deck.js.
-- [markdown2deckjs](https://github.com/ulf/markdown2deckjs) by [ulf](https://github.com/ulf): Write your slides in Markdown and convert them into a full working deck.
-- [deck.gotonumkey.js](https://github.com/KingHenne/deck.gotonumkey.js) by [KingHenne](https://github.com/KingHenne): A small extension that lets you jump to any slide by pressing the corresponding number key(s). 
+Take a look at [the wiki](https://github.com/imakewebthings/deck.js/wiki) for lists of extensions, themes, and other related goodies.  If you have a publicly available project of your own, feel free to add to the list.
 
 ## Tests & Support
 
