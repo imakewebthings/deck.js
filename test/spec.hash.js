@@ -17,6 +17,18 @@ describe('Deck JS Hash Extension', function() {
 		});
 	});
 	
+   it('should update container with a state class including the slide id', function() {
+      var $c = $.deck('getContainer'),
+      osp = defaults.classes.onPrefix;
+      
+      expect($c).toHaveClass(osp + $.deck('getSlide', 0).attr('id'));
+      $.deck('next');
+      expect($c).toHaveClass(osp + $.deck('getSlide', 1).attr('id'));
+      $.deck('next');
+      expect($c).not.toHaveClass(osp + $.deck('getSlide', 1).attr('id'));
+      expect($c).toHaveClass(osp + $.deck('getSlide', 2).attr('id'));
+   });
+	
 	it('should update the href on slide change', function() {
 		var $hashLink = $(defaults.selectors.hashLink);
 		$.deck('go', 3);

@@ -12,7 +12,9 @@ to slides within decks, and updates the address bar with the hash as the user
 moves through the deck. A permalink anchor is also updated. Standard themes
 hide this link in browsers that support the History API, and show it for
 those that do not. Slides that do not have an id are assigned one according to
-the hashPrefix option.
+the hashPrefix option. In addition to the on-slide container state class
+kept by core, this module adds an on-slide state class that uses the id of each
+slide.
 */
 (function ($, deck, window, undefined) {
 	var $d = $(document),
@@ -62,6 +64,7 @@ the hashPrefix option.
 	
 	
 	$d.bind('deck.init', function() {
+	   var opts = $[deck]('getOptions');
 		$internals = $();
 		
 		$.each($[deck]('getSlides'), function(i, $el) {
@@ -69,7 +72,7 @@ the hashPrefix option.
 			
 			/* Hand out ids to the unfortunate slides born without them */
 			if (!$el.attr('id')) {
-				$el.attr('id', $[deck]('getOptions').hashPrefix + i);
+				$el.attr('id', opts.hashPrefix + i);
 			}
 			
 			hash ='#' + $el.attr('id');
@@ -90,12 +93,21 @@ the hashPrefix option.
 				goByHash($(this).attr('href'));
 			});
 		}
-	})
-	/* Update permalink and address bar on a slide change */
-	.bind('deck.change', function(e, from, to) {
-		var hash = '#' + $[deck]('getSlide', to).attr('id');
 		
-		$($[deck]('getOptions').selectors.hashLink).attr('href', hash);
+		/* Set up first id container state class */
+		$[deck]('getContainer').addClass(opts.classes.onPrefix + $[deck]('getSlide').attr('id'));
+	})
+	/* Update permalink, address bar, and state class on a slide change */
+	.bind('deck.change', function(e, from, to) {
+		var hash = '#' + $[deck]('getSlide', to).attr('id'),
+		opts = $[deck]('getOptions'),
+		osp = opts.classes.onPrefix,
+		$c = $[deck]('getContainer');
+		
+		$c.removeClass(osp + $[deck]('getSlide', from).attr('id'));
+		$c.addClass(osp + $[deck]('getSlide', to).attr('id'));
+		
+		$(opts.selectors.hashLink).attr('href', hash);
 		if (Modernizr.history) {
 			window.history.replaceState({}, "", hash);
 		}
