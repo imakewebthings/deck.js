@@ -20,23 +20,64 @@ This module adds a (current)/(total) style status indicator to the deck.
 		
 	options.selectors.statusTotal
 		The element matching this selector displays the total number of slides.
+		
+	options.countNested
+		If false, only top level slides will be counted in the current and
+		total numbers.
 	*/
 	$.extend(true, $[deck].defaults, {
 		selectors: {
 			statusCurrent: '.deck-status-current',
 			statusTotal: '.deck-status-total'
-		}
+		},
+		
+		countNested: true
 	});
 	
 	$d.bind('deck.init', function() {
+		var opts = $[deck]('getOptions');
+		
 		// Start on first slide
-		$($[deck]('getOptions').selectors.statusCurrent).text(1);
+		$(opts.selectors.statusCurrent).text(1);
 		// Set total slides once
-		$($[deck]('getOptions').selectors.statusTotal).text($[deck]('getSlides').length);
+		if (opts.countNested) {
+			$(opts.selectors.statusTotal).text($[deck]('getSlides').length);
+		}
+		else {
+			/* Determine root slides by checking each slide's ancestor tree for
+			any of the slide classes. */
+			var rootIndex = 1,
+			slideTest = $.map([
+				opts.classes.before,
+				opts.classes.previous,
+				opts.classes.current,
+				opts.classes.next,
+				opts.classes.after
+			], function(el, i) {
+				return '.' + el;
+			}).join(', ');
+			
+			/* Store the 'real' root slide number for use during slide changes. */
+			$.each($[deck]('getSlides'), function(i, $el) {
+				var $parentSlides = $el.parentsUntil(opts.selectors.container, slideTest);
+
+				$el.data('rootSlide', $parentSlides.length ?
+					$parentSlides.last().data('rootSlide') :
+					rootIndex++
+				);
+			});
+			
+			$(opts.selectors.statusTotal).text(rootIndex - 1);
+		}
 	})
 	/* Update current slide number with each change event */
 	.bind('deck.change', function(e, from, to) {
-		$($[deck]('getOptions').selectors.statusCurrent).text(to + 1);
+		var opts = $[deck]('getOptions');
+		
+		$(opts.selectors.statusCurrent).text(opts.countNested ?
+			to + 1 :
+			$[deck]('getSlide', to).data('rootSlide')
+		);
 	});
 })(jQuery, 'deck');
 
