@@ -42,6 +42,7 @@
   border-color: #cde;
   background: #fff;
   position: relative;
+  z-index: auto;
   /* http://nicolasgallagher.com/css-drop-shadows-without-images/ */
 }
 .borderradius .deck-container pre {
@@ -88,6 +89,7 @@
   background: #fff;
   position: relative;
   border: 1px solid #cde;
+  z-index: auto;
 }
 .borderradius .deck-container blockquote {
   -webkit-border-radius: 5px;

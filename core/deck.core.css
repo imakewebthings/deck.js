@@ -364,7 +364,7 @@ body.deck-container {
     -o-transform: none !important;
     -ms-transform: none !important;
     transform: none !important;
-    opacity:1 !important;
+    opacity: 1 !important;
   }
 
   h1 {

@@ -62,6 +62,7 @@
 		border-color:#cde;
 		background:#fff;
 		position:relative;
+		z-index:auto;
 		
 		.borderradius & {
 			@include border-radius(5px);
@@ -104,6 +105,7 @@
 		background:#fff;
 		position:relative;
 		border:1px solid #cde;
+		z-index:auto;
 		
 		.borderradius & {
 			@include border-radius(5px);
