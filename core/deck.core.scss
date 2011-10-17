@@ -237,6 +237,9 @@ html {
 	
 	h1 {
 		font-size:4.5em;
+	}
+
+	hgroup, h1 {
 		font-weight:bold;
 		text-align:center;
 		padding-top:1em;
@@ -253,6 +256,16 @@ html {
 			-o-transform:translate(0, -50%);
 			transform:translate(0, -50%);
 		}
+	}
+
+	hgroup h1 {
+		position:relative;
+		top:auto;
+		-webkit-transform: none;
+		-moz-transform: none;
+		-ms-transform: none;
+		-o-transform: none;
+		transform: none;
 	}
 
 	h2 {
