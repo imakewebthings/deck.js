@@ -361,11 +361,11 @@ describe('Deck JS', function() {
 
 		it('should remove/restore iframe sources when leaving/entering a slide', function() {
 			$.deck('go', 4);
-        	expect($.deck('getSlide').find('iframe').attr('src')).toEqual('iframe_simple.html');
+        	expect($.deck('getSlide').find('iframe').attr('src')).toEqual('fixtures/iframe_simple.html');
         	$.deck('next');
         	expect($('.slide5').find('iframe').attr('src')).toEqual('');
             $.deck('prev');
-            expect($('.slide5').find('iframe').attr('src')).toEqual('iframe_simple.html');
+            expect($('.slide5').find('iframe').attr('src')).toEqual('fixtures/iframe_simple.html');
         });
 
 		it('should not store blank iframe sources', function() {
