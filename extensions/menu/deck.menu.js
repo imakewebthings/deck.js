@@ -49,8 +49,13 @@ on the deck container.
 	to the deck container.
 	*/
 	$[deck]('extend', 'showMenu', function() {
-		$[deck]('getContainer').addClass($[deck]('getOptions').classes.menu);
-		$[deck]('getContainer').scrollTop($[deck]('getSlide').offset().top);
+		var $c = $[deck]('getContainer'),
+		$placeholder = $('<' + $c.get(0).tagName + '>');
+		
+		$c.replaceWith($placeholder);
+		$c.addClass($[deck]('getOptions').classes.menu);
+		$placeholder.replaceWith($c);
+		$c.scrollTop($[deck]('getSlide').offset().top);
 	});
 
 	/*
@@ -60,8 +65,13 @@ on the deck container.
 	option from the deck container.
 	*/
 	$[deck]('extend', 'hideMenu', function() {
-		$[deck]('getContainer').removeClass($[deck]('getOptions').classes.menu);
-		$[deck]('getContainer').scrollTop(0);
+		var $c = $[deck]('getContainer'),
+		$placeholder = $('<' + $c.get(0).tagName + '>');
+		
+		$c.replaceWith($placeholder);
+		$c.removeClass($[deck]('getOptions').classes.menu);
+		$placeholder.replaceWith($c);
+		$c.scrollTop(0);
 	});
 
 	/*
