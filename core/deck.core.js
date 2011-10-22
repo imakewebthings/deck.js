@@ -18,6 +18,7 @@ that use the API provided by core.
 (function($, deck, document, undefined) {
 	var slides, // Array of all the uh, slides...
 	current, // Array index of the current slide
+	$container, // Keeping this cached
 	
 	events = {
 		/*
@@ -62,7 +63,6 @@ that use the API provided by core.
 	updateStates = function() {
 		var oc = options.classes,
 		osc = options.selectors.container,
-		$container = $(osc),
 		old = $container.data('onSlide'),
 		$all = $();
 		
@@ -134,7 +134,6 @@ that use the API provided by core.
 		*/	
 		init: function(elements, opts) {
 			var startTouch,
-			$c,
 			tolerance,
 			esp = function(e) {
 				e.stopPropagation();
@@ -143,11 +142,11 @@ that use the API provided by core.
 			options = $.extend(true, {}, $[deck].defaults, opts);
 			slides = [];
 			current = 0;
-			$c = $[deck]('getContainer');
+			$container = $(options.selectors.container);
 			tolerance = options.touch.swipeTolerance;
 			
 			// Hide the deck while states are being applied to kill transitions
-			$c.addClass(options.classes.loading);
+			$container.addClass(options.classes.loading);
 			
 			// Fill slides array depending on parameter type
 			if ($.isArray(elements)) {
@@ -174,7 +173,7 @@ that use the API provided by core.
 			});
 			
 			/* Bind touch events for swiping between slides on touch devices */
-			$c.unbind('touchstart.deck').bind('touchstart.deck', function(e) {
+			$container.unbind('touchstart.deck').bind('touchstart.deck', function(e) {
 				if (!startTouch) {
 					startTouch = $.extend({}, e.originalEvent.targetTouches[0]);
 				}
@@ -226,7 +225,7 @@ that use the API provided by core.
 			updateStates();
 			
 			// Show deck again now that slides are in place
-			$c.removeClass(options.classes.loading);
+			$container.removeClass(options.classes.loading);
 			$d.trigger(events.initialize);
 		},
 		
@@ -297,7 +296,7 @@ that use the API provided by core.
 		container option.
 		*/
 		getContainer: function() {
-			return $(options.selectors.container);
+			return $container;
 		},
 		
 		/*
