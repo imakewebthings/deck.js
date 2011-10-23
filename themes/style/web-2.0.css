@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .deck-container {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-size: 1.25em;
@@ -50,10 +51,20 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.csstransforms.boxshadow .deck-container pre:before, .csstransforms.boxshadow .deck-container pre:after {
+.csstransforms.boxshadow .deck-container pre > :first-child:before {
   content: "";
   position: absolute;
   z-index: -1;
+  background: #fff;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.csstransforms.boxshadow .deck-container pre:before, .csstransforms.boxshadow .deck-container pre:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
   bottom: 15px;
   width: 50%;
   height: 20%;
@@ -96,10 +107,20 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.boxshadow .deck-container blockquote:after {
+.boxshadow .deck-container blockquote > :first-child:before {
   content: "";
   position: absolute;
   z-index: -1;
+  background: #fff;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.boxshadow .deck-container blockquote:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
   top: 10px;
   bottom: 10px;
   left: 0;

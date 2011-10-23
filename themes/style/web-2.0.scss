@@ -70,10 +70,21 @@
 		
 		/* http://nicolasgallagher.com/css-drop-shadows-without-images/ */
 		.csstransforms.boxshadow & {
-			&:before, &:after {
+			> :first-child:before {
 				content:"";
 				position:absolute;
 				z-index:-1;
+				background:#fff;
+				top:0;
+				bottom:0;
+				left:0;
+				right:0;
+			}
+			
+			&:before, &:after {
+				content:"";
+				position:absolute;
+				z-index:-2;
 				bottom:15px;
 				width:50%;
 				height:20%;
@@ -112,10 +123,21 @@
 		}
 		
 		.boxshadow & {
-			&:after {
+			> :first-child:before {
 				content:"";
 				position:absolute;
 				z-index:-1;
+				background:#fff;
+				top:0;
+				bottom:0;
+				left:0;
+				right:0;
+			}
+			
+			&:after {
+				content:"";
+				position:absolute;
+				z-index:-2;
 				top: 10px;
 				bottom: 10px;
 				left: 0;
