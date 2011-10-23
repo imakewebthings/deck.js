@@ -12,7 +12,8 @@ slides in the deck. The deck menu state is indicated by the presence of a class
 on the deck container.
 */
 (function($, deck, undefined) {
-	var $d = $(document);
+	var $d = $(document),
+	rootSlides;
 	
 	/*
 	Extends defaults/options.
@@ -53,7 +54,19 @@ on the deck container.
 		$placeholder = $('<' + $c.get(0).tagName + '>');
 		
 		$c.replaceWith($placeholder);
+		
 		$c.addClass($[deck]('getOptions').classes.menu);
+		if (Modernizr.csstransforms) {
+			$.each(rootSlides, function(i, $slide) {
+				$slide.data('oldStyle', $slide.attr('style'));
+				$slide.css({
+					'position': 'absolute',
+					'left': ((i % 4) * 25) + '%',
+					'top': (Math.floor(i / 4) * 25) + '%'
+				});
+			});
+		}
+		
 		$placeholder.replaceWith($c);
 		$c.scrollTop($[deck]('getSlide').offset().top);
 	});
@@ -69,7 +82,16 @@ on the deck container.
 		$placeholder = $('<' + $c.get(0).tagName + '>');
 		
 		$c.replaceWith($placeholder);
+		
 		$c.removeClass($[deck]('getOptions').classes.menu);
+		if (Modernizr.csstransforms) {
+			$.each(rootSlides, function(i, $slide) {
+				var oldStyle = $slide.data('oldStyle');
+
+				$slide.attr('style', oldStyle ? oldStyle : '');
+			});
+		}
+		
 		$placeholder.replaceWith($c);
 		$c.scrollTop(0);
 	});
@@ -87,7 +109,23 @@ on the deck container.
 	$d.bind('deck.init', function() {
 		var opts = $[deck]('getOptions'),
 		touchEndTime = 0,
-		currentSlide;
+		currentSlide,
+		slideTest = $.map([
+			opts.classes.before,
+			opts.classes.previous,
+			opts.classes.current,
+			opts.classes.next,
+			opts.classes.after
+		], function(el, i) {
+			return '.' + el;
+		}).join(', ');
+		
+		rootSlides = [];
+		$.each($[deck]('getSlides'), function(i, $el) {
+			if (!$el.parentsUntil(opts.selectors.container, slideTest).length) {
+				rootSlides.push($el);
+			}
+		});
 		
 		// Bind key events
 		$d.unbind('keydown.deckmenu').bind('keydown.deckmenu', function(e) {
