@@ -71,8 +71,9 @@ slide.
 			var hash;
 			
 			/* Hand out ids to the unfortunate slides born without them */
-			if (!$el.attr('id')) {
+			if (!$el.attr('id') || $el.data('deckAssignedId') === $el.attr('id')) {
 				$el.attr('id', opts.hashPrefix + i);
+				$el.data('deckAssignedId', opts.hashPrefix + i);
 			}
 			
 			hash ='#' + $el.attr('id');

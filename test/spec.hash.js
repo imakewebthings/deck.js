@@ -17,6 +17,15 @@ describe('Deck JS Hash Extension', function() {
 		});
 	});
 	
+	it('should reassign ids on reinitialization', function() {
+		var $firstSlide = $.deck('getSlide', 0),
+		firstID = $firstSlide.attr('id');
+		
+		$firstSlide.before('<div class="slide"></div>');
+		$.deck('.slide');
+		expect($firstSlide).not.toHaveId(firstID);
+	});
+	
    it('should update container with a state class including the slide id', function() {
       var $c = $.deck('getContainer'),
       osp = defaults.classes.onPrefix;
