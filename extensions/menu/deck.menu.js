@@ -13,7 +13,8 @@ on the deck container.
 */
 (function($, deck, undefined) {
 	var $d = $(document),
-	rootSlides;
+	rootSlides, // Array of top level slides
+	$placeholder; // Holds the place of the deck container during detachment
 	
 	/*
 	Extends defaults/options.
@@ -50,12 +51,14 @@ on the deck container.
 	to the deck container.
 	*/
 	$[deck]('extend', 'showMenu', function() {
-		var $c = $[deck]('getContainer'),
-		$placeholder = $('<' + $c.get(0).tagName + '>');
+		var $c = $[deck]('getContainer');
 		
+		// Detaching for this big style change for performance (no transitions!)
 		$c.replaceWith($placeholder);
-		
 		$c.addClass($[deck]('getOptions').classes.menu);
+		
+		/* Forced to do this in JS until CSS learns second-grade math. Save old
+		style value for restoration when menu is hidden. */
 		if (Modernizr.csstransforms) {
 			$.each(rootSlides, function(i, $slide) {
 				$slide.data('oldStyle', $slide.attr('style'));
@@ -78,12 +81,12 @@ on the deck container.
 	option from the deck container.
 	*/
 	$[deck]('extend', 'hideMenu', function() {
-		var $c = $[deck]('getContainer'),
-		$placeholder = $('<' + $c.get(0).tagName + '>');
+		var $c = $[deck]('getContainer');
 		
 		$c.replaceWith($placeholder);
-		
 		$c.removeClass($[deck]('getOptions').classes.menu);
+		
+		/* Restore old style value */
 		if (Modernizr.csstransforms) {
 			$.each(rootSlides, function(i, $slide) {
 				var oldStyle = $slide.data('oldStyle');
@@ -120,6 +123,10 @@ on the deck container.
 			return '.' + el;
 		}).join(', ');
 		
+		// Create placeholder element
+		$placeholder = $('<' + $[deck]('getContainer').get(0).tagName + '>');
+		
+		// Build top level slides array
 		rootSlides = [];
 		$.each($[deck]('getSlides'), function(i, $el) {
 			if (!$el.parentsUntil(opts.selectors.container, slideTest).length) {
