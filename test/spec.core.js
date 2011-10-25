@@ -271,6 +271,13 @@ describe('Deck JS', function() {
 					$.deck('go', 3);
 					$d.unbind('deck.change', f);
 				});
+				
+				it('should not change slides if default prevented', function() {
+					$d.bind('deck.change', false);
+					$.deck('go', 3);
+					expect($.deck('getSlide')).toEqual($.deck('getSlide', 1));
+					$d.unbind('deck.change', false);
+				});
 			});
 			
 			describe('deck.init', function() {
