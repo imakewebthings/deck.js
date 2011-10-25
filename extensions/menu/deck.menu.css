@@ -34,6 +34,7 @@
   height: 100%;
   overflow: hidden;
   padding: 0 48px;
+  margin: 12px;
 }
 .deck-menu iframe, .deck-menu img, .deck-menu video {
   max-width: 100%;
