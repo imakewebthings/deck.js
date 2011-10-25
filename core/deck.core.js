@@ -34,6 +34,13 @@ that use the API provided by core.
 		change: 'deck.change',
 		
 		/*
+		This event fires at the beginning of deck initialization, after the options
+		are set but before the slides array is created.  This event makes a good hook
+		for preprocessing extensions looking to modify the deck.
+		*/
+		beforeInitialize: 'deck.beforeInit',
+		
+		/*
 		This event fires at the end of deck initialization. Extensions should
 		implement any code that relies on user extensible options (key bindings,
 		element selectors, classes) within a handler for this event. Native
@@ -144,6 +151,9 @@ that use the API provided by core.
 			current = 0;
 			$container = $(options.selectors.container);
 			tolerance = options.touch.swipeTolerance;
+			
+			// Pre init event for preprocessing hooks
+			$d.trigger(events.beforeInitialize);
 			
 			// Hide the deck while states are being applied to kill transitions
 			$container.addClass(options.classes.loading);
