@@ -21,37 +21,37 @@
 .deck-container > .slide {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
 }
-.deck-container h1, .deck-container h2, .deck-container h3, .deck-container h4, .deck-container h5, .deck-container h6 {
+.deck-container .slide h1, .deck-container .slide h2, .deck-container .slide h3, .deck-container .slide h4, .deck-container .slide h5, .deck-container .slide h6 {
   font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
-.deck-container h1 {
+.deck-container .slide h1 {
   color: #08455f;
 }
-.deck-container h2 {
+.deck-container .slide h2 {
   color: #0b7495;
   border-bottom: 0;
 }
-.cssreflections .deck-container h2 {
+.cssreflections .deck-container .slide h2 {
   line-height: 1;
   -webkit-box-reflect: below -0.556em -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.3, transparent), color-stop(0.7, rgba(255, 255, 255, 0.1)), to(transparent));
   -moz-box-reflect: below -0.556em -moz-linear-gradient(top, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.3) 100%);
 }
-.deck-container h3 {
+.deck-container .slide h3 {
   color: #000;
 }
-.deck-container pre {
+.deck-container .slide pre {
   border-color: #cde;
   background: #fff;
   position: relative;
   z-index: auto;
   /* http://nicolasgallagher.com/css-drop-shadows-without-images/ */
 }
-.borderradius .deck-container pre {
+.borderradius .deck-container .slide pre {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.csstransforms.boxshadow .deck-container pre > :first-child:before {
+.csstransforms.boxshadow .deck-container .slide pre > :first-child:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -61,7 +61,7 @@
   left: 0;
   right: 0;
 }
-.csstransforms.boxshadow .deck-container pre:before, .csstransforms.boxshadow .deck-container pre:after {
+.csstransforms.boxshadow .deck-container .slide pre:before, .csstransforms.boxshadow .deck-container .slide pre:after {
   content: "";
   position: absolute;
   z-index: -2;
@@ -73,7 +73,7 @@
   -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 }
-.csstransforms.boxshadow .deck-container pre:before {
+.csstransforms.boxshadow .deck-container .slide pre:before {
   left: 10px;
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
@@ -81,7 +81,7 @@
   -o-transform: rotate(-3deg);
   transform: rotate(-3deg);
 }
-.csstransforms.boxshadow .deck-container pre:after {
+.csstransforms.boxshadow .deck-container .slide pre:after {
   right: 10px;
   -webkit-transform: rotate(3deg);
   -moz-transform: rotate(3deg);
@@ -89,10 +89,10 @@
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
 }
-.deck-container code {
+.deck-container .slide code {
   color: #789;
 }
-.deck-container blockquote {
+.deck-container .slide blockquote {
   font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
   font-size: 2em;
   padding: 1em 2em .5em 2em;
@@ -102,12 +102,12 @@
   border: 1px solid #cde;
   z-index: auto;
 }
-.borderradius .deck-container blockquote {
+.borderradius .deck-container .slide blockquote {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.boxshadow .deck-container blockquote > :first-child:before {
+.boxshadow .deck-container .slide blockquote > :first-child:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -117,7 +117,7 @@
   left: 0;
   right: 0;
 }
-.boxshadow .deck-container blockquote:after {
+.boxshadow .deck-container .slide blockquote:after {
   content: "";
   position: absolute;
   z-index: -2;
@@ -131,16 +131,16 @@
   -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
-.deck-container blockquote p {
+.deck-container .slide blockquote p {
   margin: 0;
 }
-.deck-container blockquote cite {
+.deck-container .slide blockquote cite {
   font-size: .5em;
   font-style: normal;
   font-weight: bold;
   color: #888;
 }
-.deck-container blockquote:before {
+.deck-container .slide blockquote:before {
   content: "“";
   position: absolute;
   top: 0;
@@ -150,24 +150,19 @@
   color: #ccf0f0;
   z-index: 1;
 }
-.deck-container .borderradius img {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-.deck-container ::-moz-selection {
+.deck-container .slide ::-moz-selection {
   background: #08455f;
   color: #fff;
 }
-.deck-container ::selection {
+.deck-container .slide ::selection {
   background: #08455f;
   color: #fff;
 }
-.deck-container a, .deck-container a:hover, .deck-container a:focus, .deck-container a:active, .deck-container a:visited {
+.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
   color: #599;
   text-decoration: none;
 }
-.deck-container a:hover, .deck-container a:focus {
+.deck-container .slide a:hover, .deck-container .slide a:focus {
   text-decoration: underline;
 }
 .deck-container .deck-prev-link, .deck-container .deck-next-link {

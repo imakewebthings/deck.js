@@ -171,11 +171,11 @@ html {
 		vertical-align:bottom;
 	}
 	
-	.ie7 input[type="checkbox"] {
+	.ie7 & input[type="checkbox"] {
 		vertical-align:baseline;
 	}
 	
-	.ie6 input {
+	.ie6 & input {
 		vertical-align:text-bottom;
 	}
 	
@@ -224,7 +224,17 @@ html {
 		}
 	}
 	/* End HTML5 Boilerplate adaptations */
+	
+	&.deck-loading {
+		display:none;
+	}
+}
 
+.slide {
+	width:auto;
+	min-height:100%;
+	position:relative;
+	
 	h1 {
 		font-size:4.5em;
 		font-weight:bold;
@@ -306,16 +316,6 @@ html {
 		padding:.25em 0;
 		vertical-align:middle;
 	}
-	
-	&.deck-loading {
-		display:none;
-	}
-}
-
-.slide {
-	width:auto;
-	min-height:100%;
-	position:relative;
 }
 
 .deck-before, .deck-previous, .deck-next, .deck-after {

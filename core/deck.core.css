@@ -139,10 +139,10 @@ html {
 .deck-container input[type="checkbox"] {
   vertical-align: bottom;
 }
-.deck-container .ie7 input[type="checkbox"] {
+.ie7 .deck-container input[type="checkbox"] {
   vertical-align: baseline;
 }
-.deck-container .ie6 input {
+.ie6 .deck-container input {
   vertical-align: text-bottom;
 }
 .deck-container label, .deck-container input[type="button"], .deck-container input[type="submit"], .deck-container input[type="image"], .deck-container button {
@@ -179,13 +179,22 @@ html {
 .deck-container a:link {
   -webkit-tap-highlight-color: #fff;
 }
-.deck-container h1 {
+.deck-container.deck-loading {
+  display: none;
+}
+
+.slide {
+  width: auto;
+  min-height: 100%;
+  position: relative;
+}
+.slide h1 {
   font-size: 4.5em;
   font-weight: bold;
   text-align: center;
   padding-top: 1em;
 }
-.csstransforms .deck-container h1 {
+.csstransforms .slide h1 {
   padding: 0 48px;
   position: absolute;
   left: 0;
@@ -197,65 +206,56 @@ html {
   -o-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-.deck-container h2 {
+.slide h2 {
   font-size: 2.25em;
   font-weight: bold;
   padding-top: .5em;
   margin: 0 0 .66666em 0;
   border-bottom: 3px solid #888;
 }
-.deck-container h3 {
+.slide h3 {
   font-size: 1.4375em;
   font-weight: bold;
   margin-bottom: .30435em;
 }
-.deck-container h4 {
+.slide h4 {
   font-size: 1.25em;
   font-weight: bold;
   margin-bottom: .25em;
 }
-.deck-container h5 {
+.slide h5 {
   font-size: 1.125em;
   font-weight: bold;
   margin-bottom: .2222em;
 }
-.deck-container h6 {
+.slide h6 {
   font-size: 1em;
   font-weight: bold;
 }
-.deck-container img, .deck-container iframe, .deck-container video {
+.slide img, .slide iframe, .slide video {
   display: block;
   max-width: 100%;
 }
-.deck-container video, .deck-container iframe, .deck-container img {
+.slide video, .slide iframe, .slide img {
   display: block;
   margin: 0 auto;
 }
-.deck-container p, .deck-container blockquote, .deck-container iframe, .deck-container img, .deck-container ul, .deck-container ol, .deck-container pre, .deck-container video {
+.slide p, .slide blockquote, .slide iframe, .slide img, .slide ul, .slide ol, .slide pre, .slide video {
   margin-bottom: 1em;
 }
-.deck-container pre {
+.slide pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
   padding: 1em;
   border: 1px solid #888;
 }
-.deck-container em {
+.slide em {
   font-style: italic;
 }
-.deck-container li {
+.slide li {
   padding: .25em 0;
   vertical-align: middle;
-}
-.deck-container.deck-loading {
-  display: none;
-}
-
-.slide {
-  width: auto;
-  min-height: 100%;
-  position: relative;
 }
 
 .deck-before, .deck-previous, .deck-next, .deck-after {

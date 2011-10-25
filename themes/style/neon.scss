@@ -6,74 +6,74 @@
 	
 	.slide {
 		background:#000;
-	}
-	
-	h1 {
-		color:#0af;
-		font-weight:normal;
-		font-weight:100;
-		text-shadow:0 0 50px #0af, 0 0 3px #fff;
-	}
-
-	h2 {
-		color:#af0;
-		border-bottom-color:#ccc;
-		font-weight:normal;
-		font-weight:100;
-		text-shadow:0 0 15px #af0, 0 0 2px #fff;
-		border-bottom:1px solid #333;
-	}
-
-	h3 {
-		color:#fff;
-		font-weight:normal;
-		font-weight:100;
-		text-shadow:0 0 10px #fff, 0 0 2px #fff;
-	}
-
-	pre {
-		border-color:#333;
 		
-		code {
-			color:#fff;
-		}
-	}
-
-	code {
-		color:#f0a;
-	}
-
-	blockquote {
-		font-size:2em;
-		padding:1em 2em;
-		color:#fff;
-		border-left:5px solid #fff;
-
-		p {
-			margin:0;
-		}
-
-		cite {
-			font-size:.5em;
-			font-style:normal;
+		h1 {
+			color:#0af;
 			font-weight:normal;
 			font-weight:100;
-			color:#aaa;
-			text-shadow:0 0 15px #fff, 0 0 2px #fff;
+			text-shadow:0 0 50px #0af, 0 0 3px #fff;
 		}
-	}
-	
-	::-moz-selection{ background:#a0f; }
-	::selection { background:#a0f; }
-	
-	a {
-		&, &:hover, &:focus, &:active, &:visited {
+
+		h2 {
+			color:#af0;
+			border-bottom-color:#ccc;
+			font-weight:normal;
+			font-weight:100;
+			text-shadow:0 0 15px #af0, 0 0 2px #fff;
+			border-bottom:1px solid #333;
+		}
+
+		h3 {
+			color:#fff;
+			font-weight:normal;
+			font-weight:100;
+			text-shadow:0 0 10px #fff, 0 0 2px #fff;
+		}
+
+		pre {
+			border-color:#333;
+
+			code {
+				color:#fff;
+			}
+		}
+
+		code {
 			color:#f0a;
-			text-decoration:none;
 		}
-		
-		&:hover, &:focus {
-			text-decoration:underline;
+
+		blockquote {
+			font-size:2em;
+			padding:1em 2em;
+			color:#fff;
+			border-left:5px solid #fff;
+
+			p {
+				margin:0;
+			}
+
+			cite {
+				font-size:.5em;
+				font-style:normal;
+				font-weight:normal;
+				font-weight:100;
+				color:#aaa;
+				text-shadow:0 0 15px #fff, 0 0 2px #fff;
+			}
+		}
+
+		::-moz-selection{ background:#a0f; }
+		::selection { background:#a0f; }
+
+		a {
+			&, &:hover, &:focus, &:active, &:visited {
+				color:#f0a;
+				text-decoration:none;
+			}
+
+			&:hover, &:focus {
+				text-decoration:underline;
+			}
 		}
 	}
 	

@@ -7,13 +7,13 @@
 .deck-container .slide {
   background: #000;
 }
-.deck-container h1 {
+.deck-container .slide h1 {
   color: #0af;
   font-weight: normal;
   font-weight: 100;
   text-shadow: 0 0 50px #0af, 0 0 3px #fff;
 }
-.deck-container h2 {
+.deck-container .slide h2 {
   color: #af0;
   border-bottom-color: #ccc;
   font-weight: normal;
@@ -21,31 +21,31 @@
   text-shadow: 0 0 15px #af0, 0 0 2px #fff;
   border-bottom: 1px solid #333;
 }
-.deck-container h3 {
+.deck-container .slide h3 {
   color: #fff;
   font-weight: normal;
   font-weight: 100;
   text-shadow: 0 0 10px #fff, 0 0 2px #fff;
 }
-.deck-container pre {
+.deck-container .slide pre {
   border-color: #333;
 }
-.deck-container pre code {
+.deck-container .slide pre code {
   color: #fff;
 }
-.deck-container code {
+.deck-container .slide code {
   color: #f0a;
 }
-.deck-container blockquote {
+.deck-container .slide blockquote {
   font-size: 2em;
   padding: 1em 2em;
   color: #fff;
   border-left: 5px solid #fff;
 }
-.deck-container blockquote p {
+.deck-container .slide blockquote p {
   margin: 0;
 }
-.deck-container blockquote cite {
+.deck-container .slide blockquote cite {
   font-size: .5em;
   font-style: normal;
   font-weight: normal;
@@ -53,17 +53,17 @@
   color: #aaa;
   text-shadow: 0 0 15px #fff, 0 0 2px #fff;
 }
-.deck-container ::-moz-selection {
+.deck-container .slide ::-moz-selection {
   background: #a0f;
 }
-.deck-container ::selection {
+.deck-container .slide ::selection {
   background: #a0f;
 }
-.deck-container a, .deck-container a:hover, .deck-container a:focus, .deck-container a:active, .deck-container a:visited {
+.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
   color: #f0a;
   text-decoration: none;
 }
-.deck-container a:hover, .deck-container a:focus {
+.deck-container .slide a:hover, .deck-container .slide a:focus {
   text-decoration: underline;
 }
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
