@@ -9,6 +9,12 @@
 	}
 }
 
+body.deck-container {
+	.deck-status {
+		position:fixed;
+	}
+}
+
 @media print {
 	.deck-status {
 		display:none;
