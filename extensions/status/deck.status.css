@@ -1,5 +1,5 @@
 .deck-container .deck-status {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 5px;
   color: #888;
