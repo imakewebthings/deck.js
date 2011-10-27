@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+body.deck-container .deck-status {
+  position: fixed;
+}
+
 @media print {
   .deck-status {
     display: none;
