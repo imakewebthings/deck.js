@@ -33,11 +33,13 @@ There is an issue with certain builds of Chrome that result in a solid blue back
 
 Core includes stripped down black and white print styles for the standard slide template that is suitable for handouts.
 
-## Awesome People
+## Awesome Contributors
 
-Big thanks to the folks who have contributed code to the project:
-
-- [jbuck](https://github.com/jbuck) - Touch controls.
+- [jbuck](https://github.com/jbuck)
+- [cykod](https://github.com/cykod)
+- [dougireton](https://github.com/dougireton)
+- [awirick](https://github.com/awirick)
+- Daniel Knittl-Frank
 
 ## License
 
