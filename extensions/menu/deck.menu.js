@@ -13,8 +13,7 @@ on the deck container.
 */
 (function($, deck, undefined) {
 	var $d = $(document),
-	rootSlides, // Array of top level slides
-	$placeholder; // Holds the place of the deck container during detachment
+	rootSlides; // Array of top level slides
 	
 	/*
 	Extends defaults/options.
@@ -54,7 +53,8 @@ on the deck container.
 		var $c = $[deck]('getContainer');
 		
 		// Detaching for this big style change for performance (no transitions!)
-		$c.replaceWith($placeholder);
+		$c.after($placeholder);
+		$c.detach();
 		$c.addClass($[deck]('getOptions').classes.menu);
 		
 		/* Forced to do this in JS until CSS learns second-grade math. Save old
@@ -83,7 +83,8 @@ on the deck container.
 	$[deck]('extend', 'hideMenu', function() {
 		var $c = $[deck]('getContainer');
 		
-		$c.replaceWith($placeholder);
+		$c.after($placeholder);
+		$c.detach();
 		$c.removeClass($[deck]('getOptions').classes.menu);
 		
 		/* Restore old style value */
@@ -124,7 +125,7 @@ on the deck container.
 		}).join(', ');
 		
 		// Create placeholder element
-		$placeholder = $('<' + $[deck]('getContainer').get(0).tagName + '>');
+		$placeholder = $('<div />');
 		
 		// Build top level slides array
 		rootSlides = [];
