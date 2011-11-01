@@ -65,9 +65,10 @@ slide.
 	
 	$d.bind('deck.init', function() {
 	   var opts = $[deck]('getOptions');
-		$internals = $();
+		$internals = $(),
+		slides = $[deck]('getSlides');
 		
-		$.each($[deck]('getSlides'), function(i, $el) {
+		$.each(slides, function(i, $el) {
 			var hash;
 			
 			/* Hand out ids to the unfortunate slides born without them */
@@ -96,7 +97,9 @@ slide.
 		}
 		
 		/* Set up first id container state class */
-		$[deck]('getContainer').addClass(opts.classes.onPrefix + $[deck]('getSlide').attr('id'));
+		if (slides.length) {
+			$[deck]('getContainer').addClass(opts.classes.onPrefix + $[deck]('getSlide').attr('id'));
+		};
 	})
 	/* Update permalink, address bar, and state class on a slide change */
 	.bind('deck.change', function(e, from, to) {

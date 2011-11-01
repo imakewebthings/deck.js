@@ -233,7 +233,9 @@ that use the API provided by core.
 				});
 			});
 			
-			updateStates();
+			if (slides.length) {
+				updateStates();
+			}
 			
 			// Show deck again now that slides are in place
 			$container.removeClass(options.classes.loading);

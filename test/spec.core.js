@@ -415,4 +415,15 @@ describe('Deck JS', function() {
 		  expect($.deck('getSlide').find('iframe').data('src')).toBeUndefined();
 		});
 	});
+	
+	describe('empty deck', function() {
+		beforeEach(function() {
+			loadFixtures('empty.html');
+			$.deck('.slide');
+		});
+		
+		describe('getSlide()', function() {
+			it('should not error on init', $.noop);
+		});
+	});
 });
