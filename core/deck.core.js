@@ -245,24 +245,41 @@ that use the API provided by core.
 		/*
 		jQuery.deck('go', index)
 		
-		index: integer
+		index: integer | string
 		
-		Moves to the slide at the specified index. Index is 0-based, so
-		$.deck('go', 0); will move to the first slide. If index is out of bounds
-		or not a number the call is ignored.
+		Moves to the slide at the specified index if index is a number. Index is
+		0-based, so $.deck('go', 0); will move to the first slide. If index is a
+		string this will move to the slide with the specified id. If index is out
+		of bounds or doesn't match a slide id the call is ignored.
 		*/
 		go: function(index) {
-			var e = $.Event(events.change);
+			var e = $.Event(events.change),
+			ndx;
 			
-			if (typeof index != 'number' || index < 0 || index >= slides.length) return;
+			/* Number index, easy. */
+			if (typeof index === 'number' && index >= 0 && index < slides.length) {
+				ndx = index;
+			}
+			/* Id string index, search for it and set integer index */
+			else if (typeof index === 'string') {
+				$.each(slides, function(i, $slide) {
+					if ($slide.attr('id') === index) {
+						ndx = i;
+						return false;
+					}
+				});
+			};
 			
-			$d.trigger(e, [current, index]);
+			/* Out of bounds, id doesn't exist, illegal input, eject */
+			if (typeof ndx === 'undefined') return;
+			
+			$d.trigger(e, [current, ndx]);
 			if (e.isDefaultPrevented()) {
 				/* Trigger the event again and undo the damage done by extensions. */
-				$d.trigger(events.change, [index, current]);
+				$d.trigger(events.change, [ndx, current]);
 			}
 			else {
-				current = index;
+				current = ndx;
 				updateStates();
 			}
 		},

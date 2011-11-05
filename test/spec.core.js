@@ -42,13 +42,18 @@ describe('Deck JS', function() {
 					expect($.deck('getSlide')).toHaveClass('slide4');
 				});
 
-				it('should go nowhere if i is NaN', function() {
-					$.deck('go', 'foobar');
-					expect($.deck('getSlide')).toHaveClass('slide1');
+				it('should go to the slide with specified id', function() {
+					$.deck('go', 'custom-id');
+					expect($.deck('getSlide')).toHaveId('custom-id');
 				});
 
 				it('should go nowhere if i is out of bounds', function() {
 					$.deck('go', 5);
+					expect($.deck('getSlide')).toHaveClass('slide1');
+				});
+				
+				it('should go nowhere if id does not exist', function() {
+					$.deck('go', 'i-dont-exist');
 					expect($.deck('getSlide')).toHaveClass('slide1');
 				});
 			});
