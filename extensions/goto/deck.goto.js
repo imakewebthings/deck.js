@@ -99,7 +99,7 @@ the deck container.
 			var $field = ($($[deck]('getOptions').selectors.gotoInput)),
 			i = parseInt($field.val(), 10);
 			
-			if (!($.isNaN(i) || i < 1 || i > $[deck]('getSlides').length)) {
+			if (!(isNaN(i) || i < 1 || i > $[deck]('getSlides').length)) {
 				$[deck]('go', i - 1);
 				$[deck]('hideGoTo');
 				$field.val('');
