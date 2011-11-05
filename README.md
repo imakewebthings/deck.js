@@ -21,6 +21,8 @@ Unit tests are written with [Jasmine](http://pivotal.github.com/jasmine/) and [j
 
 deck.js has been tested with jQuery 1.6+ and works in IE7+, Chrome, FF, Safari, and Opera. The more capable browsers receive greater enhancements, but a basic cutaway slideshow will work for all browsers listed above. Please don't give your presentations in IE6.
 
+For any questions or general discussion about deck.js please direct your attention to the [mailing list](http://groups.google.com/group/deckjs) (uses Google groups.)  If you would like to report a bug, please see the [issues page](https://github.com/imakewebthings/deck.js/issues).
+
 ## Known Bug(s)
 
 There is an issue with certain builds of Chrome that result in a solid blue background and generally broken decks.  This is a bug in Chrome ([Issue 91518](http://code.google.com/p/chromium/issues/detail?id=91518)) that stems from hardware acceleration of 3d transforms.  Current workarounds:
@@ -40,6 +42,13 @@ Core includes stripped down black and white print styles for the standard slide 
 - [dougireton](https://github.com/dougireton)
 - [awirick](https://github.com/awirick)
 - Daniel Knittl-Frank
+
+If you would like to contribute a patch to deck.js please do as much as you can of the following:
+
+- Add or amend Jasmine tests.
+- Add inline documentation.
+- If the standard snippet of an extension changes, please change it in both the introduction deck and the snippet html in the extension folder.
+- If the API changes, it would be awesome to receive a parallel pull request to the gh-pages branch which updates the public-facing documentation.
 
 ## License
 
