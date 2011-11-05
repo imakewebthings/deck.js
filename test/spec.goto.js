@@ -61,31 +61,43 @@ describe('Deck JS Quick Go-To', function() {
 			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.goto);
 		});
 		
-		it('should go to the slide entered', function() {
+		it('should go to the slide number entered', function() {
 			$(defaults.selectors.gotoInput).val('3');
 			$(defaults.selectors.gotoForm).submit();
 			expect($.deck('getSlide')).toEqual($.deck('getSlide'), 2);
 		});
 		
-		it('should go nowhere if a number is not entered', function() {
-			$(defaults.selectors.gotoInput).val('');
+		it('should go to the slide id entered', function() {
+			$(defaults.selectors.gotoInput).val('custom-id');
 			$(defaults.selectors.gotoForm).submit();
-			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.goto);
-			expect($.deck('getSlide')).toEqual($.deck('getSlide'), 0);
+			expect($.deck('getSlide')).toEqual($.deck('getSlide'), 1);
 		});
 		
 		it('should go nowhere if the number is negative', function() {
 			$(defaults.selectors.gotoInput).val('-2');
 			$(defaults.selectors.gotoForm).submit();
-			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.goto);
 			expect($.deck('getSlide')).toEqual($.deck('getSlide'), 0);
 		});
 		
 		it('should go nowhere if the number is greater than the number of slides', function() {
 			$(defaults.selectors.gotoInput).val('9');
 			$(defaults.selectors.gotoForm).submit();
-			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.goto);
 			expect($.deck('getSlide')).toEqual($.deck('getSlide'), 0);
+		});
+		
+		it('should go nowhere if the id does not exist', function() {
+			$(defaults.selectors.gotoInput).val('do-not-exist');
+			$(defaults.selectors.gotoForm).submit();
+			expect($.deck('getSlide')).toEqual($.deck('getSlide'), 0);
+		});
+	});
+	
+	describe('Datalist population', function() {
+		it('should fill in options with all the slide ids', function() {
+			var $dataOptions = $(defaults.selectors.gotoDatalist).find('option');
+			expect($dataOptions.length).toEqual(5);
+			expect($dataOptions.eq(0).attr('value')).toEqual('slide-0');
+			expect($dataOptions.eq(1).attr('value')).toEqual('custom-id');
 		});
 	});
 	

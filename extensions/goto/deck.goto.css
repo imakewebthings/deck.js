@@ -4,7 +4,7 @@
   bottom: 10px;
   left: 50%;
   height: 1.75em;
-  margin: 0 0 0 -7.125em;
+  margin: 0 0 0 -9.125em;
   line-height: 1.75em;
   padding: 0.625em;
   display: none;
@@ -29,7 +29,7 @@
 }
 
 #goto-slide {
-  width: 4.375em;
+  width: 8.375em;
   margin: 0 0.625em;
   height: 1.4375em;
 }

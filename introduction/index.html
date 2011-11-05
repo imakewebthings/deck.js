@@ -194,7 +194,8 @@
 
 <form action="." method="get" class="goto-form">
 	<label for="goto-slide">Go to slide:</label>
-	<input type="number" name="slidenum" id="goto-slide">
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
 	<input type="submit" value="Go">
 </form>
 
@@ -207,11 +208,11 @@
 
 <!-- Deck Core and extensions -->
 <script src="../core/deck.core.js"></script>
+<script src="../extensions/hash/deck.hash.js"></script>
 <script src="../extensions/menu/deck.menu.js"></script>
 <script src="../extensions/goto/deck.goto.js"></script>
 <script src="../extensions/status/deck.status.js"></script>
 <script src="../extensions/navigation/deck.navigation.js"></script>
-<script src="../extensions/hash/deck.hash.js"></script>
 
 <!-- Specific to this page -->
 <script src="introduction.js"></script>
