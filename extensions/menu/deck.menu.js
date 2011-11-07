@@ -50,12 +50,11 @@ on the deck container.
 	to the deck container.
 	*/
 	$[deck]('extend', 'showMenu', function() {
-		var $c = $[deck]('getContainer');
+		var $c = $[deck]('getContainer'),
+		opts = $[deck]('getOptions');
 		
-		// Detaching for this big style change for performance (no transitions!)
-		$c.after($placeholder);
-		$c.detach();
-		$c.addClass($[deck]('getOptions').classes.menu);
+		// Hide through loading class to short-circuit transitions (perf)
+		$c.addClass([opts.classes.loading, opts.classes.menu].join(' '));
 		
 		/* Forced to do this in JS until CSS learns second-grade math. Save old
 		style value for restoration when menu is hidden. */
@@ -70,8 +69,11 @@ on the deck container.
 			});
 		}
 		
-		$placeholder.replaceWith($c);
-		$c.scrollTop($[deck]('getSlide').offset().top);
+		// Need to ensure the loading class renders first, then remove
+		window.setTimeout(function() {
+			$c.removeClass(opts.classes.loading)
+				.scrollTop($[deck]('getSlide').offset().top);
+		}, 0);
 	});
 
 	/*
@@ -81,11 +83,11 @@ on the deck container.
 	option from the deck container.
 	*/
 	$[deck]('extend', 'hideMenu', function() {
-		var $c = $[deck]('getContainer');
+		var $c = $[deck]('getContainer'),
+		opts = $[deck]('getOptions');
 		
-		$c.after($placeholder);
-		$c.detach();
-		$c.removeClass($[deck]('getOptions').classes.menu);
+		$c.removeClass(opts.classes.menu);
+		$c.addClass(opts.classes.loading);
 		
 		/* Restore old style value */
 		if (Modernizr.csstransforms) {
@@ -96,8 +98,9 @@ on the deck container.
 			});
 		}
 		
-		$placeholder.replaceWith($c);
-		$c.scrollTop(0);
+		window.setTimeout(function() {
+			$c.removeClass(opts.classes.loading).scrollTop(0);
+		}, 0);
 	});
 
 	/*
@@ -123,9 +126,6 @@ on the deck container.
 		], function(el, i) {
 			return '.' + el;
 		}).join(', ');
-		
-		// Create placeholder element
-		$placeholder = $('<div />');
 		
 		// Build top level slides array
 		rootSlides = [];
