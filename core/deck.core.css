@@ -191,14 +191,12 @@ html {
 .slide h1 {
   font-size: 4.5em;
 }
-.deck-container hgroup,
-.deck-container h1 {
+.slide h1, .slide .vcenter {
   font-weight: bold;
   text-align: center;
   padding-top: 1em;
 }
-.csstransforms .slide hgroup,
-.csstransforms .slide h1 {
+.csstransforms .slide h1, .csstransforms .slide .vcenter {
   padding: 0 48px;
   position: absolute;
   left: 0;
@@ -210,9 +208,10 @@ html {
   -o-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-.csstransforms .slide hgroup h1 {
-  position:relative;
-  top:auto;
+.slide .vcenter h1 {
+  position: relative;
+  top: auto;
+  padding: 0;
   -webkit-transform: none;
   -moz-transform: none;
   -ms-transform: none;

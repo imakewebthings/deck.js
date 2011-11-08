@@ -239,7 +239,7 @@ html {
 		font-size:4.5em;
 	}
 
-	hgroup, h1 {
+	h1, .vcenter {
 		font-weight:bold;
 		text-align:center;
 		padding-top:1em;
@@ -258,14 +258,15 @@ html {
 		}
 	}
 
-	hgroup h1 {
+	.vcenter h1 {
 		position:relative;
 		top:auto;
-		-webkit-transform: none;
-		-moz-transform: none;
-		-ms-transform: none;
-		-o-transform: none;
-		transform: none;
+		padding:0;
+		-webkit-transform:none;
+		-moz-transform:none;
+		-ms-transform:none;
+		-o-transform:none;
+		transform:none;
 	}
 
 	h2 {
