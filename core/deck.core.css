@@ -190,10 +190,14 @@ html {
 }
 .slide h1 {
   font-size: 4.5em;
+}
+.deck-container hgroup,
+.deck-container h1 {
   font-weight: bold;
   text-align: center;
   padding-top: 1em;
 }
+.csstransforms .slide hgroup,
 .csstransforms .slide h1 {
   padding: 0 48px;
   position: absolute;
@@ -205,6 +209,15 @@ html {
   -ms-transform: translate(0, -50%);
   -o-transform: translate(0, -50%);
   transform: translate(0, -50%);
+}
+.csstransforms .slide hgroup h1 {
+  position:relative;
+  top:auto;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
 }
 .slide h2 {
   font-size: 2.25em;
