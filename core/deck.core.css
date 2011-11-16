@@ -195,6 +195,7 @@ html {
   font-weight: bold;
   text-align: center;
   padding-top: 1em;
+  max-height: 100%;
 }
 .csstransforms .slide h1, .csstransforms .slide .vcenter {
   padding: 0 48px;
@@ -376,7 +377,7 @@ body.deck-container {
     opacity: 1 !important;
   }
 
-  h1 {
+  h1, .vcenter {
     -webkit-transform: none !important;
     -moz-transform: none !important;
     -o-transform: none !important;
