@@ -35,6 +35,12 @@ describe('Deck JS Navigation Buttons', function() {
 		expect($(defaults.selectors.nextLink)).toHaveClass(defaults.classes.navDisabled);
 	});
 	
+	it('should not start disabled if deck initialized in the middle', function() {
+		$.deck('go', 2);
+		$.deck('.slide');
+		expect($(defaults.selectors.previousLink)).not.toHaveClass(defaults.classes.navDisabled);
+	});
+	
 	it('should update the links hrefs with real fragment ids', function() {
 		expect($(defaults.selectors.previousLink)).toHaveAttr('href', '#');
 		expect($(defaults.selectors.nextLink)).toHaveAttr('href', '#custom-id');
