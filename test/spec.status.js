@@ -14,8 +14,11 @@ describe('Deck JS Status Indicator', function() {
 		expect($(defaults.selectors.statusTotal)).toHaveText($.deck('getSlides').length);
 	});
 	
-	it('should start at 1 of X', function() {
+	it('should start at the right current slide', function() {
 		expect($(defaults.selectors.statusCurrent)).toHaveText(1);
+		$.deck('go', 2);
+		$.deck('.slide');
+		expect($(defaults.selectors.statusCurrent)).toHaveText(3);
 	});
 	
 	it('should update to the correct number on slide change', function() {

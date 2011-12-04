@@ -10,7 +10,16 @@ https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
 This module adds a (current)/(total) style status indicator to the deck.
 */
 (function($, deck, undefined) {
-	var $d = $(document);
+	var $d = $(document),
+	
+	updateCurrent = function(e, from, to) {
+		var opts = $[deck]('getOptions');
+		
+		$(opts.selectors.statusCurrent).text(opts.countNested ?
+			to + 1 :
+			$[deck]('getSlide', to).data('rootSlide')
+		);
+	};
 	
 	/*
 	Extends defaults/options.
@@ -35,13 +44,14 @@ This module adds a (current)/(total) style status indicator to the deck.
 	});
 	
 	$d.bind('deck.init', function() {
-		var opts = $[deck]('getOptions');
+		var opts = $[deck]('getOptions'),
+		slides = $[deck]('getSlides'),
+		$current = $[deck]('getSlide'),
+		ndx;
 		
-		// Start on first slide
-		$(opts.selectors.statusCurrent).text(1);
 		// Set total slides once
 		if (opts.countNested) {
-			$(opts.selectors.statusTotal).text($[deck]('getSlides').length);
+			$(opts.selectors.statusTotal).text(slides.length);
 		}
 		else {
 			/* Determine root slides by checking each slide's ancestor tree for
@@ -58,7 +68,7 @@ This module adds a (current)/(total) style status indicator to the deck.
 			}).join(', ');
 			
 			/* Store the 'real' root slide number for use during slide changes. */
-			$.each($[deck]('getSlides'), function(i, $el) {
+			$.each(slides, function(i, $el) {
 				var $parentSlides = $el.parentsUntil(opts.selectors.container, slideTest);
 
 				$el.data('rootSlide', $parentSlides.length ?
@@ -69,15 +79,17 @@ This module adds a (current)/(total) style status indicator to the deck.
 			
 			$(opts.selectors.statusTotal).text(rootIndex - 1);
 		}
+		
+		// Find where we started in the deck and set initial state
+		$.each(slides, function(i, $el) {
+			if ($el === $current) {
+				ndx = i;
+				return false;
+			}
+		});
+		updateCurrent(null, ndx, ndx);
 	})
 	/* Update current slide number with each change event */
-	.bind('deck.change', function(e, from, to) {
-		var opts = $[deck]('getOptions');
-		
-		$(opts.selectors.statusCurrent).text(opts.countNested ?
-			to + 1 :
-			$[deck]('getSlide', to).data('rootSlide')
-		);
-	});
+	.bind('deck.change', updateCurrent);
 })(jQuery, 'deck');
 
