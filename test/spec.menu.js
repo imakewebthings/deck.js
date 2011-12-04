@@ -1,5 +1,6 @@
 describe('Deck JS Menu', function() {
-	var $d = $(document);
+	var $d = $(document),
+	dsc = defaults.selectors.container;
 	
 	beforeEach(function() {
 		loadFixtures('standard.html');
@@ -14,9 +15,9 @@ describe('Deck JS Menu', function() {
 	
 	describe('showMenu()', function() {
 		it('should show the menu', function() {
-			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
+			expect($(dsc)).not.toHaveClass(defaults.classes.menu);
 			$.deck('showMenu');
-			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.menu);
+			expect($(dsc)).toHaveClass(defaults.classes.menu);
 		});
 	});
 	
@@ -24,17 +25,17 @@ describe('Deck JS Menu', function() {
 		it('should hide the menu', function() {
 			$.deck('showMenu');
 			$.deck('hideMenu');
-			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
+			expect($(dsc)).not.toHaveClass(defaults.classes.menu);
 		});
 	});
 	
 	describe('toggleMenu()', function() {
 		it('should toggle menu on and off', function() {
-			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
+			expect($(dsc)).not.toHaveClass(defaults.classes.menu);
 			$.deck('toggleMenu');
-			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.menu);
+			expect($(dsc)).toHaveClass(defaults.classes.menu);
 			$.deck('toggleMenu');
-			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
+			expect($(dsc)).not.toHaveClass(defaults.classes.menu);
 		});
 	});
 	
@@ -48,9 +49,9 @@ describe('Deck JS Menu', function() {
 		it('should toggle the menu if the specified key is pressed', function() {
 			e.which = 77; // m
 			$d.trigger(e);
-			expect($(defaults.selectors.container)).toHaveClass(defaults.classes.menu);
+			expect($(dsc)).toHaveClass(defaults.classes.menu);
 			$d.trigger(e);
-			expect($(defaults.selectors.container)).not.toHaveClass(defaults.classes.menu);
+			expect($(dsc)).not.toHaveClass(defaults.classes.menu);
 		});
 	});
 });
