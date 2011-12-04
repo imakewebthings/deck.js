@@ -19,6 +19,15 @@ describe('Deck JS Menu', function() {
 			$.deck('showMenu');
 			expect($(dsc)).toHaveClass(defaults.classes.menu);
 		});
+		
+		it('should do nothing if menu is already showing', function() {
+			if (Modernizr.csstransforms) {
+				$.deck('showMenu');
+				$.deck('showMenu');
+				$.deck('hideMenu');
+				expect($('.slide').attr('style')).toBeFalsy();
+			}
+		});
 	});
 	
 	describe('hideMenu()', function() {

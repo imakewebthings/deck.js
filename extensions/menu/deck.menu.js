@@ -53,6 +53,8 @@ on the deck container.
 		var $c = $[deck]('getContainer'),
 		opts = $[deck]('getOptions');
 		
+		if ($c.hasClass(opts.classes.menu)) return;
+		
 		// Hide through loading class to short-circuit transitions (perf)
 		$c.addClass([opts.classes.loading, opts.classes.menu].join(' '));
 		
@@ -85,6 +87,8 @@ on the deck container.
 	$[deck]('extend', 'hideMenu', function() {
 		var $c = $[deck]('getContainer'),
 		opts = $[deck]('getOptions');
+		
+		if (!$c.hasClass(opts.classes.menu)) return;
 		
 		$c.removeClass(opts.classes.menu);
 		$c.addClass(opts.classes.loading);
