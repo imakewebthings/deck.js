@@ -39,6 +39,10 @@ the deck container.
 		
 	options.keys.goto
 		The numeric keycode used to show the Go To Slide form.
+		
+	options.countNested
+		If false, only top level slides will be counted when entering a
+		slide number.
 	*/
 	$.extend(true, $[deck].defaults, {
 		classes: {
@@ -53,7 +57,9 @@ the deck container.
 		
 		keys: {
 			goto: 71 // g
-		}
+		},
+		
+		countNested: true
 	});
 
 	/*
@@ -89,7 +95,17 @@ the deck container.
 	
 	$d.bind('deck.init', function() {
 		var opts = $[deck]('getOptions'),
-		$datalist = $(opts.selectors.gotoDatalist);
+		$datalist = $(opts.selectors.gotoDatalist),
+		slideTest = $.map([
+			opts.classes.before,
+			opts.classes.previous,
+			opts.classes.current,
+			opts.classes.next,
+			opts.classes.after
+		], function(el, i) {
+			return '.' + el;
+		}).join(', '),
+		rootCounter = 1;
 		
 		// Bind key events
 		$d.unbind('keydown.deckgoto').bind('keydown.deckgoto', function(e) {
@@ -101,12 +117,21 @@ the deck container.
 			}
 		});
 		
-		/* Populate datalist */
+		/* Populate datalist and work out countNested*/
 		$.each($[deck]('getSlides'), function(i, $slide) {
-			var id = $slide.attr('id');
+			var id = $slide.attr('id'),
+			$parentSlides = $slide.parentsUntil(opts.selectors.container, slideTest);
 			
 			if (id) {
 				$datalist.append('<option value="' + id + '">');
+			}
+			
+			if ($parentSlides.length) {
+				$slide.removeData('rootIndex');
+			}
+			else if (!opts.countNested) {
+				$slide.data('rootIndex', rootCounter);
+				++rootCounter;
 			}
 		});
 		
@@ -115,15 +140,25 @@ the deck container.
 		.unbind('submit.deckgoto')
 		.bind('submit.deckgoto', function(e) {
 			var $field = $($[deck]('getOptions').selectors.gotoInput),
-			i = parseInt($field.val(), 10);
+			ndx = parseInt($field.val(), 10);
 			
-			$[deck]('go', isNaN(i) ? $field.val() : i - 1);
+			if (!$[deck]('getOptions').countNested) {
+				$.each($[deck]('getSlides'), function(i, $slide) {
+					if ($slide.data('rootIndex') === ndx) {
+						ndx = i + 1;
+						return false;
+					}
+				});
+			}
+			
+			$[deck]('go', isNaN(ndx) ? $field.val() : ndx - 1);
 			$[deck]('hideGoTo');
 			$field.val('');
 			
 			e.preventDefault();
 		});
 		
+		// Dont let keys in the input trigger deck actions
 		$(opts.selectors.gotoInput)
 		.unbind('keydown.deckgoto')
 		.bind('keydown.deckgoto', function(e) {
