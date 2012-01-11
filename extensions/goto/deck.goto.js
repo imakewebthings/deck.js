@@ -143,6 +143,7 @@ the deck container.
 			ndx = parseInt($field.val(), 10);
 			
 			if (!$[deck]('getOptions').countNested) {
+			  if (ndx >= rootCounter) return false;
 				$.each($[deck]('getSlides'), function(i, $slide) {
 					if ($slide.data('rootIndex') === ndx) {
 						ndx = i + 1;
