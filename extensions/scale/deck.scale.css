@@ -1,4 +1,4 @@
-.csstransforms .deck-container.deck-scale:not(.deck-menu) section.slide {
+.csstransforms .deck-container.deck-scale:not(.deck-menu) > .slide {
   -webkit-box-sizing: padding-box;
   -moz-box-sizing: padding-box;
   box-sizing: padding-box;
