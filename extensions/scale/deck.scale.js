@@ -1,6 +1,6 @@
 /*!
 Deck JS - deck.scale
-Copyright (c) 2011 Caleb Troughton
+Copyright (c) 2011-2012 Caleb Troughton
 Dual licensed under the MIT license and GPL license.
 https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt
 https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
@@ -22,42 +22,45 @@ works fine.
 	$w = $(window),
 	baseHeight, // Value to scale against
 	timer, // Timeout id for debouncing
+	rootSlides,
 
 	/*
 	Internal function to do all the dirty work of scaling the deck container.
 	*/
 	scaleDeck = function() {
-		var obh = $[deck]('getOptions').baseHeight,
+		var opts = $[deck]('getOptions'),
+		obh = opts.baseHeight,
 		$container = $[deck]('getContainer'),
 		height = $w.height(),
 		slides = $[deck]('getSlides'),
 		scale,
 		transform;
-
-		// Don't scale if scaling disabled
-		if (!$container.hasClass($[deck]('getOptions').classes.scale)) {
-			scale = 1;
-		}
-		else {
-			// Use window height as base height if not set manually
-			baseHeight = obh ? obh : (function() {
-				return $(window).height();
-			})();
-		}
+		
+		// Use window height as base height if not set manually
+		baseHeight = obh ? obh : (function() {
+			return $(window).height();
+		})();
 
 		// Scale each slide down if necessary (but don't scale up)
-		$.each(slides, function(i, $slide) {
-		  var slideHeight = $slide.innerHeight();
-		  var scale = baseHeight / slideHeight;
+		$.each(rootSlides, function(i, $slide) {
+			var slideHeight = $slide.innerHeight(),
+			$scaler = $slide.find('.' + opts.classes.scaleSlideWrapper);
 
-		  if (scale < 1) {
-		    transform = 'scale(' + scale + ')';
-  		  $.each('Webkit Moz O ms Khtml'.split(' '), function(i, prefix) {
-  			  $slide.css(prefix + 'Transform', transform);
-  		  });
-		  }
-	  });
-  }
+			// Dont scale if scaling is disabled
+			scale = $container.hasClass(opts.classes.scale) ?
+				baseHeight / slideHeight :
+				1;
+			
+			$.each('Webkit Moz O ms Khtml'.split(' '), function(i, prefix) {
+				if (scale === 1) {
+					$scaler.css(prefix + 'Transform', '');
+				}
+				else {
+					$scaler.css(prefix + 'Transform', 'scale(' + scale + ')');
+				}
+			});
+		});
+	}
 
 	/*
 	Extends defaults/options.
@@ -83,7 +86,8 @@ works fine.
 	*/
 	$.extend(true, $[deck].defaults, {
 		classes: {
-			scale: 'deck-scale'
+			scale: 'deck-scale',
+			scaleSlideWrapper: 'deck-slide-scaler'
 		},
 
 		keys: {
@@ -126,10 +130,29 @@ works fine.
 	});
 
 	$d.bind('deck.init', function() {
-		var opts = $[deck]('getOptions');
-
-		// Scaling enabled at start
-		$[deck]('getContainer').addClass(opts.classes.scale);
+		var opts = $[deck]('getOptions'),
+		slideTest = $.map([
+			opts.classes.before,
+			opts.classes.previous,
+			opts.classes.current,
+			opts.classes.next,
+			opts.classes.after
+		], function(el, i) {
+			return '.' + el;
+		}).join(', ');
+		
+		// Build top level slides array
+		rootSlides = [];
+		$.each($[deck]('getSlides'), function(i, $el) {
+			if (!$el.parentsUntil(opts.selectors.container, slideTest).length) {
+				rootSlides.push($el);
+			}
+		});
+		
+		// Use a wrapper on each slide to handle content scaling
+		$.each(rootSlides, function(i, $slide) {
+			$slide.children().wrapAll('<div class="' + opts.classes.scaleSlideWrapper + '"/>');
+		});
 
 		// Debounce the resize scaling
 		$w.unbind('resize.deckscale').bind('resize.deckscale', function() {
@@ -147,8 +170,8 @@ works fine.
 			}
 		});
 
-		// Scale once on init
-		scaleDeck();
+		// Enable scale on init
+		$[deck]('enableScale');
 	});
 })(jQuery, 'deck', this);
 
