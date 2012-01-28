@@ -1,16 +1,12 @@
-.csstransforms .deck-container.deck-scale section.slide {
-	width:auto;
-	-webkit-transform-origin: 50% 0;
-	-moz-transform-origin: 50% 0;
-	-o-transform-origin: 50% 0;
-	-ms-transform-origin: 50% 0;
-	transform-origin: 50% 0;
-}
-.csstransforms .deck-container.deck-scale.deck-menu {
-	width:70%;
-	-webkit-transform:none !important;
-	-moz-transform:none !important;
-	-o-transform:none !important;
-	-ms-transform:none !important;
-	transform:none !important;
+.csstransforms .deck-container.deck-scale:not(.deck-menu) section.slide {
+  -webkit-box-sizing: padding-box;
+  -moz-box-sizing: padding-box;
+  box-sizing: padding-box;
+  width: 100%;
+  padding-bottom: 20px;
+  -webkit-transform-origin: 50% 0;
+  -moz-transform-origin: 50% 0;
+  -o-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
 }

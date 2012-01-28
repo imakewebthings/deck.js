@@ -41,9 +41,7 @@ works fine.
 		else {
 			// Use window height as base height if not set manually
 			baseHeight = obh ? obh : (function() {
-				var slop = 40; /* for padding */
-			  var windowHeight = $(window).height();
-				return windowHeight - slop;
+				return $(window).height();
 			})();
 		}
 
