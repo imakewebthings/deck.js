@@ -7,14 +7,14 @@ https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
 */
 
 /*
-This module adds automatic scaling to the deck.  It should only be used on
+This module adds automatic scaling to the deck.  It is designed to be used on
 standalone decks where the body is the deck container. Slides are scaled down
 using CSS transforms to fit within the browser window. If the browser window
 is big enough to hold the slides without scaling, no scaling occurs. The user
 can disable and enable scaling with a keyboard shortcut.
 
-Note: CSS transforms make Flash videos render incorrectly.  Presenters that
-need to use video will want to disable scaling to play them.  HTML5 video
+Note: CSS transforms may make Flash videos render incorrectly.  Presenters
+that need to use video may want to disable scaling to play them.  HTML5 video
 works fine.
 */
 (function($, deck, window, undefined) {
@@ -25,28 +25,18 @@ works fine.
 	rootSlides,
 
 	/*
-	Internal function to do all the dirty work of scaling the deck container.
+	Internal function to do all the dirty work of scaling the slides.
 	*/
 	scaleDeck = function() {
 		var opts = $[deck]('getOptions'),
 		obh = opts.baseHeight,
 		$container = $[deck]('getContainer'),
-		height = $w.height(),
-		slides = $[deck]('getSlides'),
-		scale,
-		transform;
-		
-		// Use window height as base height if not set manually
-		baseHeight = obh ? obh : (function() {
-			return $(window).height();
-		})();
+		baseHeight = obh ? obh : $container.height();
 
 		// Scale each slide down if necessary (but don't scale up)
 		$.each(rootSlides, function(i, $slide) {
 			var slideHeight = $slide.innerHeight(),
-			$scaler = $slide.find('.' + opts.classes.scaleSlideWrapper);
-
-			// Dont scale if scaling is disabled
+			$scaler = $slide.find('.' + opts.classes.scaleSlideWrapper),
 			scale = $container.hasClass(opts.classes.scale) ?
 				baseHeight / slideHeight :
 				1;
@@ -68,15 +58,19 @@ works fine.
 	options.classes.scale
 		This class is added to the deck container when scaling is enabled.
 		It is enabled by default when the module is included.
+	
+	options.classes.scaleSlideWrapper
+		Scaling is done using a wrapper around the contents of each slide. This
+		class is applied to that wrapper.
 
 	options.keys.scale
 		The numeric keycode used to toggle enabling and disabling scaling.
 
 	options.baseHeight
 		When baseheight is falsy, as it is by default, the deck is scaled
-		in proportion to the height of the slides.  You may instead specify
-		a height, and the deck will be scaled against this height regardless
-		of the actual content height.
+		in proportion to the height of the deck container.  You may instead specify
+		a height and the deck will be scaled against this height regardless
+		of the container height.
 
 	options.scaleDebounce
 		Scaling on the browser resize event is debounced. This number is the
