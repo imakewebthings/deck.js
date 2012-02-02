@@ -21,38 +21,18 @@
 	<link rel="stylesheet" href="../extensions/status/deck.status.css">
 	<link rel="stylesheet" href="../extensions/hash/deck.hash.css">
 	
-	<!-- Theme CSS files (menu swaps these out) -->
-	<link rel="stylesheet" id="style-theme-link" href="../themes/style/web-2.0.css">
-	<link rel="stylesheet" id="transition-theme-link" href="../themes/transition/horizontal-slide.css">
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="../themes/style/web-2.0.css">
 	
-	<!-- Custom CSS just for this page -->
-	<link rel="stylesheet" href="introduction.css">
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="../themes/transition/horizontal-slide.css">
 	
 	<script src="../modernizr.custom.js"></script>
 </head>
 
 <body class="deck-container">
 
-<div class="theme-menu">
-	<h2>Themes</h2>	
-	
-	<label for="style-themes">Style:</label>
-	<select id="style-themes">
-		<option selected value="../themes/style/web-2.0.css">Web 2.0</option>
-		<option value="../themes/style/swiss.css">Swiss</option>
-		<option value="../themes/style/neon.css">Neon</option>
-		<option value="">None</option>
-	</select>
-	
-	<label for="transition-themes">Transition:</label>
-	<select id="transition-themes">
-		<option selected value="../themes/transition/horizontal-slide.css">Horizontal Slide</option>
-		<option value="../themes/transition/vertical-slide.css">Vertical Slide</option>
-		<option value="../themes/transition/fade.css">Fade</option>
-		<option value="">None</option>
-	</select>
-</div>
-
+<!-- Begin slides -->
 <section class="slide" id="title-slide">
 	<h1>Getting Started with deck.js</h1>
 </section>
@@ -183,15 +163,18 @@
 	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
 </section>
 
+<!-- deck.navigation snippet -->
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
 <a href="#" class="deck-next-link" title="Next">&#8594;</a>
 
+<!-- deck.status snippet -->
 <p class="deck-status">
 	<span class="deck-status-current"></span>
 	/
 	<span class="deck-status-total"></span>
 </p>
 
+<!-- deck.goto snippet -->
 <form action="." method="get" class="goto-form">
 	<label for="goto-slide">Go to slide:</label>
 	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
@@ -199,12 +182,13 @@
 	<input type="submit" value="Go">
 </form>
 
+<!-- deck.hash snippet -->
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 
-  <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
 
 <!-- Deck Core and extensions -->
 <script src="../core/deck.core.js"></script>
@@ -214,8 +198,12 @@
 <script src="../extensions/status/deck.status.js"></script>
 <script src="../extensions/navigation/deck.navigation.js"></script>
 
-<!-- Specific to this page -->
-<script src="introduction.js"></script>
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
 
 </body>
 </html>
