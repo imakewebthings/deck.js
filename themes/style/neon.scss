@@ -96,6 +96,12 @@
 		}
 	}
 	
+	> .slide {
+		.deck-before, .deck-previous {
+			opacity:0.4;
+		}
+	}
+	
 	.deck-status {
 		font-size:0.6666em;
 	}

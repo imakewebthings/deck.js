@@ -61,6 +61,12 @@
 		}
 	}
 	
+	> .slide {
+		.deck-before, .deck-previous {
+			opacity:0.4;
+		}
+	} 
+	
 	.deck-prev-link, .deck-next-link {
 		background:#ccc;
 		font-family:serif; // sans-serif arrows x-browser fail

@@ -36,9 +36,6 @@
   -o-transform: translate(200%, 0);
   transform: translate3d(200%, 0, 0);
 }
-.csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-before, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-previous {
-  opacity: 0.4;
-}
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-previous {
   -webkit-transform: translate3d(-200%, 0, 0);
   -moz-transform: translate(-200%, 0);

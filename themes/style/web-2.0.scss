@@ -33,6 +33,10 @@
 	
 	> .slide {
 		text-shadow:1px 1px 1px rgba(255,255,255,.5);
+		
+		.deck-before, .deck-previous {
+			opacity:0.4;
+		}
 	}
 	
 	.slide {
