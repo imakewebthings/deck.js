@@ -66,10 +66,10 @@ works fine.
 		The numeric keycode used to toggle enabling and disabling scaling.
 
 	options.baseHeight
-		When baseheight is falsy, as it is by default, the deck is scaled
-		in proportion to the height of the deck container.  You may instead specify
-		a height and the deck will be scaled against this height regardless
-		of the container height.
+		When baseHeight is falsy, as it is by default, the deck is scaled in
+		proportion to the height of the deck container. You may instead specify
+		a height as a number of px, and slides will be scaled against this
+		height regardless of the container size.
 
 	options.scaleDebounce
 		Scaling on the browser resize event is debounced. This number is the
