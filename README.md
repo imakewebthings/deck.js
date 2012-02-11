@@ -42,6 +42,7 @@ Core includes stripped down black and white print styles for the standard slide 
 - [dougireton](https://github.com/dougireton)
 - [awirick](https://github.com/awirick)
 - Daniel Knittl-Frank
+- [alexch](https://github.com/alexch)
 
 If you would like to contribute a patch to deck.js please do as much as you can of the following:
 

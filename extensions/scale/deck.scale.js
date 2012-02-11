@@ -7,10 +7,9 @@ https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
 */
 
 /*
-This module adds automatic scaling to the deck.  It is designed to be used on
-standalone decks where the body is the deck container. Slides are scaled down
-using CSS transforms to fit within the browser window. If the browser window
-is big enough to hold the slides without scaling, no scaling occurs. The user
+This module adds automatic scaling to the deck.  Slides are scaled down
+using CSS transforms to fit within the deck container. If the container is
+big enough to hold the slides without scaling, no scaling occurs. The user
 can disable and enable scaling with a keyboard shortcut.
 
 Note: CSS transforms may make Flash videos render incorrectly.  Presenters
