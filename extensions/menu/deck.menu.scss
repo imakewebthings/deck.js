@@ -21,11 +21,11 @@
 		}
 		
 		.csstransforms & {
-			-webkit-transform:scale(.22);
-			-moz-transform:scale(.22);
-			-o-transform:scale(.22);
-			-ms-transform:scale(.22);
-			transform:scale(.22);
+			-webkit-transform:scale(.22) !important;
+			-moz-transform:scale(.22) !important;
+			-o-transform:scale(.22) !important;
+			-ms-transform:scale(.22) !important;
+			transform:scale(.22) !important;
 			-webkit-transform-origin:0 0;
 			-moz-transform-origin:0 0;
 			-o-transform-origin:0 0;
