@@ -19,6 +19,8 @@
   position: relative;
   left: 0;
   top: 0;
+}
+.csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-next, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-after {
   opacity: 0;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-current {
