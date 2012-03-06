@@ -64,6 +64,16 @@
 	> .slide {
 		.deck-before, .deck-previous {
 			opacity:0.4;
+			
+			&:not(.deck-child-current) {
+				.deck-before, .deck-previous {
+					opacity:1;
+				}
+			}
+		}
+		
+		.deck-child-current {
+			opacity:1;
 		}
 	} 
 	
