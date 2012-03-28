@@ -31,6 +31,8 @@ There is an issue with certain builds of Chrome that result in a solid blue back
 - Disable hardware compositing by setting `--disable-accelerated-compositing` in the Chrome loading options
 - Replace instances of `translate3d` with `translate` in the CSS of your decks (though this will slow down performance on iOS devices and Safari.)
 
+Firefox contains a bug that allows users to scroll horizontally using the trackpad despite `overflow-x:hidden`. ([Bug 664275](https://bugzilla.mozilla.org/show_bug.cgi?id=664275) and [Bug 325942](https://bugzilla.mozilla.org/show_bug.cgi?id=325942).) If anyone knows of any workarounds to this issue please contact me.
+
 ## Printing
 
 Core includes stripped down black and white print styles for the standard slide template that is suitable for handouts.

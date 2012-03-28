@@ -2,10 +2,13 @@ html {
   height: 100%;
 }
 
+body.deck-container {
+  overflow-y: auto;
+}
+
 .deck-container {
   position: relative;
   height: 100%;
-  width: 70%;
   margin: 0 auto;
   padding: 0 48px;
   font-size: 16px;
@@ -22,6 +25,7 @@ html {
 }
 .touch .deck-container {
   -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
 }
 .deck-container div, .deck-container span, .deck-container object, .deck-container iframe,
 .deck-container h1, .deck-container h2, .deck-container h3, .deck-container h4, .deck-container h5, .deck-container h6, .deck-container p, .deck-container blockquote, .deck-container pre,
@@ -296,10 +300,6 @@ html {
 }
 .deck-child-current .deck-previous, .deck-child-current .deck-before, .deck-child-current .deck-current {
   visibility: visible;
-}
-
-body.deck-container {
-  overflow: visible;
 }
 
 @media screen and (max-device-width: 480px) {
