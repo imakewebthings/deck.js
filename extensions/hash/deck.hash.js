@@ -55,8 +55,8 @@ slide.
 		slide-12, etc.
 
 	options.preventFragmentScroll
-		When deep linking to a hash of a nested slide, this keeps the deck
-		container scrolled to the top by preventing the browser from scrolling
+		When deep linking to a hash of a nested slide, this scrolls the deck
+		container to the top, undoing the natural browser behavior of scrolling
 		to the document fragment on load.
 	*/
 	$.extend(true, $[deck].defaults, {
