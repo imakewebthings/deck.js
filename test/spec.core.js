@@ -231,10 +231,12 @@ describe('Deck JS', function() {
 				});
 				
 				it('should not trigger events that originate within editable elements', function() {
+					var $outside = $('<input type="text" />').appendTo('body');
 					e = jQuery.Event('keydown');
 					e.which = 87;
-					$('.alt-slide1 input').trigger(e);
+					$outside.trigger(e);
 					expect($.deck('getSlide')).toHaveClass('alt-slide1');
+					$outside.remove();
 				});
 			});
 		});
