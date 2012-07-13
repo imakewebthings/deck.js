@@ -42,10 +42,10 @@ describe('Deck JS Navigation Buttons', function() {
 	});
 	
 	it('should update the links hrefs with real fragment ids', function() {
-		expect($(defaults.selectors.previousLink)).toHaveAttr('href', '#');
-		expect($(defaults.selectors.nextLink)).toHaveAttr('href', '#custom-id');
+		expect($(defaults.selectors.previousLink).attr('href')).toMatch(/#$/);
+		expect($(defaults.selectors.nextLink).attr('href')).toMatch('#custom-id');
 		$.deck('go', 2);
-		expect($(defaults.selectors.previousLink)).toHaveAttr('href', '#custom-id');
-		expect($(defaults.selectors.nextLink)).toHaveAttr('href', '#slide-3');
+		expect($(defaults.selectors.previousLink).attr('href')).toMatch('#custom-id');
+		expect($(defaults.selectors.nextLink).attr('href')).toMatch('#slide-3');
 	});
 });

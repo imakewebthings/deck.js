@@ -41,13 +41,13 @@ describe('Deck JS Hash Extension', function() {
 	it('should update the href on slide change', function() {
 		var $hashLink = $(defaults.selectors.hashLink);
 		$.deck('go', 3);
-		expect($hashLink).toHaveAttr('href', '#slide-3');
+		expect($hashLink.attr('href')).toMatch('#slide-3');
 	});
 	
 	it('should use existing ids if they exist', function() {
 		var $hashLink = $(defaults.selectors.hashLink);
 		$.deck('go', 1);
-		expect($hashLink).toHaveAttr('href', '#custom-id');
+		expect($hashLink.attr('href')).toMatch('#custom-id');
 	});
 	
 	it('should update the URL on slide change (if supported)', function() {
