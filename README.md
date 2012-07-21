@@ -2,10 +2,9 @@
 
 A JavaScript library for building modern HTML presentations. deck.js is flexible enough to let advanced CSS and JavaScript authors craft highly customized decks, but also provides templates and themes for the HTML novice to build a standard slideshow.
 
-## Dependencies (included in this repository)
+## Quick Start
 
-- [jQuery](http://jquery.com)
-- [Modernizr](http://modernizr.com)
+This repository includes a `boilerplate.html` as a starting point, with all the extensions included. Just [download it](https://github.com/imakewebthings/deck.js/zipball/stable), open `boilerplate.html`, and start editing your slides.
 
 ## Documentation
 
@@ -14,6 +13,11 @@ Check out the [documentation page](http://imakewebthings.github.com/deck.js/docs
 ## Extensions, Themes, and Related Projects
 
 Take a look at [the wiki](https://github.com/imakewebthings/deck.js/wiki) for lists of extensions, themes, and other related goodies.  If you have a publicly available project of your own, feel free to add to the list.
+
+## Dependencies (included in this repository)
+
+- [jQuery](http://jquery.com)
+- [Modernizr](http://modernizr.com)
 
 ## Tests & Support
 
@@ -55,6 +59,6 @@ If you would like to contribute a patch to deck.js please do as much as you can 
 
 ## License
 
-Copyright (c) 2011 Caleb Troughton
+Copyright (c) 2011-2012 Caleb Troughton
 
 Dual licensed under the [MIT license](https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt) and [GPL license](https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt).
