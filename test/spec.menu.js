@@ -63,4 +63,22 @@ describe('Deck JS Menu', function() {
 			expect($(dsc)).not.toHaveClass(defaults.classes.menu);
 		});
 	});
+
+	describe('touch bindings', function() {
+		var estart;
+		var eend;
+
+		beforeEach(function() {
+			estart = jQuery.Event('touchstart.deckmenu');
+			eend  = jQuery.Event('touchend.deckmenu');
+		});
+		
+		it('should toggle the menu if the screen is touched', function() {
+      $.deck('getOptions').touch.doubletapWindow = Date.now() + 100000;
+			$.deck('getContainer').trigger(estart);
+			$.deck('getContainer').trigger(eend);
+			expect($(dsc)).toHaveClass(defaults.classes.menu);
+		});
+	});
+
 });
