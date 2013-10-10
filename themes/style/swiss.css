@@ -3,56 +3,63 @@
   font-size: 1.75em;
   background: #fff;
 }
-.deck-container .slide {
-  background: #fff;
-}
-.deck-container .slide h1 {
+
+h1 {
   color: #000;
 }
-.deck-container .slide h2 {
+
+h2 {
   color: #c00;
   border-bottom-color: #ccc;
 }
-.deck-container .slide h3 {
+
+h3 {
   color: #888;
 }
-.deck-container .slide pre {
+
+pre {
   border-color: #ccc;
 }
-.deck-container .slide code {
+
+code {
   color: #888;
 }
-.deck-container .slide blockquote {
+
+blockquote {
   font-size: 2em;
   font-style: italic;
   padding: 1em 2em;
   color: #000;
   border-left: 5px solid #ccc;
 }
-.deck-container .slide blockquote p {
+blockquote p {
   margin: 0;
 }
-.deck-container .slide blockquote cite {
+blockquote cite {
   font-size: .5em;
   font-style: normal;
   font-weight: bold;
   color: #888;
 }
-.deck-container .slide ::-moz-selection {
+
+::-moz-selection {
   background: #c00;
   color: #fff;
 }
-.deck-container .slide ::selection {
+
+::selection {
   background: #c00;
   color: #fff;
 }
-.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
+
+a, a:hover, a:focus, a:active, a:visited {
   color: #c00;
   text-decoration: none;
 }
-.deck-container .slide a:hover, .deck-container .slide a:focus {
+a:hover, a:focus {
   text-decoration: underline;
 }
+
 .deck-container > .slide .deck-before, .deck-container > .slide .deck-previous {
   opacity: 0.4;
 }
