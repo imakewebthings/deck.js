@@ -17,10 +17,9 @@
   background: linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
   /* W3C */
   background-attachment: fixed;
-}
-.deck-container > .slide {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
 }
+
 .deck-container > .slide .deck-before, .deck-container > .slide .deck-previous {
   opacity: 0.4;
 }
@@ -30,37 +29,42 @@
 .deck-container > .slide .deck-child-current {
   opacity: 1;
 }
-.deck-container .slide h1, .deck-container .slide h2, .deck-container .slide h3, .deck-container .slide h4, .deck-container .slide h5, .deck-container .slide h6 {
+
+h1, h2, h3, h4, h5, h6 {
   font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
-.deck-container .slide h1 {
+
+h1 {
   color: #08455f;
 }
-.deck-container .slide h2 {
+
+h2 {
   color: #0b7495;
   border-bottom: 0;
 }
-.cssreflections .deck-container .slide h2 {
+.cssreflections h2 {
   line-height: 1;
-  -webkit-box-reflect: below -0.556em -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.3, transparent), color-stop(0.7, rgba(255, 255, 255, 0.1)), to(transparent));
-  -moz-box-reflect: below -0.556em -moz-linear-gradient(top, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.3) 100%);
+  -webkit-box-reflect: below -0.5555em -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.3, transparent), color-stop(0.7, rgba(255, 255, 255, 0.1)), to(transparent));
+  -moz-box-reflect: below -0.5555em -moz-linear-gradient(top, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.3) 100%);
 }
-.deck-container .slide h3 {
+
+h3 {
   color: #000;
 }
-.deck-container .slide pre {
+
+pre {
   border-color: #cde;
   background: #fff;
   position: relative;
   z-index: auto;
   /* http://nicolasgallagher.com/css-drop-shadows-without-images/ */
 }
-.borderradius .deck-container .slide pre {
+.borderradius pre {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.csstransforms.boxshadow .deck-container .slide pre > :first-child:before {
+.csstransforms.boxshadow pre > :first-child:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -70,7 +74,7 @@
   left: 0;
   right: 0;
 }
-.csstransforms.boxshadow .deck-container .slide pre:before, .csstransforms.boxshadow .deck-container .slide pre:after {
+.csstransforms.boxshadow pre:before, .csstransforms.boxshadow pre:after {
   content: "";
   position: absolute;
   z-index: -2;
@@ -82,7 +86,7 @@
   -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 }
-.csstransforms.boxshadow .deck-container .slide pre:before {
+.csstransforms.boxshadow pre:before {
   left: 10px;
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
@@ -90,7 +94,7 @@
   -o-transform: rotate(-3deg);
   transform: rotate(-3deg);
 }
-.csstransforms.boxshadow .deck-container .slide pre:after {
+.csstransforms.boxshadow pre:after {
   right: 10px;
   -webkit-transform: rotate(3deg);
   -moz-transform: rotate(3deg);
@@ -98,10 +102,12 @@
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
 }
-.deck-container .slide code {
+
+code {
   color: #789;
 }
-.deck-container .slide blockquote {
+
+blockquote {
   font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
   font-size: 2em;
   padding: 1em 2em .5em 2em;
@@ -111,12 +117,12 @@
   border: 1px solid #cde;
   z-index: auto;
 }
-.borderradius .deck-container .slide blockquote {
+.borderradius blockquote {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.boxshadow .deck-container .slide blockquote > :first-child:before {
+.boxshadow blockquote > :first-child:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -126,7 +132,7 @@
   left: 0;
   right: 0;
 }
-.boxshadow .deck-container .slide blockquote:after {
+.boxshadow blockquote:after {
   content: "";
   position: absolute;
   z-index: -2;
@@ -134,22 +140,22 @@
   bottom: 10px;
   left: 0;
   right: 50%;
-  -moz-border-radius: 10px/100px;
-  border-radius: 10px/100px;
+  -moz-border-radius: 10px / 100px;
+  border-radius: 10px / 100px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
-.deck-container .slide blockquote p {
+blockquote p {
   margin: 0;
 }
-.deck-container .slide blockquote cite {
+blockquote cite {
   font-size: .5em;
   font-style: normal;
   font-weight: bold;
   color: #888;
 }
-.deck-container .slide blockquote:before {
+blockquote:before {
   content: "“";
   position: absolute;
   top: 0;
@@ -159,21 +165,25 @@
   color: #ccf0f0;
   z-index: 1;
 }
-.deck-container .slide ::-moz-selection {
+
+::-moz-selection {
   background: #08455f;
   color: #fff;
 }
-.deck-container .slide ::selection {
+
+::selection {
   background: #08455f;
   color: #fff;
 }
-.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
+
+a, a:hover, a:focus, a:active, a:visited {
   color: #599;
   text-decoration: none;
 }
-.deck-container .slide a:hover, .deck-container .slide a:focus {
+a:hover, a:focus {
   text-decoration: underline;
 }
+
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #fff;
   opacity: 0.5;

@@ -4,16 +4,15 @@
   color: #aaa;
   background: #000;
 }
-.deck-container .slide {
-  background: #000;
-}
-.deck-container .slide h1 {
+
+h1 {
   color: #0af;
   font-weight: normal;
   font-weight: 100;
   text-shadow: 0 0 50px #0af, 0 0 3px #fff;
 }
-.deck-container .slide h2 {
+
+h2 {
   color: #af0;
   border-bottom-color: #ccc;
   font-weight: normal;
@@ -21,31 +20,35 @@
   text-shadow: 0 0 15px #af0, 0 0 2px #fff;
   border-bottom: 1px solid #333;
 }
-.deck-container .slide h3 {
+
+h3 {
   color: #fff;
   font-weight: normal;
   font-weight: 100;
   text-shadow: 0 0 10px #fff, 0 0 2px #fff;
 }
-.deck-container .slide pre {
+
+pre {
   border-color: #333;
 }
-.deck-container .slide pre code {
+pre code {
   color: #fff;
 }
-.deck-container .slide code {
+
+code {
   color: #f0a;
 }
-.deck-container .slide blockquote {
+
+blockquote {
   font-size: 2em;
   padding: 1em 2em;
   color: #fff;
   border-left: 5px solid #fff;
 }
-.deck-container .slide blockquote p {
+blockquote p {
   margin: 0;
 }
-.deck-container .slide blockquote cite {
+blockquote cite {
   font-size: .5em;
   font-style: normal;
   font-weight: normal;
@@ -53,19 +56,23 @@
   color: #aaa;
   text-shadow: 0 0 15px #fff, 0 0 2px #fff;
 }
-.deck-container .slide ::-moz-selection {
+
+::-moz-selection {
   background: #a0f;
 }
-.deck-container .slide ::selection {
+
+::selection {
   background: #a0f;
 }
-.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
+
+a, a:hover, a:focus, a:active, a:visited {
   color: #f0a;
   text-decoration: none;
 }
-.deck-container .slide a:hover, .deck-container .slide a:focus {
+a:hover, a:focus {
   text-decoration: underline;
 }
+
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #f0a;
   text-shadow: 0 0 3px #fff;
