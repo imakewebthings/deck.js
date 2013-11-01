@@ -13,31 +13,36 @@ on the deck container.
 */
 (function($, deck, undefined) {
 	var $d = $(document),
+	$html = $('html'),
 	rootSlides; // Array of top level slides
-	
+
 	/*
 	Extends defaults/options.
-	
+
 	options.classes.menu
 		This class is added to the deck container when showing the slide menu.
-	
+
+	options.classes.htmlMenu
+		This class is added to the html element when showing the slide menu.
+
 	options.keys.menu
 		The numeric keycode used to toggle between showing and hiding the slide
 		menu.
-		
+
 	options.touch.doubletapWindow
 		Two consecutive touch events within this number of milliseconds will
 		be considered a double tap, and will toggle the menu on touch devices.
 	*/
 	$.extend(true, $[deck].defaults, {
 		classes: {
-			menu: 'deck-menu'
+			menu: 'deck-menu',
+			htmlMenu: 'deck-menu-html'
 		},
-		
+
 		keys: {
 			menu: 77 // m
 		},
-		
+
 		touch: {
 			doubletapWindow: 400
 		}
@@ -45,19 +50,20 @@ on the deck container.
 
 	/*
 	jQuery.deck('showMenu')
-	
+
 	Shows the slide menu by adding the class specified by the menu class option
 	to the deck container.
 	*/
 	$[deck]('extend', 'showMenu', function() {
 		var $c = $[deck]('getContainer'),
 		opts = $[deck]('getOptions');
-		
+
 		if ($c.hasClass(opts.classes.menu)) return;
-		
+
 		// Hide through loading class to short-circuit transitions (perf)
 		$c.addClass([opts.classes.loading, opts.classes.menu].join(' '));
-		
+		$html.addClass(opts.classes.htmlMenu);
+
 		/* Forced to do this in JS until CSS learns second-grade math. Save old
 		style value for restoration when menu is hidden. */
 		if (Modernizr.csstransforms) {
@@ -70,7 +76,7 @@ on the deck container.
 				});
 			});
 		}
-		
+
 		// Need to ensure the loading class renders first, then remove
 		window.setTimeout(function() {
 			$c.removeClass(opts.classes.loading)
@@ -80,19 +86,20 @@ on the deck container.
 
 	/*
 	jQuery.deck('hideMenu')
-	
+
 	Hides the slide menu by removing the class specified by the menu class
 	option from the deck container.
 	*/
 	$[deck]('extend', 'hideMenu', function() {
 		var $c = $[deck]('getContainer'),
 		opts = $[deck]('getOptions');
-		
+
 		if (!$c.hasClass(opts.classes.menu)) return;
-		
+
 		$c.removeClass(opts.classes.menu);
+		$html.removeClass(opts.classes.htmlMenu);
 		$c.addClass(opts.classes.loading);
-		
+
 		/* Restore old style value */
 		if (Modernizr.csstransforms) {
 			$.each(rootSlides, function(i, $slide) {
@@ -101,7 +108,7 @@ on the deck container.
 				$slide.attr('style', oldStyle ? oldStyle : '');
 			});
 		}
-		
+
 		window.setTimeout(function() {
 			$c.removeClass(opts.classes.loading).scrollTop(0);
 		}, 0);
@@ -109,7 +116,7 @@ on the deck container.
 
 	/*
 	jQuery.deck('toggleMenu')
-	
+
 	Toggles between showing and hiding the slide menu.
 	*/
 	$[deck]('extend', 'toggleMenu', function() {
@@ -130,7 +137,7 @@ on the deck container.
 		], function(el, i) {
 			return '.' + el;
 		}).join(', ');
-		
+
 		// Build top level slides array
 		rootSlides = [];
 		$.each($[deck]('getSlides'), function(i, $el) {
@@ -138,7 +145,7 @@ on the deck container.
 				rootSlides.push($el);
 			}
 		});
-		
+
 		// Bind key events
 		$d.unbind('keydown.deckmenu').bind('keydown.deckmenu', function(e) {
 			if (e.which === opts.keys.menu || $.inArray(e.which, opts.keys.menu) > -1) {
@@ -146,24 +153,24 @@ on the deck container.
 				e.preventDefault();
 			}
 		});
-		
+
 		// Double tap to toggle slide menu for touch devices
 		$[deck]('getContainer').unbind('touchstart.deckmenu').bind('touchstart.deckmenu', function(e) {
 			currentSlide = $[deck]('getSlide');
 		})
 		.unbind('touchend.deckmenu').bind('touchend.deckmenu', function(e) {
 			var now = Date.now();
-			
+
 			// Ignore this touch event if it caused a nav change (swipe)
 			if (currentSlide !== $[deck]('getSlide')) return;
-			
+
 			if (now - touchEndTime < opts.touch.doubletapWindow) {
 				$[deck]('toggleMenu');
 				e.preventDefault();
 			}
 			touchEndTime = now;
 		});
-		
+
 		// Selecting slides from the menu
 		$.each($[deck]('getSlides'), function(i, $s) {
 			$s.unbind('click.deckmenu').bind('click.deckmenu', function(e) {
@@ -178,7 +185,7 @@ on the deck container.
 	})
 	.bind('deck.change', function(e, from, to) {
 		var container = $[deck]('getContainer');
-		
+
 		if (container.hasClass($[deck]('getOptions').classes.menu)) {
 			container.scrollTop($[deck]('getSlide', to).offset().top);
 		}
