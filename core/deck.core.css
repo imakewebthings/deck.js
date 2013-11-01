@@ -327,6 +327,9 @@ li {
   padding: .25em 0;
   vertical-align: middle;
 }
+li > ol, li > ul {
+  margin-bottom: inherit;
+}
 
 .deck-before, .deck-previous, .deck-next, .deck-after {
   position: absolute;
