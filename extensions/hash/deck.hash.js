@@ -87,7 +87,7 @@ slide.
 			
 			/* Deep link to slides on init */
 			if (hash === window.location.hash) {
-				$[deck]('go', i);
+				setTimeout(function() {$[deck]('go', i)}, 1);
 			}
 			
 			/* Add internal links to this slide */
