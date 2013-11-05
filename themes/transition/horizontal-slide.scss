@@ -52,7 +52,7 @@
 				-moz-transition:-moz-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 				-ms-transition:-ms-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 				-o-transition:-o-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-				transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+				transition:transform 500ms ease-in-out, opacity 500ms ease-in-out;
 			}
 
 			.deck-next, .deck-after {
