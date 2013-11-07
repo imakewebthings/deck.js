@@ -1,9 +1,11 @@
+@import "reset";
+
 .deck-container {
   font-family: "Helvetica Neue", sans-serif;
   font-size:1.75em;
   background:#fff;
 }
-	
+
 h1 {
   color:#000;
 }
@@ -62,7 +64,7 @@ a {
   > .slide {
     .deck-before, .deck-previous {
       opacity:0.4;
-      
+
       &:not(.deck-child-current) {
         .deck-before, .deck-previous {
           opacity:1;
@@ -78,11 +80,11 @@ a {
   .deck-prev-link, .deck-next-link {
     background:#ccc;
     font-family:serif; // sans-serif arrows x-browser fail
-    
+
     &, &:hover, &:focus, &:active, &:visited {
       color:#fff;
     }
-    
+
     &:hover, &:focus {
       background:#c00;
       text-decoration:none;
@@ -97,7 +99,7 @@ a {
     .slide {
       background:#eee;
     }
-    
+
     .deck-current, .no-touch & .slide:hover {
       background:#ddf;
     }

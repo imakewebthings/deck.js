@@ -5,9 +5,9 @@
 }
 
 @mixin rotate($deg) {
-	-webkit-transform:rotate($deg);    
-	-moz-transform:rotate($deg);   
-	-ms-transform:rotate($deg);   
+	-webkit-transform:rotate($deg);
+	-moz-transform:rotate($deg);
+	-ms-transform:rotate($deg);
 	-o-transform:rotate($deg);
 	transform:rotate($deg);
 }
@@ -18,6 +18,7 @@
 	box-shadow:$x $y $blur $color;
 }
 
+@import "reset";
 
 .deck-container {
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
@@ -33,11 +34,11 @@
 
 	text-shadow:1px 1px 1px rgba(255,255,255,.5);
 }
-	
+
 .deck-container > .slide {
   .deck-before, .deck-previous {
     opacity:0.4;
-    
+
     &:not(.deck-child-current) {
       .deck-before, .deck-previous {
         opacity:1;
@@ -49,7 +50,7 @@
     opacity:1;
   }
 }
-	
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
@@ -199,7 +200,7 @@ a {
     text-decoration:underline;
   }
 }
-	
+
 .deck-container {
   .deck-prev-link, .deck-next-link {
     background:#fff;
@@ -214,31 +215,31 @@ a {
       text-decoration:none;
     }
   }
-  
+
   .deck-status {
     font-size:0.6666em;
   }
-	
+
   &.deck-menu {
     .slide {
       background:transparent;
       @include border-radius(5px);
-      
+
       .rgba & {
         background:rgba(0,0,0,.1);
       }
-      
+
       &.deck-current, .rgba &.deck-current, .no-touch &:hover {
         background:#fff;
       }
     }
   }
-	
+
   .goto-form {
     background:#fff;
     border:1px solid #cde;
     @include border-radius(5px);
-    
+
     .boxshadow & {
       -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
       -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
