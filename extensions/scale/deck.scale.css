@@ -4,6 +4,9 @@ using the scale extension. */
   overflow: hidden;
 }
 
+.csstransforms .deck-container.deck-scale:not(.deck-menu) {
+  overflow: hidden;
+}
 .csstransforms .deck-container.deck-scale:not(.deck-menu) > .slide {
   -webkit-box-sizing: padding-box;
   -moz-box-sizing: padding-box;

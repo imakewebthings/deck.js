@@ -4,16 +4,12 @@ html, body {
 	margin:0;
 }
 
-body.deck-container {
-	overflow-y:auto;
-	position:static;
-}
-
 .deck-container {
 	position:relative;
 	min-height:100%;
 	margin:0 auto;
   overflow:hidden;
+  overflow-y:auto;
 
 	.js & {
 		visibility:hidden;

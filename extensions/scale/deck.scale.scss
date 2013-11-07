@@ -5,13 +5,15 @@ using the scale extension. */
 }
 
 .csstransforms .deck-container.deck-scale:not(.deck-menu) {
+	overflow:hidden;
+
 	> .slide {
 		-webkit-box-sizing: padding-box;
 		-moz-box-sizing: padding-box;
 		box-sizing: padding-box;
 		width:100%;
 		padding-bottom:20px;
-		
+
 		> .deck-slide-scaler {
 			-webkit-transform-origin: 50% 0;
 			-moz-transform-origin: 50% 0;
