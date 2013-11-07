@@ -22,6 +22,15 @@ that use the API provided by core.
 
 	events = {
 		/*
+		This event fires at the beginning of a slide change, before the actual
+		change occurs. Its purpose is to give extension authors a way to prevent
+		the slide change from occuring. This is done by calling preventDefault
+		on the event object within this event. If that is done, the deck.change
+		event will never be fired and the slide will not change.
+		*/
+		beforeChange: 'deck.beforeChange',
+
+		/*
 		This event fires whenever the current slide changes, whether by way of
 		next, prev, or go. The callback function is passed two parameters, from
 		and to, equal to the indices of the old slide and the new slide
@@ -253,7 +262,7 @@ that use the API provided by core.
 		of bounds or doesn't match a slide id the call is ignored.
 		*/
 		go: function(index) {
-			var e = $.Event(events.change),
+			var e = $.Event(events.beforeChange),
 			ndx;
 
 			/* Number index, easy. */
@@ -273,12 +282,11 @@ that use the API provided by core.
 			/* Out of bounds, id doesn't exist, illegal input, eject */
 			if (typeof ndx === 'undefined') return;
 
+			/* Trigger beforeChange. If nothing prevents the change, trigger
+			the slide change. */
 			$d.trigger(e, [current, ndx]);
-			if (e.isDefaultPrevented()) {
-				/* Trigger the event again and undo the damage done by extensions. */
-				$d.trigger(events.change, [ndx, current]);
-			}
-			else {
+			if (!e.isDefaultPrevented()) {
+				$d.trigger(events.change, [current, ndx]);
 				current = ndx;
 				updateStates();
 			}

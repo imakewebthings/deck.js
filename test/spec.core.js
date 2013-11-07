@@ -279,11 +279,11 @@ describe('Deck JS', function() {
 					$d.unbind('deck.change', f);
 				});
 
-				it('should not change slides if default prevented', function() {
-					$d.bind('deck.change', false);
+				it('should not fire if default prevented in beforeChange', function() {
+					$d.bind('deck.beforeChange', false);
 					$.deck('go', 3);
 					expect($.deck('getSlide')).toEqual($.deck('getSlide', 1));
-					$d.unbind('deck.change', false);
+					$d.unbind('deck.beforeChange', false);
 				});
 			});
 
