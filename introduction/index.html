@@ -6,28 +6,31 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
+
 	<title>Getting Started with deck.js</title>
-	
+
 	<meta name="description" content="A jQuery library for modern HTML presentations">
 	<meta name="author" content="Caleb Troughton">
 	<meta name="viewport" content="width=1024, user-scalable=no">
-	
+
 	<!-- Core and extension CSS files -->
-	<link rel="stylesheet" href="../core/deck.core.css">
-	<link rel="stylesheet" href="../extensions/goto/deck.goto.css">
-	<link rel="stylesheet" href="../extensions/menu/deck.menu.css">
-	<link rel="stylesheet" href="../extensions/navigation/deck.navigation.css">
-	<link rel="stylesheet" href="../extensions/status/deck.status.css">
-	<link rel="stylesheet" href="../extensions/hash/deck.hash.css">
-	<link rel="stylesheet" href="../extensions/scale/deck.scale.css">
-	
+	<link rel="stylesheet" media="screen" href="../core/deck.core.css">
+	<link rel="stylesheet" media="screen" href="../extensions/goto/deck.goto.css">
+	<link rel="stylesheet" media="screen" href="../extensions/menu/deck.menu.css">
+	<link rel="stylesheet" media="screen" href="../extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" media="screen" href="../extensions/status/deck.status.css">
+	<link rel="stylesheet" media="screen" href="../extensions/hash/deck.hash.css">
+	<link rel="stylesheet" media="screen" href="../extensions/scale/deck.scale.css">
+
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
-	<link rel="stylesheet" href="../themes/style/web-2.0.css">
-	
+	<link rel="stylesheet" media="screen" href="../themes/style/web-2.0.css">
+
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-	<link rel="stylesheet" href="../themes/transition/horizontal-slide.css">
-	
+	<link rel="stylesheet" media="screen" href="../themes/transition/horizontal-slide.css">
+
+	<!-- Basic black and white print styles -->
+	<link rel="stylesheet" media="print" href="../core/print.css">
+
 	<script src="../modernizr.custom.js"></script>
 </head>
 
@@ -87,12 +90,12 @@
 <section class="slide" id="extensions">
 	<h2>Extensions</h2>
 	<p>Core gives you basic slide functionality with left and right arrow navigation, but you may want more. Here are the ones included in this&nbsp;deck:</p>
-	
+
 	<ul>
 		<li class="slide" id="extensions-goto">
 			<strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
 		</li>
-		
+
 		<li class="slide" id="extensions-hash">
 			<strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
 		</li>
@@ -113,7 +116,7 @@
 			<strong>deck.scale</strong>: Scales each slide to fit within the deck container using CSS Transforms for those browsers that support them.
 		</li>
 	</ul>
-	
+
 	<p class="slide" id="extension-folders">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files. For a complete list of extension modules included in deck.js, check out the&nbsp;<a href="http://imakewebthings.github.com/deck.js/docs">documentation</a>.</p>
 </section>
 
@@ -122,13 +125,13 @@
 	<p>That last slide had a few steps.  To create substeps in slides, just nest them:</p>
 	<pre><code>&lt;section class=&quot;slide&quot;&gt;
   &lt;h2&gt;Extensions&lt;/h2&gt;
-  &lt;p&gt;Core gives you basic slide functionality...&lt;/p&gt;		
+  &lt;p&gt;Core gives you basic slide functionality...&lt;/p&gt;
   &lt;ul&gt;
      &lt;li class=&quot;slide&quot;&gt;
         &lt;h3&gt;deck.goto&lt;/h3&gt;
         &lt;p&gt;Adds a shortcut key to jump to any slide number...&lt;/p&gt;
      &lt;/li&gt;
-     &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;	
+     &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;
      &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;
      &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;
   &lt;/ul&gt;
@@ -157,9 +160,9 @@
 <section class="slide" id="elements-videos">
 	<h2>Other Elements: Video Embeds</h2>
 	<p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
-	
+
 	<iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
-	
+
 	<pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
 </section>
 
