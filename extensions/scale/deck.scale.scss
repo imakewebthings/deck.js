@@ -8,7 +8,6 @@ using the scale extension. */
 	overflow:hidden;
 
 	> .slide {
-		-webkit-box-sizing: padding-box;
 		-moz-box-sizing: padding-box;
 		box-sizing: padding-box;
 		width:100%;
@@ -16,8 +15,6 @@ using the scale extension. */
 
 		> .deck-slide-scaler {
 			-webkit-transform-origin: 50% 0;
-			-moz-transform-origin: 50% 0;
-			-o-transform-origin: 50% 0;
 			-ms-transform-origin: 50% 0;
 			transform-origin: 50% 0;
 		}
@@ -26,8 +23,6 @@ using the scale extension. */
 
 .csstransforms .deck-container.deck-menu .deck-slide-scaler {
 	-webkit-transform:none !important;
-	-moz-transform:none !important;
-	-o-transform:none !important;
 	-ms-transform:none !important;
 	transform:none !important;
 }

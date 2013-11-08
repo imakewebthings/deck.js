@@ -39,15 +39,13 @@ works fine.
 			scale = $container.hasClass(opts.classes.scale) ?
 				baseHeight / slideHeight :
 				1;
-			
-			$.each('Webkit Moz O ms Khtml'.split(' '), function(i, prefix) {
-				if (scale === 1) {
-					$scaler.css(prefix + 'Transform', '');
-				}
-				else {
-					$scaler.css(prefix + 'Transform', 'scale(' + scale + ')');
-				}
-			});
+
+			if (scale === 1) {
+				$scaler.css('transform', '');
+			}
+			else {
+				$scaler.css('transform', 'scale(' + scale + ')');
+			}
 		});
 	}
 
@@ -57,7 +55,7 @@ works fine.
 	options.classes.scale
 		This class is added to the deck container when scaling is enabled.
 		It is enabled by default when the module is included.
-	
+
 	options.classes.scaleSlideWrapper
 		Scaling is done using a wrapper around the contents of each slide. This
 		class is applied to that wrapper.
@@ -133,7 +131,7 @@ works fine.
 		], function(el, i) {
 			return '.' + el;
 		}).join(', ');
-		
+
 		// Build top level slides array
 		rootSlides = [];
 		$.each($[deck]('getSlides'), function(i, $el) {
@@ -141,7 +139,7 @@ works fine.
 				rootSlides.push($el);
 			}
 		});
-		
+
 		// Use a wrapper on each slide to handle content scaling
 		$.each(rootSlides, function(i, $slide) {
 			$slide.children().wrapAll('<div class="' + opts.classes.scaleSlideWrapper + '"/>');

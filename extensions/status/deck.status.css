@@ -1,4 +1,4 @@
-.deck-container .deck-status {
+.deck-status {
   position: absolute;
   bottom: 10px;
   right: 5px;
@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-body.deck-container .deck-status {
+body > .deck-container .deck-status {
   position: fixed;
 }
 

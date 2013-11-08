@@ -1,18 +1,14 @@
-.deck-container {
-	.deck-status {
-		position:absolute;
-		bottom:10px;
-		right:5px;
-		color:#888;
-		z-index:3;
-		margin:0;
-	}
+.deck-status {
+	position:absolute;
+	bottom:10px;
+	right:5px;
+	color:#888;
+	z-index:3;
+	margin:0;
 }
 
-body.deck-container {
-	.deck-status {
-		position:fixed;
-	}
+body > .deck-container .deck-status {
+	position:fixed;
 }
 
 @media print {
