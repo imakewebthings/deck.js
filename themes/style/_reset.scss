@@ -288,8 +288,13 @@ li {
 }
 
 .deck-container {
-  padding:0 48px;
   font-size:16px;
   line-height:1.25;
   color:#444;
+}
+
+.slide {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width:100%;
 }

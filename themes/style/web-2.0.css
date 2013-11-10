@@ -280,41 +280,15 @@ li > ol, li > ul {
 }
 
 .deck-container {
-  padding: 0 48px;
   font-size: 16px;
   line-height: 1.25;
   color: #444;
 }
 
-.deck-container {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  font-size: 1.75em;
-  background: #f4fafe;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4fafe), color-stop(100%, #ccf0f0));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
-  /* Opera11.10+ */
-  background: -ms-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
-  /* IE10+ */
-  background: linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
-  /* W3C */
-  background-attachment: fixed;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
-}
-
-.deck-container > .slide .deck-before, .deck-container > .slide .deck-previous {
-  opacity: 0.4;
-}
-.deck-container > .slide .deck-before:not(.deck-child-current) .deck-before, .deck-container > .slide .deck-before:not(.deck-child-current) .deck-previous, .deck-container > .slide .deck-previous:not(.deck-child-current) .deck-before, .deck-container > .slide .deck-previous:not(.deck-child-current) .deck-previous {
-  opacity: 1;
-}
-.deck-container > .slide .deck-child-current {
-  opacity: 1;
+.slide {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -344,12 +318,8 @@ pre {
   background: #fff;
   position: relative;
   z-index: auto;
-  /* http://nicolasgallagher.com/css-drop-shadows-without-images/ */
-}
-.borderradius pre {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
+  /* http://nicolasgallagher.com/css-drop-shadows-without-images/ */
 }
 .csstransforms.boxshadow pre > :first-child:before {
   content: "";
@@ -369,24 +339,18 @@ pre {
   width: 50%;
   height: 20%;
   max-width: 300px;
-  -webkit-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 }
 .csstransforms.boxshadow pre:before {
   left: 10px;
   -webkit-transform: rotate(-3deg);
-  -moz-transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
-  -o-transform: rotate(-3deg);
   transform: rotate(-3deg);
 }
 .csstransforms.boxshadow pre:after {
   right: 10px;
   -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
   -ms-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
   transform: rotate(3deg);
 }
 
@@ -403,10 +367,6 @@ blockquote {
   position: relative;
   border: 1px solid #cde;
   z-index: auto;
-}
-.borderradius blockquote {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
 }
 .boxshadow blockquote > :first-child:before {
@@ -429,8 +389,6 @@ blockquote {
   right: 50%;
   -moz-border-radius: 10px / 100px;
   border-radius: 10px / 100px;
-  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 blockquote p {
@@ -471,41 +429,72 @@ a:hover, a:focus {
   text-decoration: underline;
 }
 
-.deck-container .deck-prev-link, .deck-container .deck-next-link {
+.deck-container {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 1.75em;
+  background: #f4fafe;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4fafe), color-stop(100%, #ccf0f0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
+  /* Opera11.10+ */
+  background: -ms-linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
+  /* IE10+ */
+  background: linear-gradient(top, #f4fafe 0%, #ccf0f0 100%);
+  /* W3C */
+  background-attachment: fixed;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+.deck-container > .slide {
+  padding: 0 48px;
+}
+
+.slide .deck-before, .slide .deck-previous {
+  opacity: 0.4;
+}
+.slide .deck-before:not(.deck-child-current) .deck-before, .slide .deck-before:not(.deck-child-current) .deck-previous, .slide .deck-previous:not(.deck-child-current) .deck-before, .slide .deck-previous:not(.deck-child-current) .deck-previous {
+  opacity: 1;
+}
+.slide .deck-child-current {
+  opacity: 1;
+}
+
+.deck-prev-link, .deck-next-link {
   background: #fff;
   opacity: 0.5;
 }
-.deck-container .deck-prev-link, .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
+.deck-prev-link, .deck-prev-link:hover, .deck-prev-link:focus, .deck-prev-link:active, .deck-prev-link:visited, .deck-next-link, .deck-next-link:hover, .deck-next-link:focus, .deck-next-link:active, .deck-next-link:visited {
   color: #599;
 }
-.deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {
+.deck-prev-link:hover, .deck-prev-link:focus, .deck-next-link:hover, .deck-next-link:focus {
   opacity: 1;
   text-decoration: none;
 }
-.deck-container .deck-status {
+
+.deck-status {
   font-size: 0.6666em;
 }
-.deck-container.deck-menu .slide {
+
+.deck-menu .slide {
   background: transparent;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.rgba .deck-container.deck-menu .slide {
+.rgba .deck-menu .slide {
   background: rgba(0, 0, 0, 0.1);
 }
-.deck-container.deck-menu .slide.deck-current, .rgba .deck-container.deck-menu .slide.deck-current, .no-touch .deck-container.deck-menu .slide:hover {
+.deck-menu .slide.deck-current, .rgba .deck-menu .slide.deck-current, .no-touch .deck-menu .slide:hover {
   background: #fff;
 }
-.deck-container .goto-form {
+
+.goto-form {
   background: #fff;
   border: 1px solid #cde;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.boxshadow .deck-container .goto-form {
-  -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+.boxshadow .goto-form {
   box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }

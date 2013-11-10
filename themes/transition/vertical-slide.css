@@ -3,65 +3,44 @@
 }
 .csstransitions.csstransforms .deck-container > .slide {
   -webkit-transition: -webkit-transform 500ms ease-in-out;
-  -moz-transition: -moz-transform 500ms ease-in-out;
-  -ms-transition: -ms-transform 500ms ease-in-out;
-  -o-transition: -o-transform 500ms ease-in-out;
   transition: transform 500ms ease-in-out;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0 48px;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .slide {
   position: relative;
   left: 0;
   top: 0;
   -webkit-transition: -webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-  -moz-transition: -moz-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-  -ms-transition: -ms-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-  -o-transition: -o-transform 500ms ease-in-out, opacity 500ms ease-in-out;
   transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-next, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .deck-after {
   visibility: visible;
   -webkit-transform: translate3d(0, 1600px, 0);
-  -moz-transform: translate(0, 1600px);
   -ms-transform: translate(0, 1600px);
-  -o-transform: translate(0, 1600px);
   transform: translate3d(0, 1600px, 0);
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-previous {
   -webkit-transform: translate3d(0, -200%, 0);
-  -moz-transform: translate(0, -200%);
   -ms-transform: translate(0, -200%);
-  -o-transform: translate(0, -200%);
   transform: translate3d(0, -200%, 0);
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-before {
   -webkit-transform: translate3d(0, -400%, 0);
-  -moz-transform: translate(0, -400%);
   -ms-transform: translate(0, -400%);
-  -o-transform: translate(0, -400%);
   transform: translate3d(0, -400%, 0);
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-next {
   -webkit-transform: translate3d(0, 200%, 0);
-  -moz-transform: translate(0, 200%);
   -ms-transform: translate(0, 200%);
-  -o-transform: translate(0, 200%);
   transform: translate3d(0, 200%, 0);
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-after {
   -webkit-transform: translate3d(0, 400%, 0);
-  -moz-transform: translate(0, 400%);
   -ms-transform: translate(0, 400%);
-  -o-transform: translate(0, 400%);
   transform: translate3d(0, 400%, 0);
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-before .slide, .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-previous .slide {
@@ -69,9 +48,7 @@
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .deck-child-current {
   -webkit-transform: none;
-  -moz-transform: none;
   -ms-transform: none;
-  -o-transform: none;
   transform: none;
 }
 .csstransitions.csstransforms .deck-prev-link {
@@ -79,16 +56,12 @@
   right: 8px;
   top: 59px;
   -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 .csstransitions.csstransforms .deck-next-link {
   top: 99px;
   -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }

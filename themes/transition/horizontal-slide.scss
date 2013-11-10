@@ -1,57 +1,39 @@
 @mixin translate($x: 0, $y: 0, $z: 0) {
 	-webkit-transform:translate3d($x, $y, $z);
-	-moz-transform:translate($x, $y);
 	-ms-transform:translate($x, $y);
-	-o-transform:translate($x, $y);
 	transform:translate3d($x, $y, $z);
 }
 
 @mixin transition($prop, $duration, $easing: ease-in-out, $delay: 0ms) {
 	-webkit-transition:$prop $duration $easing $delay;
-	-moz-transition:$prop $duration $easing $delay;
-	-ms-transition:$prop $duration $easing $delay;
-	-o-transition:$prop $duration $easing $delay;
 	transition:$prop $duration $easing $delay;
 }
 
 @mixin transform($val) {
 	-webkit-transform:$val;
-	-moz-transform:$val;
 	-ms-transform:$val;
-	-o-transform:$val;
 	transform:$val;
 }
 
 .csstransitions.csstransforms {
 	overflow-x:hidden;
-	
+
 	.deck-container > .slide {
 		-webkit-transition:-webkit-transform 500ms ease-in-out;
-		-moz-transition:-moz-transform 500ms ease-in-out;
-		-ms-transition:-ms-transform 500ms ease-in-out;
-		-o-transition:-o-transform 500ms ease-in-out;
 		transition:transform 500ms ease-in-out;
 	}
-	
+
 	.deck-container:not(.deck-menu) {
 		> .slide {
 			position:absolute;
 			top:0;
 			left:0;
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			width:100%;
-			padding:0 48px;
-			
+
 			.slide {
 				position:relative;
 				left:0;
 				top:0;
 				-webkit-transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-				-moz-transition:-moz-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-				-ms-transition:-ms-transform 500ms ease-in-out, opacity 500ms ease-in-out;
-				-o-transition:-o-transform 500ms ease-in-out, opacity 500ms ease-in-out;
 				transition:transform 500ms ease-in-out, opacity 500ms ease-in-out;
 			}
 
@@ -76,7 +58,7 @@
 		> .deck-after {
 			@include translate(400%);
 		}
-		
+
 		> .deck-before, > .deck-previous {
 			.slide {
 				visibility:visible;

@@ -1,19 +1,11 @@
 .csstransitions.csstransforms .deck-container .slide {
   -webkit-transition: opacity 500ms ease-in-out 0ms;
-  -moz-transition: opacity 500ms ease-in-out 0ms;
-  -ms-transition: opacity 500ms ease-in-out 0ms;
-  -o-transition: opacity 500ms ease-in-out 0ms;
   transition: opacity 500ms ease-in-out 0ms;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0 48px;
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide .slide {
   position: relative;
