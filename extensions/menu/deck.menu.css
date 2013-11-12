@@ -1,7 +1,6 @@
-.csstransforms.deck-menu-html {
+.deck-menu {
   overflow: auto;
 }
-
 .deck-menu .slide {
   background: #eee;
   position: relative;

@@ -80,7 +80,7 @@ on the deck container.
 		// Need to ensure the loading class renders first, then remove
 		window.setTimeout(function() {
 			$c.removeClass(opts.classes.loading)
-				.scrollTop($[deck]('getSlide').offset().top);
+				.scrollTop($[deck]('getSlide').position().top);
 		}, 0);
 	});
 
@@ -186,9 +186,12 @@ on the deck container.
 	})
 	.bind('deck.change', function(e, from, to) {
 		var container = $[deck]('getContainer');
+		var containerScroll, slideTop;
 
 		if (container.hasClass($[deck]('getOptions').classes.menu)) {
-			container.scrollTop($[deck]('getSlide', to).offset().top);
+			containerScroll = container.scrollTop();
+			slideTop = $[deck]('getSlide', to).position().top;
+			container.scrollTop(containerScroll + slideTop);
 		}
 	});
 })(jQuery, 'deck');
