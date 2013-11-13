@@ -1,28 +1,28 @@
 html, body {
-	height:100%;
-	padding:0;
-	margin:0;
+  height:100%;
+  padding:0;
+  margin:0;
 }
 
 .deck-container {
-	position:relative;
-	min-height:100%;
-	margin:0 auto;
+  position:relative;
+  min-height:100%;
+  margin:0 auto;
   overflow:hidden;
   overflow-y:auto;
 
-	.js & {
-		visibility:hidden;
-	}
+  .js & {
+    visibility:hidden;
+  }
 
-	.ready & {
-		visibility:visible;
-	}
+  .ready & {
+    visibility:visible;
+  }
 
-	.touch & {
-		-webkit-text-size-adjust:none;
-		-moz-text-size-adjust:none;
-	}
+  .touch & {
+    -webkit-text-size-adjust:none;
+    -moz-text-size-adjust:none;
+  }
 }
 
 .deck-loading {
@@ -30,36 +30,36 @@ html, body {
 }
 
 .slide {
-	width:auto;
-	min-height:100%;
-	position:relative;
+  width:auto;
+  min-height:100%;
+  position:relative;
 }
 
 .deck-before, .deck-previous, .deck-next, .deck-after {
-	position:absolute;
-	left:-999em;
-	top:-999em;
+  position:absolute;
+  left:-999em;
+  top:-999em;
 }
 
 .deck-current {
-	z-index:2;
+  z-index:2;
 }
 
 .slide .slide {
-	visibility:hidden;
-	position:static;
-	min-height:0;
+  visibility:hidden;
+  position:static;
+  min-height:0;
 }
 
 .deck-child-current {
-	position:static;
-	z-index:2;
+  position:static;
+  z-index:2;
 
-	.slide {
-		visibility:hidden;
-	}
+  .slide {
+    visibility:hidden;
+  }
 
-	.deck-previous, .deck-before, .deck-current {
-		visibility:visible;
-	}
+  .deck-previous, .deck-before, .deck-current {
+    visibility:visible;
+  }
 }

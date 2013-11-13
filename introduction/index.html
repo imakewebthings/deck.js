@@ -4,34 +4,34 @@
 <!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Getting Started with deck.js</title>
+  <title>Getting Started with deck.js</title>
 
-	<meta name="description" content="A jQuery library for modern HTML presentations">
-	<meta name="author" content="Caleb Troughton">
-	<meta name="viewport" content="width=1024, user-scalable=no">
+  <meta name="description" content="A jQuery library for modern HTML presentations">
+  <meta name="author" content="Caleb Troughton">
+  <meta name="viewport" content="width=1024, user-scalable=no">
 
-	<!-- Core and extension CSS files -->
-	<link rel="stylesheet" media="screen" href="../core/deck.core.css">
-	<link rel="stylesheet" media="screen" href="../extensions/goto/deck.goto.css">
-	<link rel="stylesheet" media="screen" href="../extensions/menu/deck.menu.css">
-	<link rel="stylesheet" media="screen" href="../extensions/navigation/deck.navigation.css">
-	<link rel="stylesheet" media="screen" href="../extensions/status/deck.status.css">
-	<link rel="stylesheet" media="screen" href="../extensions/hash/deck.hash.css">
-	<link rel="stylesheet" media="screen" href="../extensions/scale/deck.scale.css">
+  <!-- Core and extension CSS files -->
+  <link rel="stylesheet" media="screen" href="../core/deck.core.css">
+  <link rel="stylesheet" media="screen" href="../extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="../extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="../extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="../extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="../extensions/hash/deck.hash.css">
+  <link rel="stylesheet" media="screen" href="../extensions/scale/deck.scale.css">
 
-	<!-- Style theme. More available in /themes/style/ or create your own. -->
-	<link rel="stylesheet" media="screen" href="../themes/style/web-2.0.css">
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="../themes/style/web-2.0.css">
 
-	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-	<link rel="stylesheet" media="screen" href="../themes/transition/horizontal-slide.css">
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="../themes/transition/horizontal-slide.css">
 
-	<!-- Basic black and white print styles -->
-	<link rel="stylesheet" media="print" href="../core/print.css">
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="../core/print.css">
 
-	<script src="../modernizr.custom.js"></script>
+  <script src="../modernizr.custom.js"></script>
 </head>
 
 <body>
@@ -39,25 +39,25 @@
 
     <!-- Begin slides -->
     <section class="slide" id="title-slide">
-    	<h1>Getting Started with deck.js</h1>
+      <h1>Getting Started with deck.js</h1>
     </section>
 
     <section class="slide" id="how-to-overview">
-    	<h2>How to Make a Deck</h2>
-    	<ol>
-    		<li>
-    			<h3>Write Slides</h3>
-    			<p>Slide content is simple&nbsp;HTML.</p>
-    		</li>
-    		<li>
-    			<h3>Choose Themes</h3>
-    			<p>One for slide styles and one for deck&nbsp;transitions.</p>
-    		</li>
-    		<li>
-    			<h3>Include Extensions</h3>
-    			<p>Add extra functionality to your deck, or leave it stripped&nbsp;down.</p>
-    		</li>
-    	</ol>
+      <h2>How to Make a Deck</h2>
+      <ol>
+        <li>
+          <h3>Write Slides</h3>
+          <p>Slide content is simple&nbsp;HTML.</p>
+        </li>
+        <li>
+          <h3>Choose Themes</h3>
+          <p>One for slide styles and one for deck&nbsp;transitions.</p>
+        </li>
+        <li>
+          <h3>Include Extensions</h3>
+          <p>Add extra functionality to your deck, or leave it stripped&nbsp;down.</p>
+        </li>
+      </ol>
     </section>
 
     <section class="slide" id="quick-start">
@@ -66,9 +66,9 @@
     </section>
 
     <section class="slide" id="markup">
-    	<h2>The Markup</h2>
-    	<p>Slides are just HTML elements with a class of <code>slide</code>.</p>
-    	<pre><code>&lt;section class=&quot;slide&quot;&gt;
+      <h2>The Markup</h2>
+      <p>Slides are just HTML elements with a class of <code>slide</code>.</p>
+      <pre><code>&lt;section class=&quot;slide&quot;&gt;
   &lt;h2&gt;How to Make a Deck&lt;/h2&gt;
   &lt;ol&gt;
     &lt;li&gt;
@@ -85,51 +85,51 @@
     </section>
 
     <section class="slide" id="themes">
-    	<h2>Style Themes</h2>
-    	<p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
-    	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
-    	<h2>Transition Themes</h2>
-    	<p>Defines transitions between slides using CSS3 transitions.  Less capable browsers fall back to cutaways. But <strong>you</strong> aren&rsquo;t using <em>those</em> browsers to give your presentations, are&nbsp;you&hellip;</p>
-    	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
+      <h2>Style Themes</h2>
+      <p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
+      <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
+      <h2>Transition Themes</h2>
+      <p>Defines transitions between slides using CSS3 transitions.  Less capable browsers fall back to cutaways. But <strong>you</strong> aren&rsquo;t using <em>those</em> browsers to give your presentations, are&nbsp;you&hellip;</p>
+      <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
     </section>
 
     <section class="slide" id="extensions">
-    	<h2>Extensions</h2>
-    	<p>Core gives you basic slide functionality with left and right arrow navigation, but you may want more. Here are the ones included in this&nbsp;deck:</p>
+      <h2>Extensions</h2>
+      <p>Core gives you basic slide functionality with left and right arrow navigation, but you may want more. Here are the ones included in this&nbsp;deck:</p>
 
-    	<ul>
-    		<li class="slide" id="extensions-goto">
-    			<strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
-    		</li>
+      <ul>
+        <li class="slide" id="extensions-goto">
+          <strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
+        </li>
 
-    		<li class="slide" id="extensions-hash">
-    			<strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
-    		</li>
+        <li class="slide" id="extensions-hash">
+          <strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
+        </li>
 
-    		<li class="slide" id="extensions-menu">
-    			<strong>deck.menu</strong>: Adds a menu view, letting you see all slides in a grid. Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal view. Touch devices can double-tap the deck to switch between&nbsp;views.
-    		</li>
+        <li class="slide" id="extensions-menu">
+          <strong>deck.menu</strong>: Adds a menu view, letting you see all slides in a grid. Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal view. Touch devices can double-tap the deck to switch between&nbsp;views.
+        </li>
 
-    		<li class="slide" id="extensions-navigation">
-    			<strong>deck.navigation</strong>: Adds clickable left and right buttons for the less keyboard&nbsp;inclined.
-    		</li>
+        <li class="slide" id="extensions-navigation">
+          <strong>deck.navigation</strong>: Adds clickable left and right buttons for the less keyboard&nbsp;inclined.
+        </li>
 
-    		<li class="slide" id="extensions-status">
-    			<strong>deck.status</strong>: Adds a page number indicator. (current/total)
-    		</li>
+        <li class="slide" id="extensions-status">
+          <strong>deck.status</strong>: Adds a page number indicator. (current/total)
+        </li>
 
-    		<li class="slide" id="extensions-scale">
-    			<strong>deck.scale</strong>: Scales each slide to fit within the deck container using CSS Transforms for those browsers that support them.
-    		</li>
-    	</ul>
+        <li class="slide" id="extensions-scale">
+          <strong>deck.scale</strong>: Scales each slide to fit within the deck container using CSS Transforms for those browsers that support them.
+        </li>
+      </ul>
 
-    	<p class="slide" id="extension-folders">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files. For a complete list of extension modules included in deck.js, check out the&nbsp;<a href="http://imakewebthings.github.com/deck.js/docs">documentation</a>.</p>
+      <p class="slide" id="extension-folders">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files. For a complete list of extension modules included in deck.js, check out the&nbsp;<a href="http://imakewebthings.github.com/deck.js/docs">documentation</a>.</p>
     </section>
 
     <section class="slide" id="nested">
-    	<h2>Nested Slides</h2>
-    	<p>That last slide had a few steps.  To create substeps in slides, just nest them:</p>
-    	<pre><code>&lt;section class=&quot;slide&quot;&gt;
+      <h2>Nested Slides</h2>
+      <p>That last slide had a few steps.  To create substeps in slides, just nest them:</p>
+      <pre><code>&lt;section class=&quot;slide&quot;&gt;
   &lt;h2&gt;Extensions&lt;/h2&gt;
   &lt;p&gt;Core gives you basic slide functionality...&lt;/p&gt;
   &lt;ul&gt;
@@ -145,18 +145,18 @@
     </section>
 
     <section class="slide" id="elements-images">
-    	<h2>Other Elements: Images</h2>
-    	<img src="http://placekitten.com/600/375" alt="Kitties">
-    	<pre><code>&lt;img src=&quot;http://placekitten.com/600/375&quot; alt=&quot;Kitties&quot;&gt;</code></pre>
+      <h2>Other Elements: Images</h2>
+      <img src="http://placekitten.com/600/375" alt="Kitties">
+      <pre><code>&lt;img src=&quot;http://placekitten.com/600/375&quot; alt=&quot;Kitties&quot;&gt;</code></pre>
     </section>
 
     <section class="slide" id="elements-blockquotes">
-    	<h2>Other Elements: Blockquotes</h2>
-    	<blockquote cite="http://example.org">
-    		<p>Food is an important part of a balanced diet.</p>
-    		<p><cite>Fran Lebowitz</cite></p>
-    	</blockquote>
-    	<pre><code>&lt;blockquote cite=&quot;http://example.org&quot;&gt;
+      <h2>Other Elements: Blockquotes</h2>
+      <blockquote cite="http://example.org">
+        <p>Food is an important part of a balanced diet.</p>
+        <p><cite>Fran Lebowitz</cite></p>
+      </blockquote>
+      <pre><code>&lt;blockquote cite=&quot;http://example.org&quot;&gt;
   &lt;p&gt;Food is an important part of a balanced diet.&lt;/p&gt;
   &lt;p&gt;&lt;cite&gt;Fran Lebowitz&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</code></pre>
@@ -164,17 +164,17 @@
 
 
     <section class="slide" id="elements-videos">
-    	<h2>Other Elements: Video Embeds</h2>
-    	<p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
+      <h2>Other Elements: Video Embeds</h2>
+      <p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
 
-    	<iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
+      <iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
 
-    	<pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
+      <pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
     </section>
 
     <section class="slide" id="digging-deeper">
-    	<h2>Digging Deeper</h2>
-    	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
+      <h2>Digging Deeper</h2>
+      <p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
     </section>
 
     <!-- deck.navigation snippet -->
@@ -183,17 +183,17 @@
 
     <!-- deck.status snippet -->
     <p class="deck-status">
-    	<span class="deck-status-current"></span>
-    	/
-    	<span class="deck-status-total"></span>
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
     </p>
 
     <!-- deck.goto snippet -->
     <form action="." method="get" class="goto-form">
-    	<label for="goto-slide">Go to slide:</label>
-    	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-    	<datalist id="goto-datalist"></datalist>
-    	<input type="submit" value="Go">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
     </form>
 
     <!-- deck.hash snippet -->
@@ -214,7 +214,7 @@
 <!-- Initialize the deck -->
 <script>
 $(function() {
-	$.deck('.slide');
+  $.deck('.slide');
 });
 </script>
 

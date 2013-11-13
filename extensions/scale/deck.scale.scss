@@ -1,28 +1,28 @@
 /* Remove this line if you are embedding deck.js in a page and
 using the scale extension. */
 // .csstransforms {
-// 	overflow:hidden;
+//   overflow:hidden;
 // }
 
 .csstransforms .deck-container.deck-scale:not(.deck-menu) {
-	overflow:hidden;
+  overflow:hidden;
 
-	> .slide {
-		-moz-box-sizing: padding-box;
-		box-sizing: padding-box;
-		width:100%;
-		padding-bottom:20px;
+  > .slide {
+    -moz-box-sizing: padding-box;
+    box-sizing: padding-box;
+    width:100%;
+    padding-bottom:20px;
 
-		> .deck-slide-scaler {
-			-webkit-transform-origin: 50% 0;
-			-ms-transform-origin: 50% 0;
-			transform-origin: 50% 0;
-		}
-	}
+    > .deck-slide-scaler {
+      -webkit-transform-origin: 50% 0;
+      -ms-transform-origin: 50% 0;
+      transform-origin: 50% 0;
+    }
+  }
 }
 
 .csstransforms .deck-container.deck-menu .deck-slide-scaler {
-	-webkit-transform:none !important;
-	-ms-transform:none !important;
-	transform:none !important;
+  -webkit-transform:none !important;
+  -ms-transform:none !important;
+  transform:none !important;
 }

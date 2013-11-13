@@ -16,153 +16,172 @@ Note: CSS transforms may make Flash videos render incorrectly.  Presenters
 that need to use video may want to disable scaling to play them.  HTML5 video
 works fine.
 */
-(function($, deck, window, undefined) {
-	var $d = $(document),
-	$w = $(window),
-	baseHeight, // Value to scale against
-	timer, // Timeout id for debouncing
-	rootSlides,
+(function($, undefined) {
+  var $document = $(document);
+  var $window = $(window);
+  var baseHeight, timer, rootSlides;
 
-	/*
-	Internal function to do all the dirty work of scaling the slides.
-	*/
-	scaleDeck = function() {
-		var opts = $[deck]('getOptions'),
-		obh = opts.baseHeight,
-		$container = $[deck]('getContainer'),
-		baseHeight = obh ? obh : $container.height();
+  /*
+  Internal function to do all the dirty work of scaling the slides.
+  */
+  var scaleDeck = function() {
+    var options = $.deck('getOptions');
+    var $container = $.deck('getContainer');
+    var baseHeight = options.baseHeight;
 
-		// Scale each slide down if necessary (but don't scale up)
-		$.each(rootSlides, function(i, $slide) {
-			var slideHeight = $slide.innerHeight(),
-			$scaler = $slide.find('.' + opts.classes.scaleSlideWrapper),
-			scale = $container.hasClass(opts.classes.scale) ?
-				baseHeight / slideHeight :
-				1;
+    if (!baseHeight) {
+      baseHeight = $container.height();
+    }
 
-			if (scale === 1) {
-				$scaler.css('transform', '');
-			}
-			else {
-				$scaler.css('transform', 'scale(' + scale + ')');
-			}
-		});
-	}
+    // Scale each slide down if necessary (but don't scale up)
+    $.each(rootSlides, function(i, $slide) {
+      var slideHeight = $slide.innerHeight();
+      var $scaler = $slide.find('.' + options.classes.scaleSlideWrapper);
+      var shouldScale = $container.hasClass(options.classes.scale);
+      var scale = shouldScale ? baseHeight / slideHeight : 1;
 
-	/*
-	Extends defaults/options.
+      if (scale === 1) {
+        $scaler.css('transform', '');
+      }
+      else {
+        $scaler.css('transform', 'scale(' + scale + ')');
+      }
+    });
+  };
 
-	options.classes.scale
-		This class is added to the deck container when scaling is enabled.
-		It is enabled by default when the module is included.
+  var populateRootSlides = function() {
+    var options = $.deck('getOptions');
+    var slideTest = $.map([
+      options.classes.before,
+      options.classes.previous,
+      options.classes.current,
+      options.classes.next,
+      options.classes.after
+    ], function(el, i) {
+      return '.' + el;
+    }).join(', ');
 
-	options.classes.scaleSlideWrapper
-		Scaling is done using a wrapper around the contents of each slide. This
-		class is applied to that wrapper.
+    rootSlides = [];
+    $.each($.deck('getSlides'), function(i, $slide) {
+      var $parentSlides = $slide.parentsUntil(
+        options.selectors.container,
+        slideTest
+      );
+      if (!$parentSlides.length) {
+        rootSlides.push($slide);
+      }
+    });
+  };
 
-	options.keys.scale
-		The numeric keycode used to toggle enabling and disabling scaling.
+  var wrapRootSlideContent = function() {
+    var options = $.deck('getOptions');
+    var wrap = '<div class="' + options.classes.scaleSlideWrapper + '"/>';
+    $.each(rootSlides, function(i, $slide) {
+      $slide.children().wrapAll(wrap);
+    });
+  };
 
-	options.baseHeight
-		When baseHeight is falsy, as it is by default, the deck is scaled in
-		proportion to the height of the deck container. You may instead specify
-		a height as a number of px, and slides will be scaled against this
-		height regardless of the container size.
+  var scaleOnResizeAndLoad = function() {
+    var options = $.deck('getOptions');
 
-	options.scaleDebounce
-		Scaling on the browser resize event is debounced. This number is the
-		threshold in milliseconds. You can learn more about debouncing here:
-		http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+    $window.unbind('resize.deckscale');
+    $window.bind('resize.deckscale', function() {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(scaleDeck, options.scaleDebounce);
+    });
+    $window.unbind('load.deckscale').bind('load.deckscale', scaleDeck);
+  };
 
-	*/
-	$.extend(true, $[deck].defaults, {
-		classes: {
-			scale: 'deck-scale',
-			scaleSlideWrapper: 'deck-slide-scaler'
-		},
+  var bindKeyEvents = function() {
+    var options = $.deck('getOptions');
+    $document.unbind('keydown.deckscale');
+    $document.bind('keydown.deckscale', function(event) {
+      var isKey = event.which === options.keys.scale;
+      isKey = isKey || $.inArray(event.which, options.keys.scale) > -1;
+      if (isKey) {
+        $.deck('toggleScale');
+        event.preventDefault();
+      }
+    });
+  };
 
-		keys: {
-			scale: 83 // s
-		},
+  /*
+  Extends defaults/options.
 
-		baseHeight: null,
-		scaleDebounce: 200
-	});
+  options.classes.scale
+    This class is added to the deck container when scaling is enabled.
+    It is enabled by default when the module is included.
 
-	/*
-	jQuery.deck('disableScale')
+  options.classes.scaleSlideWrapper
+    Scaling is done using a wrapper around the contents of each slide. This
+    class is applied to that wrapper.
 
-	Disables scaling and removes the scale class from the deck container.
-	*/
-	$[deck]('extend', 'disableScale', function() {
-		$[deck]('getContainer').removeClass($[deck]('getOptions').classes.scale);
-		scaleDeck();
-	});
+  options.keys.scale
+    The numeric keycode used to toggle enabling and disabling scaling.
 
-	/*
-	jQuery.deck('enableScale')
+  options.baseHeight
+    When baseHeight is falsy, as it is by default, the deck is scaled in
+    proportion to the height of the deck container. You may instead specify
+    a height as a number of px, and slides will be scaled against this
+    height regardless of the container size.
 
-	Enables scaling and adds the scale class to the deck container.
-	*/
-	$[deck]('extend', 'enableScale', function() {
-		$[deck]('getContainer').addClass($[deck]('getOptions').classes.scale);
-		scaleDeck();
-	});
+  options.scaleDebounce
+    Scaling on the browser resize event is debounced. This number is the
+    threshold in milliseconds. You can learn more about debouncing here:
+    http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
 
-	/*
-	jQuery.deck('toggleScale')
+  */
+  $.extend(true, $.deck.defaults, {
+    classes: {
+      scale: 'deck-scale',
+      scaleSlideWrapper: 'deck-slide-scaler'
+    },
 
-	Toggles between enabling and disabling scaling.
-	*/
-	$[deck]('extend', 'toggleScale', function() {
-		var $c = $[deck]('getContainer');
-		$[deck]($c.hasClass($[deck]('getOptions').classes.scale) ?
-			'disableScale' : 'enableScale');
-	});
+    keys: {
+      scale: 83 // s
+    },
 
-	$d.bind('deck.init', function() {
-		var opts = $[deck]('getOptions'),
-		slideTest = $.map([
-			opts.classes.before,
-			opts.classes.previous,
-			opts.classes.current,
-			opts.classes.next,
-			opts.classes.after
-		], function(el, i) {
-			return '.' + el;
-		}).join(', ');
+    baseHeight: null,
+    scaleDebounce: 200
+  });
 
-		// Build top level slides array
-		rootSlides = [];
-		$.each($[deck]('getSlides'), function(i, $el) {
-			if (!$el.parentsUntil(opts.selectors.container, slideTest).length) {
-				rootSlides.push($el);
-			}
-		});
+  /*
+  jQuery.deck('disableScale')
 
-		// Use a wrapper on each slide to handle content scaling
-		$.each(rootSlides, function(i, $slide) {
-			$slide.children().wrapAll('<div class="' + opts.classes.scaleSlideWrapper + '"/>');
-		});
+  Disables scaling and removes the scale class from the deck container.
+  */
+  $.deck('extend', 'disableScale', function() {
+    $.deck('getContainer').removeClass($.deck('getOptions').classes.scale);
+    scaleDeck();
+  });
 
-		// Debounce the resize scaling
-		$w.unbind('resize.deckscale').bind('resize.deckscale', function() {
-			window.clearTimeout(timer);
-			timer = window.setTimeout(scaleDeck, opts.scaleDebounce);
-		})
-		// Scale once on load, in case images or something change layout
-		.unbind('load.deckscale').bind('load.deckscale', scaleDeck);
+  /*
+  jQuery.deck('enableScale')
 
-		// Bind key events
-		$d.unbind('keydown.deckscale').bind('keydown.deckscale', function(e) {
-			if (e.which === opts.keys.scale || $.inArray(e.which, opts.keys.scale) > -1) {
-				$[deck]('toggleScale');
-				e.preventDefault();
-			}
-		});
+  Enables scaling and adds the scale class to the deck container.
+  */
+  $.deck('extend', 'enableScale', function() {
+    $.deck('getContainer').addClass($.deck('getOptions').classes.scale);
+    scaleDeck();
+  });
 
-		// Enable scale on init
-		$[deck]('enableScale');
-	});
+  /*
+  jQuery.deck('toggleScale')
+
+  Toggles between enabling and disabling scaling.
+  */
+  $.deck('extend', 'toggleScale', function() {
+    var $container = $.deck('getContainer');
+    var isScaled = $container.hasClass($.deck('getOptions').classes.scale);
+    $.deck(isScaled? 'disableScale' : 'enableScale');
+  });
+
+  $document.bind('deck.init', function() {
+    populateRootSlides();
+    wrapRootSlideContent();
+    scaleOnResizeAndLoad();
+    bindKeyEvents();
+    $.deck('enableScale');
+  });
 })(jQuery, 'deck', this);
 

@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=1024, user-scalable=no">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
 
-	<title>Your deck.js Presentation</title>
+  <title>Your deck.js Presentation</title>
 
-	<!-- Required stylesheet -->
-	<link rel="stylesheet" href="core/deck.core.css">
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" href="core/deck.core.css">
 
-	<!-- Extension CSS files go here. Remove or add as needed. -->
-	<link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
-	<link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
-	<link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
-	<link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
-	<link rel="stylesheet" media="screen" href="extensions/hash/deck.hash.css">
-	<link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/hash/deck.hash.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
 
-	<!-- Style theme. More available in /themes/style/ or create your own. -->
-	<link rel="stylesheet" media="screen" href="themes/style/web-2.0.css">
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/web-2.0.css">
 
-	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-	<link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
 
-	<!-- Basic black and white print styles -->
-	<link rel="stylesheet" media="print" href="core/print.css">
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
 
-	<!-- Required Modernizr file -->
-	<script src="modernizr.custom.js"></script>
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
 </head>
 <body>
-	<div class="deck-container">
+  <div class="deck-container">
 
-		<!-- Begin slides. Just make elements with a class of slide. -->
+    <!-- Begin slides. Just make elements with a class of slide. -->
 
-		<section class="slide">
-			<h1>Slide</h1>
-		</section>
+    <section class="slide">
+      <h1>Slide</h1>
+    </section>
 
-		<section class="slide">
-			<h1>Content</h1>
-		</section>
+    <section class="slide">
+      <h1>Content</h1>
+    </section>
 
-		<section class="slide">
-			<h1>Here</h1>
-		</section>
+    <section class="slide">
+      <h1>Here</h1>
+    </section>
 
-		<!-- End slides. -->
+    <!-- End slides. -->
 
-	<!-- Begin extension snippets. Add or remove as needed. -->
+  <!-- Begin extension snippets. Add or remove as needed. -->
 
-		<!-- deck.navigation snippet -->
-		<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-		<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    <!-- deck.navigation snippet -->
+    <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+    <a href="#" class="deck-next-link" title="Next">&#8594;</a>
 
-		<!-- deck.status snippet -->
-		<p class="deck-status">
-			<span class="deck-status-current"></span>
-			/
-			<span class="deck-status-total"></span>
-		</p>
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-		<!-- deck.goto snippet -->
-		<form action="." method="get" class="goto-form">
-			<label for="goto-slide">Go to slide:</label>
-			<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-			<datalist id="goto-datalist"></datalist>
-			<input type="submit" value="Go">
-		</form>
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
 
-		<!-- deck.hash snippet -->
-		<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-		<!-- End extension snippets. -->
-	</div>
+    <!-- End extension snippets. -->
+  </div>
 
 <!-- Required JS files. -->
 <script src="jquery.min.js"></script>
@@ -91,9 +91,9 @@
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
-	$(function() {
-		$.deck('.slide');
-	});
+  $(function() {
+    $.deck('.slide');
+  });
 </script>
 </body>
 </html>

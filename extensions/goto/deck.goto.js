@@ -12,159 +12,178 @@ for jumping to any slide number/id in the deck (and processes that form
 accordingly). The form-showing state is indicated by the presence of a class on
 the deck container.
 */
-(function($, deck, undefined) {
-	var $d = $(document);
-	
-	/*
-	Extends defaults/options.
-	
-	options.classes.goto
-		This class is added to the deck container when showing the Go To Slide
-		form.
-		
-	options.selectors.gotoDatalist
-		The element that matches this selector is the datalist element that will
-		be populated with options for each of the slide ids.  In browsers that
-		support the datalist element, this provides a drop list of slide ids to
-		aid the user in selecting a slide.
-		
-	options.selectors.gotoForm
-		The element that matches this selector is the form that is submitted
-		when a user hits enter after typing a slide number/id in the gotoInput
-		element.
-	
-	options.selectors.gotoInput
-		The element that matches this selector is the text input field for
-		entering a slide number/id in the Go To Slide form.
-		
-	options.keys.goto
-		The numeric keycode used to show the Go To Slide form.
-		
-	options.countNested
-		If false, only top level slides will be counted when entering a
-		slide number.
-	*/
-	$.extend(true, $[deck].defaults, {
-		classes: {
-			goto: 'deck-goto'
-		},
-		
-		selectors: {
-			gotoDatalist: '#goto-datalist',
-			gotoForm: '.goto-form',
-			gotoInput: '#goto-slide'
-		},
-		
-		keys: {
-			goto: 71 // g
-		},
-		
-		countNested: true
-	});
+(function($, undefined) {
+  var $document = $(document);
+  var rootCounter;
 
-	/*
-	jQuery.deck('showGoTo')
-	
-	Shows the Go To Slide form by adding the class specified by the goto class
-	option to the deck container.
-	*/
-	$[deck]('extend', 'showGoTo', function() {
-		$[deck]('getContainer').addClass($[deck]('getOptions').classes.goto);
-		$($[deck]('getOptions').selectors.gotoInput).focus();
-	});
+  var bindKeyEvents = function() {
+    $document.unbind('keydown.deckgoto');
+    $document.bind('keydown.deckgoto', function(event) {
+      var key = $.deck('getOptions').keys.goto;
+      if (event.which === key || $.inArray(event.which, key) > -1) {
+        event.preventDefault();
+        $.deck('toggleGoTo');
+      }
+    });
+  };
 
-	/*
-	jQuery.deck('hideGoTo')
-	
-	Hides the Go To Slide form by removing the class specified by the goto class
-	option from the deck container.
-	*/
-	$[deck]('extend', 'hideGoTo', function() {
-		$($[deck]('getOptions').selectors.gotoInput).blur();
-		$[deck]('getContainer').removeClass($[deck]('getOptions').classes.goto);
-	});
+  var populateDatalist = function() {
+    var options = $.deck('getOptions');
+    var $datalist = $(options.selectors.gotoDatalist);
 
-	/*
-	jQuery.deck('toggleGoTo')
-	
-	Toggles between showing and hiding the Go To Slide form.
-	*/
-	$[deck]('extend', 'toggleGoTo', function() {
-		$[deck]($[deck]('getContainer').hasClass($[deck]('getOptions').classes.goto) ? 'hideGoTo' : 'showGoTo');
-	});
-	
-	$d.bind('deck.init', function() {
-		var opts = $[deck]('getOptions'),
-		$datalist = $(opts.selectors.gotoDatalist),
-		slideTest = $.map([
-			opts.classes.before,
-			opts.classes.previous,
-			opts.classes.current,
-			opts.classes.next,
-			opts.classes.after
-		], function(el, i) {
-			return '.' + el;
-		}).join(', '),
-		rootCounter = 1;
-		
-		// Bind key events
-		$d.unbind('keydown.deckgoto').bind('keydown.deckgoto', function(e) {
-			var key = $[deck]('getOptions').keys.goto;
-			
-			if (e.which === key || $.inArray(e.which, key) > -1) {
-				e.preventDefault();
-				$[deck]('toggleGoTo');
-			}
-		});
-		
-		/* Populate datalist and work out countNested*/
-		$.each($[deck]('getSlides'), function(i, $slide) {
-			var id = $slide.attr('id'),
-			$parentSlides = $slide.parentsUntil(opts.selectors.container, slideTest);
-			
-			if (id) {
-				$datalist.append('<option value="' + id + '">');
-			}
-			
-			if ($parentSlides.length) {
-				$slide.removeData('rootIndex');
-			}
-			else if (!opts.countNested) {
-				$slide.data('rootIndex', rootCounter);
-				++rootCounter;
-			}
-		});
-		
-		// Process form submittal, go to the slide entered
-		$(opts.selectors.gotoForm)
-		.unbind('submit.deckgoto')
-		.bind('submit.deckgoto', function(e) {
-			var $field = $($[deck]('getOptions').selectors.gotoInput),
-			ndx = parseInt($field.val(), 10);
-			
-			if (!$[deck]('getOptions').countNested) {
-			  if (ndx >= rootCounter) return false;
-				$.each($[deck]('getSlides'), function(i, $slide) {
-					if ($slide.data('rootIndex') === ndx) {
-						ndx = i + 1;
-						return false;
-					}
-				});
-			}
-			
-			$[deck]('go', isNaN(ndx) ? $field.val() : ndx - 1);
-			$[deck]('hideGoTo');
-			$field.val('');
-			
-			e.preventDefault();
-		});
-		
-		// Dont let keys in the input trigger deck actions
-		$(opts.selectors.gotoInput)
-		.unbind('keydown.deckgoto')
-		.bind('keydown.deckgoto', function(e) {
-			e.stopPropagation();
-		});
-	});
-})(jQuery, 'deck');
+    $.each($.deck('getSlides'), function(i, $slide) {
+      var id = $slide.attr('id');
+      if (id) {
+        $datalist.append('<option value="' + id + '">');
+      }
+    });
+  };
+
+  var markRootSlides = function() {
+    var options = $.deck('getOptions');
+    var slideTest = $.map([
+      options.classes.before,
+      options.classes.previous,
+      options.classes.current,
+      options.classes.next,
+      options.classes.after
+    ], function(el, i) {
+      return '.' + el;
+    }).join(', ');
+
+    rootCounter = 0;
+    $.each($.deck('getSlides'), function(i, $slide) {
+      var $parentSlides = $slide.parentsUntil(
+        options.selectors.container,
+        slideTest
+      );
+
+      if ($parentSlides.length) {
+        $slide.removeData('rootIndex');
+      }
+      else if (!options.countNested) {
+        ++rootCounter;
+        $slide.data('rootIndex', rootCounter);
+      }
+    });
+  };
+
+  var handleFormSubmit = function() {
+    var options = $.deck('getOptions');
+    var $form = $(options.selectors.gotoForm);
+
+    $form.unbind('submit.deckgoto');
+    $form.bind('submit.deckgoto', function(event) {
+      var $field = $(options.selectors.gotoInput);
+      var indexOrId = $field.val();
+      var index = parseInt(indexOrId, 10);
+
+      if (!options.countNested) {
+        if (!isNaN(index) && index >= rootCounter) {
+          return false;
+        }
+        $.each($.deck('getSlides'), function(i, $slide) {
+          if ($slide.data('rootIndex') === index) {
+            index = i + 1;
+            return false;
+          }
+        });
+      }
+
+      $.deck('go', isNaN(index) ? indexOrId : index - 1);
+      $.deck('hideGoTo');
+      $field.val('');
+      event.preventDefault();
+    });
+  };
+
+  /*
+  Extends defaults/options.
+
+  options.classes.goto
+    This class is added to the deck container when showing the Go To Slide
+    form.
+
+  options.selectors.gotoDatalist
+    The element that matches this selector is the datalist element that will
+    be populated with options for each of the slide ids.  In browsers that
+    support the datalist element, this provides a drop list of slide ids to
+    aid the user in selecting a slide.
+
+  options.selectors.gotoForm
+    The element that matches this selector is the form that is submitted
+    when a user hits enter after typing a slide number/id in the gotoInput
+    element.
+
+  options.selectors.gotoInput
+    The element that matches this selector is the text input field for
+    entering a slide number/id in the Go To Slide form.
+
+  options.keys.goto
+    The numeric keycode used to show the Go To Slide form.
+
+  options.countNested
+    If false, only top level slides will be counted when entering a
+    slide number.
+  */
+  $.extend(true, $.deck.defaults, {
+    classes: {
+      goto: 'deck-goto'
+    },
+
+    selectors: {
+      gotoDatalist: '#goto-datalist',
+      gotoForm: '.goto-form',
+      gotoInput: '#goto-slide'
+    },
+
+    keys: {
+      goto: 71 // g
+    },
+
+    countNested: true
+  });
+
+  /*
+  jQuery.deck('showGoTo')
+
+  Shows the Go To Slide form by adding the class specified by the goto class
+  option to the deck container.
+  */
+  $.deck('extend', 'showGoTo', function() {
+    var options = $.deck('getOptions');
+    $.deck('getContainer').addClass(options.classes.goto);
+    $(options.selectors.gotoInput).focus();
+  });
+
+  /*
+  jQuery.deck('hideGoTo')
+
+  Hides the Go To Slide form by removing the class specified by the goto class
+  option from the deck container.
+  */
+  $.deck('extend', 'hideGoTo', function() {
+    var options = $.deck('getOptions');
+    $(options.selectors.gotoInput).blur();
+    $.deck('getContainer').removeClass(options.classes.goto);
+  });
+
+  /*
+  jQuery.deck('toggleGoTo')
+
+  Toggles between showing and hiding the Go To Slide form.
+  */
+  $.deck('extend', 'toggleGoTo', function() {
+    var options = $.deck('getOptions');
+    var hasGotoClass = $.deck('getContainer').hasClass(options.classes.goto);
+    $.deck(hasGotoClass ? 'hideGoTo' : 'showGoTo');
+  });
+
+  $document.bind('deck.init', function() {
+    bindKeyEvents();
+    populateDatalist();
+    markRootSlides();
+    handleFormSubmit();
+  });
+})(jQuery);
 
