@@ -86,7 +86,7 @@ on the deck container.
     $.each($.deck('getSlides'), function(i, $slide) {
       $slide.unbind('click.deckmenu');
       $slide.bind('click.deckmenu', function(event) {
-        if (!$.deck('getContainer').hasClass(opts.classes.menu)) {
+        if (!$.deck('getContainer').hasClass(options.classes.menu)) {
           return;
         }
         $.deck('go', i);
