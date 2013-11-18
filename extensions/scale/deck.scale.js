@@ -45,6 +45,9 @@ works fine.
       }
       else {
         $scaler.css('transform', 'scale(' + scale + ')');
+        window.setTimeout(function() {
+          $container.scrollTop(0)
+        }, 1);
       }
     });
   };
@@ -89,7 +92,9 @@ works fine.
       window.clearTimeout(timer);
       timer = window.setTimeout(scaleDeck, options.scaleDebounce);
     });
-    $window.unbind('load.deckscale').bind('load.deckscale', scaleDeck);
+    $window.unbind('load.deckscale').bind('load.deckscale', function() {
+      $.deck('enableScale');
+    });
   };
 
   var bindKeyEvents = function() {
@@ -181,7 +186,6 @@ works fine.
     wrapRootSlideContent();
     scaleOnResizeAndLoad();
     bindKeyEvents();
-    $.deck('enableScale');
   });
 })(jQuery, 'deck', this);
 
