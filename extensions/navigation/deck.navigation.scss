@@ -1,0 +1,44 @@
+.deck-prev-link, .deck-next-link {
+  display:none;
+  position:absolute;
+  z-index:3;
+  top:50%;
+  width:32px;
+  height:32px;
+  margin-top:-16px;
+  font-size:20px;
+  font-weight:bold;
+  line-height:32px;
+  vertical-align:middle;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#888;
+  border-radius:16px;
+
+  &:hover, &:focus, &:active, &:visited {
+    color:#fff;
+  }
+}
+
+.deck-prev-link {
+  left:8px;
+}
+
+.deck-next-link {
+  right:8px;
+}
+
+.deck-container:hover .deck-prev-link, .deck-container:hover .deck-next-link {
+  display:block;
+
+  &.deck-nav-disabled, .touch & {
+    display:none;
+  }
+}
+
+@media print {
+  .deck-prev-link, .deck-next-link {
+    display:none !important;
+  }
+}

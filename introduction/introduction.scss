@@ -1,0 +1,42 @@
+.deck-frame {
+	display:block;
+	width:940px;
+	margin:16px auto 24px auto;
+	height:560px;
+	box-shadow:0 5px 10px rgba(0,0,0,.3);
+
+	.no-boxshadow & {
+		border:1px solid #e4e4e4;
+	}
+}
+
+.theme-menu {
+	display:none;
+	float:left;
+	color:#888;
+	border-left:1px solid #555;
+	border-right:1px solid #555;
+	line-height:32px;
+	height:32px;
+	font-family:sans-serif;
+	padding-right:15px;
+	margin-left:15px;
+
+	.js & {
+		display:block;
+	}
+
+	label {
+		font-size:12px;
+		vertical-align:baseline;
+		margin:0 4px 0 15px;
+	}
+}
+
+
+@media print {
+	header {
+		display:none !important;
+	}
+}
+

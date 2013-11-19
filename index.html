@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>deck.js &raquo; Modern HTML Presentations</title>
+
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=960">
+
+	<link rel="stylesheet" href="./core/deck.core.css">
+	<link rel="stylesheet" href="./css/common.css">
+	<link rel="stylesheet" href="./css/home.css">
+
+	<script src="modernizr.custom.js"></script>
+</head>
+
+<body class="home">
+
+<header>
+	<nav>
+		<h1><a href=".">deck.js</a></h1>
+		<ul>
+			<li><a href="./introduction">Getting Started</a></li>
+			<li><a href="./docs">Docs</a></li>
+			<li><a href="http://github.com/imakewebthings/deck.js">GitHub</a></li>
+		</ul>
+	</nav>
+</header>
+
+<article>
+	<section class="slide deck-current" id="intro">
+		<div>
+			<hgroup>
+				<h1>deck.js</h1>
+				<h2>Modern HTML Presentations</h2>
+			</hgroup>
+
+			<p>
+				<a href="https://github.com/imakewebthings/deck.js/zipball/stable" class="download">Download</a>
+				or <a href="#sample" class="next">&#8594;</a> to learn more.
+			</p>
+		</div>
+	</section>
+
+	<section class="slide deck-next" id="sample">
+		<pre><code>&lt;body class=&quot;deck-container<span class="deck-state"> on-slide-1</span>&quot;&gt;
+  &lt;section class=&quot;slide<span class="slide-state"> deck-previous</span>&quot;&gt;
+    &lt;h1&gt;My Presentation&lt;/h1&gt;
+  &lt;/section&gt;
+
+  <span class="example-current">&lt;section class=&quot;slide<span class="slide-state"> deck-current</span>&quot;&gt;
+    &lt;h2&gt;Slide Header&lt;/h2&gt;
+    &lt;p&gt;Here is a list of points:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Point 1&lt;/li&gt;
+      &lt;li&gt;Point 2&lt;/li&gt;
+      &lt;li&gt;Point 3&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/section&gt;</span>
+
+  <span class="example-next">&lt;section class=&quot;slide<span class="slide-state"> deck-next</span>&quot;&gt;
+    &lt;h2&gt;Another Slide&lt;/h2&gt;
+    &lt;blockquote cite=&quot;http://example.com&quot;&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;
+      &lt;p&gt;&lt;cite&gt;Cicero&lt;/cite&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/section&gt;</span>
+&lt;/body&gt;</code></pre>
+
+		<h2>How Does It Work?</h2>
+
+		<div class="sample-content">
+			<p class="slide" id="slides-html">Slides are basic HTML.</p>
+			<p class="slide" id="slide-states">The <a href="./docs/#deck-core">deck.core</a> module keeps track of slide states</span> <span class="slide" id="deck-states">and deck states</span><span class="slide" id="css-role">, leaving CSS to define what each state look like&hellip;</span></p>
+			<p class="slide" id="css-transition">&hellip;and how to transition between&nbsp;them.</p>
+			<p class="slide" id="extensions"><a href="./introduction/#extensions">Extensions</a> use core <a href="./docs/#deck-core-events">events</a> and <a href="./docs/#deck-core-methods">methods</a> to add goodies<span class="slide" id="add-what-you-want">, giving presenters the freedom to add what they want</span><span class="slide" id="leave-stuff-out"> and leave out what they don&rsquo;t.</span></p>
+		</div>
+	</section>
+
+	<section class="slide deck-after" id="now-what">
+		<h2>Great. Now What?</h2>
+
+		<div class="personas">
+			<div class="slide" id="noob">
+				<h3>Only Know HTML?</h3>
+				<p>Use included premade themes and templates to start making your deck&nbsp;immediately.</p>
+				<p><a class="cta" href="./introduction">Get Started</a></p>
+			</div>
+
+			<div class="slide" id="badass">
+				<h3>CSS+JS Badass?</h3>
+				<p>Make custom decks with the API exposed by the core and&nbsp;extensions.</p>
+				<p><a class="cta" href="./docs">View Docs</a></p>
+			</div>
+
+			<div class="slide" id="in-between">
+				<h3>Something In-between?</h3>
+				<p>Take a little from both worlds. Tweak a theme, hack an extension, or write some of your&nbsp;own.</p>
+			</div>
+		</div>
+
+		<p class="slide" id="download-now"><a href="https://github.com/imakewebthings/deck.js/zipball/stable" class="download">Download</a></p>
+	</section>
+
+	<form action="." method="get" class="goto-form">
+		<label for="goto-slide">Go to slide:</label>
+		<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+		<datalist id="goto-datalist"></datalist>
+		<input type="submit" value="Go">
+	</form>
+
+	<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+	<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+	<p class="deck-status">
+		<span class="deck-status-current"></span>
+		/
+		<span class="deck-status-total"></span>
+	</p>
+</article>
+
+<footer>
+	<p>A project of <a href="http://imakewebthings.com">I Make Web Things</a></p>
+</footer>
+
+<script src="jquery.min.js"></script>
+
+<script src="./core/deck.core.js"></script>
+<script src="./extensions/goto/deck.goto.js"></script>
+<script src="./extensions/navigation/deck.navigation.js"></script>
+<script src="./extensions/status/deck.status.js"></script>
+<script src="./extensions/hash/deck.hash.js"></script>
+<script src="home.js"></script>
+
+</body>
+</html>

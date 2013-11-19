@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>deck.js - Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine.css">
+  <script type="text/javascript" src="../modernizr.custom.js"></script>
+  <script type="text/javascript" src="lib/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-html.js"></script>
+  <script src="../jquery.min.js"></script>
+  <script type="text/javascript" src="lib/jasmine-jquery.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="../core/deck.core.js"></script>
+  <script type="text/javascript" src="../extensions/hash/deck.hash.js"></script>
+  <script type="text/javascript" src="../extensions/menu/deck.menu.js"></script>
+  <script type="text/javascript" src="../extensions/goto/deck.goto.js"></script>
+  <script type="text/javascript" src="../extensions/status/deck.status.js"></script>
+  <script type="text/javascript" src="../extensions/navigation/deck.navigation.js"></script>
+  <script type="text/javascript" src="../extensions/scale/deck.scale.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="settings.js"></script>
+  <script type="text/javascript" src="spec.core.js"></script>
+  <script type="text/javascript" src="spec.menu.js"></script>
+  <script type="text/javascript" src="spec.goto.js"></script>
+  <script type="text/javascript" src="spec.navigation.js"></script>
+  <script type="text/javascript" src="spec.hash.js"></script>
+  <script type="text/javascript" src="spec.status.js"></script>
+  <script type="text/javascript" src="spec.scale.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+</body>
+</html>

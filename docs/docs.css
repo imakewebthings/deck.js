@@ -1,0 +1,310 @@
+.docs > article {
+  padding: 6px 0 0 230px;
+  width: 730px;
+  margin: 0 auto;
+}
+.docs > article pre {
+  border: 1px solid #ddd;
+  padding: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
+  position: relative;
+}
+.docs > article pre:before {
+  position: absolute;
+  content: "";
+  z-index: -2;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 10px/150px;
+  border-radius: 10px/150px;
+}
+.docs > article code {
+  color: #888;
+}
+.docs > article > h1 {
+  position: absolute;
+  left: -999em;
+}
+.docs > article > nav {
+  position: fixed;
+  z-index: 2;
+  top: 32px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 1.25;
+}
+.docs > article > nav div {
+  width: 960px;
+  margin: 0 auto;
+  height: 100%;
+}
+.docs > article > nav div > ul {
+  height: 100%;
+  width: 225px;
+  overflow-y: auto;
+}
+.docs > article > nav div > ul > li {
+  display: block;
+  width: 200px;
+}
+.docs > article > nav div > ul > li > a {
+  padding: 0 10px;
+  display: block;
+  background: #aaa;
+  color: #fff;
+  height: 26px;
+  line-height: 26px;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 6px 0;
+}
+.docs > article > nav div > ul > li > a:hover {
+  background: #599;
+}
+.docs > article > nav div > ul > li.selected > a {
+  background: #599;
+  cursor: default;
+}
+.docs > article > nav div > ul > li > ul > li > a {
+  display: block;
+  padding-left: 25px;
+  color: #aaa;
+}
+.docs > article > nav div > ul > li > ul > li > a:hover {
+  color: #444;
+}
+.docs > article > nav div > ul > li > ul > li.selected > a {
+  color: #444;
+  cursor: default;
+}
+.docs > article > nav div > ul > li > ul > li > ul {
+  padding-left: 40px;
+}
+.docs > article > nav div > ul > li > ul > li > ul > li > a {
+  display: block;
+  font-weight: 100;
+  color: #444;
+}
+.docs > article > nav div > ul > li > ul > li > ul > li > a:hover, .docs > article > nav div > ul > li > ul > li > ul > li > a:focus {
+  text-decoration: underline;
+}
+.docs > article > nav div > ul > li > ul > li > ul > li.selected > a {
+  text-decoration: underline;
+  cursor: default;
+}
+.js .docs > article > nav div > ul > li ul {
+  display: none;
+}
+.js .docs > article > nav div > ul > li.selected > ul, .js .docs > article > nav div > ul > li .selected > ul {
+  display: block;
+}
+.docs > article > nav a {
+  text-decoration: none;
+}
+.docs > article > section {
+  padding: 0 20px 64px 20px;
+  position: relative;
+  z-index: 3;
+}
+.docs > article > section a {
+  color: #599;
+  text-decoration: none;
+}
+.docs > article > section a:hover, .docs > article > section a:focus {
+  text-decoration: underline;
+}
+.docs > article > section h2 {
+  font-size: 48px;
+  font-weight: bold;
+  padding: 0 20px;
+  width: 100%;
+  margin-left: -20px;
+  height: 64px;
+  line-height: 64px;
+  background: #333;
+  color: #fff;
+}
+.docs > article > section > p {
+  margin-top: 32px;
+}
+.docs > article > section > section > h3 {
+  font-size: 36px;
+  height: 64px;
+  line-height: 64px;
+  font-weight: 100;
+  color: #888;
+  text-align: right;
+  margin-top: 64px;
+}
+
+.methods pre {
+  margin: 16px 0;
+}
+.methods > section {
+  padding-top: 64px;
+}
+.methods > section > header {
+  padding: 0 20px;
+  margin-left: -20px;
+  width: 100%;
+  background: #444;
+  line-height: 36px;
+  height: 36px;
+  overflow: hidden;
+  zoom: 1;
+}
+.ie7 .methods > section > header {
+  width: auto;
+}
+.methods > section > header > h4 {
+  float: left;
+  font-size: 24px;
+  color: #fff;
+}
+.methods > section > header > h4 > code {
+  font-size: 16px;
+  color: #888;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1), -1px -1px 2px rgba(0, 0, 0, 0.2);
+}
+.methods > section > header > p {
+  float: right;
+  color: #888;
+  font-size: 14px;
+}
+.methods > section > header > p > strong {
+  color: #aaa;
+  font-weight: normal;
+}
+.methods > section > dl {
+  margin: 5px 0;
+  padding-left: 15px;
+  border-left: 3px solid #ddd;
+}
+.methods > section > dl > dt {
+  float: left;
+  margin-right: 5px;
+}
+.methods > section > dl > dd {
+  display: block;
+  font-weight: 100;
+  color: #888;
+}
+.methods > section > p {
+  margin: 16px 0;
+}
+
+.options pre, .events pre, .theming pre {
+  margin: 16px 0;
+}
+.options > dl > dt, .events > dl > dt, .theming > dl > dt {
+  font-weight: bold;
+}
+.options > dl > dd, .events > dl > dd, .theming > dl > dd {
+  padding: 4px 0 16px 20px;
+}
+.options > h3 + dl, .options > h3 + p, .options > h3 + pre, .events > h3 + dl, .events > h3 + p, .events > h3 + pre, .theming > h3 + dl, .theming > h3 + p, .theming > h3 + pre {
+  margin: 64px 0 32px 0;
+}
+
+#sticky-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  overflow: visible;
+  z-index: 4;
+}
+#sticky-wrapper .inner {
+  padding-left: 230px;
+  margin: 0 auto;
+  width: 730px;
+  height: 1px;
+  overflow: visible;
+}
+#sticky-wrapper h2 {
+  text-indent: 20px;
+  height: 64px;
+  line-height: 64px;
+  background: #599;
+  color: #fff;
+  font-size: 48px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+}
+#sticky-wrapper h2:before {
+  position: absolute;
+  content: "";
+  z-index: -2;
+  top: 50%;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  -moz-border-radius: 200px/10px;
+  border-radius: 200px/10px;
+}
+#sticky-wrapper h3 {
+  float: right;
+  font-size: 36px;
+  font-weight: 100;
+  color: #2d6969;
+  margin: -50px 20px 0 0;
+  position: relative;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.warning {
+  background: #ffb;
+  padding: 10px;
+  border: 1px solid #ee9;
+}
+
+.hidden {
+  display: none;
+}
+
+.expandable > a {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEFEMTY4NDZBRjRFMTFFMDk1NzdFMUI1ODc4RjUyQTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEFEMTY4NDdBRjRFMTFFMDk1NzdFMUI1ODc4RjUyQTkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFMkUxQjdFN0FGNEExMUUwOTU3N0UxQjU4NzhGNTJBOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFMkUxQjdFOEFGNEExMUUwOTU3N0UxQjU4NzhGNTJBOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgLf50cAAAA7SURBVHjaYvz//z8DCJw9exbEYDQ2NmZgYsACGM+cOQNWKigoyPD+/XuwIEglIwiDBIASYDZW7QABBgBrgxBtYQxz0gAAAABJRU5ErkJggg==) 15px center no-repeat;
+}
+.expandable.selected > a {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEFEMTY4NEFBRjRFMTFFMDk1NzdFMUI1ODc4RjUyQTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEFEMTY4NEJBRjRFMTFFMDk1NzdFMUI1ODc4RjUyQTkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0QUQxNjg0OEFGNEUxMUUwOTU3N0UxQjU4NzhGNTJBOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0QUQxNjg0OUFGNEUxMUUwOTU3N0UxQjU4NzhGNTJBOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtIPFXQAAAAlSURBVHjaYvz//z8DOmBiwAJYzp49i6kUpB0ZnzlzBrt2gAADANOwFMXwK2lxAAAAAElFTkSuQmCC) 15px center no-repeat;
+}
+
+#deck-status-theming {
+  padding-bottom: 400px;
+}
+
+pre .fn {
+  color: #111;
+}
+pre .var {
+  color: #995;
+}
+pre .str {
+  color: #595;
+}
+pre .key {
+  color: #955;
+}
+pre .cm {
+  color: #55c;
+}
+pre .kw {
+  color: #959;
+}

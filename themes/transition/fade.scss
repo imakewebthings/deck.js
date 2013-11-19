@@ -1,0 +1,59 @@
+@mixin translate($x: 0, $y: 0, $z: 0) {
+  -webkit-transform:translate3d($x, $y, $z);
+  -ms-transform:translate($x, $y);
+  transform:translate3d($x, $y, $z);
+}
+
+@mixin transition($prop, $duration, $easing: ease-in-out, $delay: 0ms) {
+  -webkit-transition:$prop $duration $easing $delay;
+  transition:$prop $duration $easing $delay;
+}
+
+.csstransitions.csstransforms {
+  .deck-container .slide {
+    @include transition(opacity, 500ms);
+  }
+
+  .deck-container:not(.deck-menu) {
+    > .slide {
+      position:absolute;
+      top:0;
+      left:0;
+
+      .slide {
+        position:relative;
+        left:0;
+        top:0;
+      }
+
+      .deck-next, .deck-after {
+        opacity:0;
+      }
+
+      .deck-current {
+        opacity:1;
+      }
+    }
+
+    > .deck-previous, > .deck-before, > .deck-next, > .deck-after {
+      opacity:0;
+      pointer-events:none;
+    }
+
+    > .deck-before, > .deck-previous {
+      .slide {
+        visibility:visible;
+      }
+    }
+
+    > .deck-child-current {
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+
+      .deck-next, .deck-after {
+        visibility:hidden;
+      }
+    }
+  }
+}

@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Docs &raquo; deck.js</title>
+	
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="docs.css">
+	
+	<script src="../modernizr.custom.js"></script>
+</head>
+<body class="docs">
+
+<header>
+	<nav>
+		<h1><a href="../">deck.js</a></h1>
+		<ul>
+			<li><a href="../introduction">Getting Started</a></li>
+			<li>Docs</li>
+			<li><a href="http://github.com/imakewebthings/deck.js">GitHub</a></li>
+		</ul>
+	</nav>
+</header>
+	
+<article>
+	<h1>Docs</h1>
+	
+	<nav>
+		<div>
+			<ul>
+				<li>
+					<a href="#deck-core">deck.core</a>
+					<ul>
+						<li class="expandable">
+							<a href="#deck-core-methods">Methods</a>
+							<ul>
+								<li><a href="#deck-core-init">init</a></li>
+								<li><a href="#deck-core-next">next</a></li>
+								<li><a href="#deck-core-prev">prev</a></li>
+								<li><a href="#deck-core-go">go</a></li>
+								<li><a href="#deck-core-getslide">getSlide</a></li>
+								<li><a href="#deck-core-getslides">getSlides</a></li>
+								<li><a href="#deck-core-getcontainer">getContainer</a></li>
+								<li><a href="#deck-core-getoptions">getOptions</a></li>
+								<li><a href="#deck-core-extend">extend</a></li>
+							</ul>
+						</li>
+						<li><a href="#deck-core-options">Options</a></li>
+						<li><a href="#deck-core-events">Events</a></li>
+						<li><a href="#deck-core-theming">Theming</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#deck-goto">deck.goto</a>
+					<ul>
+						<li class="expandable">
+							<a href="#deck-goto-methods">Methods</a>
+							<ul>
+								<li><a href="#deck-goto-show">showGoTo</a></li>
+								<li><a href="#deck-goto-hide">hideGoTo</a></li>
+								<li><a href="#deck-goto-toggle">toggleGoTo</a></li>
+							</ul>
+						</li>
+						<li><a href="#deck-goto-options">Options</a></li>
+						<li><a href="#deck-goto-theming">Theming</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#deck-hash">deck.hash</a>
+					<ul>
+						<li><a href="#deck-hash-options">Options</a></li>
+						<li><a href="#deck-hash-theming">Theming</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#deck-menu">deck.menu</a>
+					<ul>
+						<li class="expandable">
+							<a href="#deck-menu-methods">Methods</a>
+							<ul>
+								<li><a href="#deck-menu-show">showMenu</a></li>
+								<li><a href="#deck-menu-hide">hideMenu</a></li>
+								<li><a href="#deck-menu-toggle">toggleMenu</a></li>
+							</ul>
+						</li>
+						<li><a href="#deck-menu-options">Options</a></li>
+						<li><a href="#deck-menu-theming">Theming</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#deck-navigation">deck.navigation</a>
+					<ul>
+						<li><a href="#deck-navigation-options">Options</a></li>
+						<li><a href="#deck-navigation-theming">Theming</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#deck-scale">deck.scale</a>
+					<ul>
+						<li class="expandable">
+							<a href="#deck-scale-methods">Methods</a>
+							<ul>
+								<li><a href="#deck-scale-enable">enableScale</a></li>
+								<li><a href="#deck-scale-disable">disableScale</a></li>
+								<li><a href="#deck-scale-toggle">toggleScale</a></li>
+							</ul>
+						</li>
+						<li><a href="#deck-scale-options">Options</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#deck-status">deck.status</a>
+					<ul>
+						<li><a href="#deck-status-options">Options</a></li>
+						<li><a href="#deck-status-theming">Theming</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<section id="deck-core">
+		<h2>deck.core</h2>
+		
+		<p>The deck.core module provides all the basic functionality for creating and moving through a deck.  It applies and removes classes to indicate the state of the deck and its slides, allowing CSS to take care of the visual representation of each state.  It also provides methods for interacting with the deck, as well as basic key bindings for going to the next and previous slides.  Separate extension modules provide more functionality using the API provided by core.</p>
+		
+		<section id="deck-core-methods" class="methods">
+			<h3>Methods</h3>
+
+			<section id="deck-core-init">
+				<header>
+					<h4>init - <code>$.deck(selector, options)</code></h4>
+				</header>
+
+				<dl>
+					<dt>selector:</dt>
+					<dd class="type">string | jQuery | array</dd>
+					<dt>options:</dt>
+					<dd class="type">object, optional</dd>
+				</dl>
+
+				<p>Initializes the deck, using each element matched by <code>selector</code> as a slide.  May also be passed an array of string selectors or jQuery objects, in which case each selector in the array is considered a slide. The second parameter is an optional <a href="#deck-core-options">options object</a> which will extend the default values.</p>
+				<pre><code>$.<span class="fn">deck</span>(<span class="str">'.slide'</span>);</code></pre>
+				<pre><code>$.<span class="fn">deck</span>([
+   <span class="str">'#first-slide'</span>,
+   <span class="str">'#second-slide'</span>,
+   <span class="str">'#etc'</span>
+]);</code></pre>
+			</section>
+
+			<section id="deck-core-next">
+				<header>
+					<h4>next - <code>$.deck('next')</code></h4>
+				</header>
+
+				<p>Moves to the next slide.  If the last slide is already active, the call is ignored.</p>
+			</section>
+
+			<section id="deck-core-prev">
+				<header>
+					<h4>prev - <code>$.deck('prev')</code></h4>
+				</header>
+
+				<p>Moves to the previous slide.  If the first slide is already active, the call is ignored.</p>
+			</section>
+
+			<section id="deck-core-go">
+				<header>
+					<h4>go - <code>$.deck('go', index)</code></h4>
+				</header>
+
+				<dl>
+					<dt>index:</dt>
+					<dd class="type">integer | string</dd>
+				</dl>
+
+				<p>Moves to the slide at the specified <code>index</code> if index is a number.  Index is 0-based, so <code>$.deck('go', 0);</code> will move to the first slide. If <code>index</code> is a string this will move to the slide with the specified <code>id</code>. If <code>index</code> is out of bounds or doesn&rsquo;t match a slide <code>id</code> the call is ignored.</p>
+			</section>
+
+			<section id="deck-core-getslide">
+				<header>
+					<h4>getSlide - <code>$.deck('getSlide', index)</code></h4>
+
+					<p><strong>Returns:</strong> jQuery</p>
+				</header>
+				
+				<dl>
+					<dt>index:</dt>
+					<dd class="type">integer, optional</dd>
+				</dl>
+
+				<p>Returns a jQuery object containing the slide at <code>index</code>.  If <code>index</code> is not specified, the current slide is returned.</p>
+			</section>
+
+			<section id="deck-core-getslides">
+				<header>
+					<h4>getSlides - <code>$.deck('getSlides')</code></h4>
+					<p><strong>Returns:</strong> array</p>
+				</header>
+
+				<p>Returns all slides as an array of jQuery objects.</p>
+			</section>
+
+			<section id="deck-core-getcontainer">
+				<header>
+					<h4>getContainer - <code>$.deck('getContainer')</code></h4>
+					<p><strong>Returns:</strong> jQuery</p>
+				</header>
+
+				<p>Returns a jQuery object containing the deck container as defined by the <a href="#deck-core-options">container option</a>.</p>
+			</section>
+
+			<section id="deck-core-getoptions">
+				<header>
+					<h4>getOptions - <code>$.deck('getOptions')</code></h4>
+					<p><strong>Returns:</strong> object</p>
+				</header>
+
+				<p>Returns the <a href="#deck-core-options">options object</a> for the deck, including any overrides that were defined at initialization.</p>
+			</section>
+
+			<section id="deck-core-extend">
+				<header>
+					<h4>extend - <code>$.deck('extend', name, method)</code></h4>
+				</header>
+
+				<dl>
+					<dt>name:</dt>
+					<dd class="type">string</dd>
+					<dt>method:</dt>
+					<dd class="type">function</dd>
+				</dl>
+
+				<p>Adds <code>method</code> to the deck namespace with the key of <code>name</code>.  This doesn&rsquo;t give access to any private member data &mdash; public methods must still be used within <code>method</code> &mdash; but lets extension authors piggyback on the deck namespace rather than pollute jQuery.</p>
+				<pre><code>$.<span class="fn">deck</span>(<span class="str">'extend'</span>, <span class="str">'alert'</span>, <span class="kw">function</span>(<span class="var">msg</span>) {
+   <span class="fn">alert</span>(<span class="var">msg</span>);
+});
+
+<span class="cm">// Alerts 'boom'</span>
+$.<span class="fn">deck</span>(<span class="str">'alert'</span>, <span class="str">'boom'</span>);</code></pre>
+			</section>
+		</section>
+		
+		<section id="deck-core-options" class="options">
+			<h3>Options</h3>
+			
+			<p>The default settings object for a deck. All extensions should extend this object to add defaults for any of their options.</p>
+			
+			<pre><code>$.deck.defaults = {
+   <span class="key">classes</span>: {
+      <span class="key">after</span>: <span class="str">'deck-after'</span>,
+      <span class="key">before</span>: <span class="str">'deck-before'</span>,
+      <span class="key">childCurrent</span>: <span class="str">'deck-child-current'</span>,
+      <span class="key">current</span>: <span class="str">'deck-current'</span>,
+      <span class="key">loading</span>: <span class="str">'deck-loading'</span>,
+      <span class="key">next</span>: <span class="str">'deck-next'</span>,
+      <span class="key">onPrefix</span>: <span class="str">'on-slide-'</span>,
+      <span class="key">previous</span>: <span class="str">'deck-previous'</span>
+   },
+
+   <span class="key">selectors</span>: {
+      <span class="key">container</span>: <span class="str">'.deck-container'</span>
+   },
+
+   <span class="key">keys</span>: {
+      <span class="cm">// enter, space, page down, right arrow, down arrow</span>
+      <span class="key">next</span>: [<span class="str">13</span>, <span class="str">32</span>, <span class="str">34</span>, <span class="str">39</span>, <span class="str">40</span>],
+      <span class="cm">// backspace, page up, left arrow, up arrow</span>
+      <span class="key">previous</span>: [<span class="str">8</span>, <span class="str">33</span>, <span class="str">37</span>, <span class="str">38</span>]
+   },
+
+   <span class="key">touch</span>: {
+      <span class="key">swipeTolerance</span>: <span class="str">60</span>
+   }
+}</code></pre>
+
+			<dl>
+				<dt>options.classes.after</dt>
+				<dd>This class is added to all slides that appear after the 'next' slide.</dd>
+				<dt>options.classes.before</dt>
+				<dd>This class is added to all slides that appear before the 'previous' slide.</dd>
+				<dt>options.classes.childCurrent</dt>
+				<dd>This class is added to all elements in the DOM tree between the 'current' slide and the deck container.  For standard slides, this is mostly seen and used for nested slides.</dd>
+				<dt>options.classes.current</dt>
+				<dd>This class is added to the current slide.</dd>
+				<dt>options.classes.loading</dt>
+				<dd>This class is applied to the deck container during loading phases and is primarily used as a way to short circuit transitions between states where such transitions are distracting or unwanted.  For example, this class is applied during deck initialization and then removed to prevent all the slides from appearing stacked and transitioning into place on load.</dd>
+				<dt>options.classes.next</dt>
+				<dd>This class is added to the slide immediately following the 'current' slide.</dd>
+				<dt>options.classes.onPrefix</dt>
+				<dd>This prefix, concatenated with the current slide index, is added to the deck container as you change slides.</dd>
+				<dt>options.classes.previous</dt>
+				<dd>This class is added to the slide immediately preceding the 'current' slide.</dd>
+				<dt>options.selectors.container</dt>
+				<dd>Elements matched by this CSS selector will be considered the deck container.  The deck container is used to scope certain states of the deck, as with the <code>onPrefix</code> option, or with extensions such as <a href="#deck-goto">deck.goto</a> and <a href="#deck-menu">deck.menu</a>. For standard full screen decks, this should be the <code>body</code> element.</dd>
+				<dt>options.keys.next</dt>
+				<dd>The numeric keycode used to go to the next slide.</dd>
+				<dt>options.keys.previous</dt>
+				<dd>The numeric keycode used to go to the previous slide.</dd>
+				<dt>options.touch.swipeTolerance</dt>
+				<dd>The number of pixels the user&rsquo;s finger must travel to produce a swipe gesture.</dd>
+			</dl>
+		</section>
+		
+		<section id="deck-core-events" class="events">
+			<h3>Events</h3>
+			
+			<p>All events are triggered on the <code>document</code>.</p>
+			
+			<dl>
+				<dt>deck.change</dt>
+				<dd>
+					This event fires whenever the current slide changes, whether by way of <a href="#deck-core-next">next</a>, <a href="#deck-core-prev">prev</a>, or <a href="#deck-core-go">go</a>.  The callback function is passed two parameters, <code>from</code> and <code>to</code>, equal to the indices of the old slide and the new slide respectively. If <code>preventDefault</code> is called on the event within this handler the slide change does not occur.
+					<pre><code><span class="fn">$</span>(document).<span class="fn">bind</span>(<span class="str">'deck.change'</span>, <span class="kw">function</span>(<span class="var">event</span>, <span class="var">from</span>, <span class="var">to</span>) {
+   <span class="fn">alert</span>(<span class="str">'Moving from slide '</span> + <span class="var">from</span> + <span class="str">' to '</span> + <span class="var">to</span>);
+});</code></pre>
+				</dd>
+				<dt>deck.beforeInit</dt>
+				<dd>
+					This event fires at the beginning of deck initialization, after the options are set but before the slides array is created. This event makes a good hook for preprocessing extensions looking to modify the deck.
+				</dd>
+				<dt>deck.init</dt>
+				<dd>
+					This event fires at the end of deck <a href="#deck-core-init">initialization</a>.  Extensions should implement any code that relies on user extensible options (key bindings, element selectors, classes) within a handler for this event. Native events associated with deck.js should be scoped under a <code>.deckmodule</code> event namespace, as with the example below:
+					<pre><code><span class="kw">var</span> $d = <span class="fn">$</span>(document);
+$.deck.defaults.keys.myExtensionKeycode = <span class="str">70</span>; <span class="cm">// 'h'</span>
+$d.<span class="fn">bind</span>(<span class="str">'deck.init'</span>, <span class="kw">function</span>() {
+   $d.<span class="fn">bind</span>(<span class="str">'keydown.deckmyextension'</span>, <span class="kw">function</span>(<span class="var">event</span>) {
+      <span class="kw">if</span> (<span class="var">event</span>.which === $.deck.<span class="fn">getOptions</span>().keys.myExtensionKeycode) {
+         <span class="cm">// Rock out</span>
+      }
+   });
+});</code></pre>
+				</dd>
+			</dl>
+		</section>
+		
+		<section id="deck-core-theming" class="theming">
+			<h3>Theming</h3>
+			
+			<p>Below is a skeleton example of a standard deck and all the theme-able components included in core. What follows is an explanation of each component and the base CSS properties that themes must extend. These bare styles can be seen on the <a href="../introduction">Getting Started</a> page and selecting "None" for both Style and Transition themes.</p>
+			
+			<pre><code>&lt;<span class="kw">body</span> <span class="key">class</span>=<span class="str">&quot;deck-container&quot;</span>&gt;
+   &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-before&quot;</span>&gt;...&lt;<span class="kw">/section</span>&gt;
+   &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-before deck-child-current&quot;</span>&gt;
+      ...
+      &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-before&quot;</span>&gt;...&lt;<span class="kw">/section</span>&gt;
+      &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-previous&quot;</span>&gt;...&lt;<span class="kw">/section</span>&gt;
+      &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-current&quot;</span>&gt;&lt;<span class="kw">/section</span>&gt;
+      &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-next&quot;</span>&gt;...&lt;<span class="kw">/section</span>&gt;
+   &lt;<span class="kw">/section</span>&gt;
+   &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-after&quot;</span>&gt;...&lt;<span class="kw">/section</span>&gt;
+   &lt;<span class="kw">section</span> <span class="key">class</span>=<span class="str">&quot;slide deck-after&quot;</span>&gt;...&lt;<span class="kw">/section</span>&gt;
+&lt;<span class="kw">/body</span>&gt;</code></pre>
+
+			<dl>
+				<dt>.deck-container</dt>
+				<dd>
+					<p>The deck container wraps all slides.  Keeping the <code>position:relative</code> and <code>height:100%</code> rules intact is recommended, as they tend to be needed for transition themes.</p>
+					<pre><code><span class="key">position</span>: <span class="str">relative</span>;
+<span class="key">height</span>: <span class="str">100%</span>;
+<span class="key">width</span>: <span class="str">70%</span>;
+<span class="key">margin</span>: <span class="str">0 auto</span>;
+<span class="key">padding</span>: <span class="str">0 48px</span>;</code></pre>
+				</dd>
+				
+				<dt>.slide</dt>
+				<dd>
+					<p>These are generic styles for all slides, including nested slides.  These should rarely be overwritten.</p>
+					<pre><code><span class="key">width</span>: <span class="str">auto</span>;
+<span class="key">min-height</span>: <span class="str">100%</span>;
+<span class="key">position</span>: <span class="str">relative</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-before, .deck-previous, .deck-next, .deck-after</dt>
+				<dd>
+					<p>All slides that are not the current one are accessibly hidden off the screen.</p>
+					<pre><code><span class="key">position</span>: <span class="str">absolute</span>;
+<span class="key">left</span>: <span class="str">-999em</span>;
+<span class="key">top</span>: <span class="str">-999em</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-current</dt>
+				<dd>
+					<p>The current slide is given a z-index.  This does nothing on its own, but is included in core as it is commonly used in transition themes.</p>
+					<pre><code><span class="key">z-index</span>: <span class="str">2</span>;</code></pre>
+				</dd>
+				
+				<dt>.slide .slide</dt>
+				<dd>
+					<p>All nested slides are reset to a static position to maintain the parent slide layout and hidden in place.</p>
+					<pre><code><span class="key">visibility</span>: <span class="str">hidden</span>;
+<span class="key">position</span>: <span class="str">static</span>;
+<span class="key">min-height</span>: <span class="str">0</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-child-current</dt>
+				<dd>
+					<p>Parents of active nested slides are reset to a static position to keep them in place despite having a <code>.deck-previous</code> or <code>.deck-before</code> class simultaneously.</p>
+					<pre><code><span class="key">position</span>: <span class="str">static</span>;
+<span class="key">z-index</span>: <span class="str">2</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-child-current .slide</dt>
+				<dd>
+					<p>All nested slides are hidden by default.</p>
+					<pre><code><span class="key">visibility</span>: <span class="str">hidden</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-child-current any(.deck-previous, .deck-before, .deck-current)</dt>
+				<dd>
+					<p>The current nested slide and any previous nested slides are visible.</p>
+					<pre><code><span class="key">visibility</span>: <span class="str">visible</span>;</code></pre>
+				</dd>
+			</dl>
+		</section>
+	</section>
+	
+	<section id="deck-goto">
+		<h2>deck.goto</h2>
+		
+		<p>This module adds the necessary methods and key bindings to show and hide a form for jumping to any slide number/id in the deck (and processes that form accordingly). The form-showing state is indicated by the presence of a class on the deck container.</p>
+
+		<section id="deck-goto-methods" class="methods">
+			<h3>Methods</h3>
+			
+			<section id="deck-goto-show">
+				<header>
+					<h4>showGoTo - <code>$.deck('showGoTo')</code></h4>
+				</header>
+				
+				<p>Shows the Go To Slide form by adding the class specified by the <a href="#deck-goto-options">goto class option</a> to the deck container.</p>
+			</section>
+			
+			<section id="deck-goto-hide">
+				<header>
+					<h4>hideGoTo - <code>$.deck('hideGoTo')</code></h4>
+				</header>
+				
+				<p>Hides the Go To Slide form by removing the class specified by the <a href="#deck-goto-options">goto class option</a> from the deck container.</p>
+			</section>
+			
+			<section id="deck-goto-toggle">
+				<header>
+					<h4>toggleGoTo - <code>$.deck('toggleGoTo')</code></h4>
+				</header>
+				
+				<p>Toggles between <a href="#deck-goto-show">showing</a> and <a href="#deck-goto-hide">hiding</a> the Go To Slide form.</p>
+			</section>
+		</section>
+
+		<section id="deck-goto-options" class="options">
+			<h3>Options</h3>
+			
+			<pre><code>$.<span class="fn">extend</span>(<span class="kw">true</span>, $.deck.defaults, {
+   <span class="key">classes</span>: {
+      <span class="key">goto</span>: <span class="str">'deck-goto'</span>
+   },
+
+   <span class="key">selectors</span>: {
+      <span class="key">gotoForm</span>: <span class="str">'.goto-form'</span>,
+      <span class="key">gotoInput</span>: <span class="str">'#goto-slide'</span>
+   },
+
+   <span class="key">keys</span>: {
+      <span class="key">goto</span>: <span class="str">71</span> <span class="cm">// 'g'</span>
+   },
+   
+   <span class="key">countNested</span>: <span class="kw">true</span>
+});</code></pre>
+
+			<dl>
+				<dt>options.classes.goto</dt>
+				<dd>This class is added to the deck container when showing the Go To Slide form.</dd>
+				<dt>options.selectors.gotoDatalist</dt>
+				<dd>The element that matches this selector is the <code>datalist</code> element that will be populated with <code>options</code> for each of the slide ids.  In browsers that support the <code>datalist</code> element, this provides a drop list of slide ids to aid the user in selecting a slide.</dd>
+				<dt>options.selectors.gotoForm</dt>
+				<dd>The element that matches this selector is the form that is submitted when a user hits enter after typing a slide number/id in the <code>gotoInput</code> element.</dd>
+				<dt>options.selectors.gotoInput</dt>
+				<dd>The element that matches this selector is the text input field for entering a slide number/id in the Go To Slide form.</dd>
+				<dt>options.keys.goto</dt>
+				<dd>The numeric keycode used to show the Go To Slide form.</dd>
+				<dt>options.countNested</dt>
+				<dd>If false, only top level slides will be counted when entering a slide number.</dd>
+			</dl>
+		</section>
+
+		<section id="deck-goto-theming" class="theming">
+			<h3>Theming</h3>
+			
+			<pre><code>&lt;<span class="kw">form</span> <span class="key">action</span>=<span class="str">&quot;.&quot;</span> <span class="key">method</span>=<span class="str">&quot;get&quot;</span> <span class="key">class</span>=<span class="str">&quot;goto-form&quot;</span>&gt;
+   &lt;<span class="kw">label</span> <span class="key">for</span>=<span class="str">&quot;goto-slide&quot;</span>&gt;Go to slide:&lt;<span class="kw">/label</span>&gt;
+   &lt;<span class="kw">input</span> <span class="key">type</span>=<span class="str">&quot;number&quot;</span> <span class="key">name</span>=<span class="str">&quot;slidenum&quot;</span> <span class="key">id</span>=<span class="str">&quot;goto-slide&quot;</span> <span class="key">list</span>=<span class="str">&quot;goto-datalist&quot;</span>&gt;
+   &lt;<span class="kw">datalist</span> <span class="key">id</span>=<span class="str">&quot;goto-datalist&quot;</span>&gt;&lt;<span class="kw">/datalist</span>&gt;
+   &lt;<span class="kw">input</span> <span class="key">type</span>=<span class="str">&quot;submit&quot;</span> <span class="key">value</span>=<span class="str">&quot;Go&quot;</span>&gt;
+&lt;<span class="kw">/form</span>&gt;</code></pre>
+
+			<dl>
+				<dt>.goto-form</dt>
+				<dd>
+					<p>The form is centered at the bottom of the deck container by default. Defining everything in <code>em</code> units lets the form scale if the base font size of the deck container changes with the theme.</p>
+					<pre><code><span class="key">position</span>: <span class="str">absolute</span>;
+<span class="key">z-index</span>: <span class="str">3</span>;
+<span class="key">bottom</span>: <span class="str">10px</span>;
+<span class="key">left</span>: <span class="str">50%</span>;
+<span class="key">height</span>: <span class="str">1.75em</span>;
+<span class="key">margin</span>: <span class="str">0 0 0 -9.125em</span>;
+<span class="key">line-height</span>: <span class="str">1.75em</span>;
+<span class="key">padding</span>: <span class="str">0.625em</span>;
+<span class="key">display</span>: <span class="str">none</span>;
+<span class="key">background</span>: <span class="str">#ccc</span>;
+<span class="key">overflow</span>: <span class="str">hidden</span>;
+
+<span class="cm">// .border-radius .goto-form</span>
+<span class="key">-webkit-border-radius</span>: <span class="str">10px</span>;
+<span class="key">-moz-border-radius</span>: <span class="str">10px</span>;
+<span class="key">border-radius</span>: <span class="str">10px</span>;
+
+<span class="cm">// .deck-goto .goto-form (showing form)</span>
+<span class="key">display</span>: <span class="str">block</span>;</code></pre>
+				</dd>
+				
+				<dt>.goto-form label</dt>
+				<dd>
+					<pre><code><span class="key">font-weight</span>: <span class="str">bold</span>;
+<span class="key">float</span>: <span class="str">left</span>;</code></pre>
+				</dd>
+				
+				<dt>.goto-form input</dt>
+				<dd>
+					<pre><code><span class="key">display</span>: <span class="str">inline-block</span>;
+<span class="key">font-family</span>: <span class="str">inherit</span>;</code></pre>
+				</dd>
+				
+				<dt>#goto-slide</dt>
+				<dd>
+					<pre><code><span class="key">width</span>: <span class="str">8.375em</span>;
+<span class="key">margin</span>: <span class="str">0 0.625em</span>;
+<span class="key">height</span>: <span class="str">1.4375em</span>;</code></pre>
+				</dd>
+			</dl>
+		</section>
+	</section>
+	
+	<section id="deck-hash">
+		<h2>deck.hash</h2>
+		
+		<p>This module adds deep linking to individual slides, enables internal links to slides within decks, and updates the address bar with the hash as the user moves through the deck. A permalink anchor is also updated. Standard themes hide this link in browsers that support the History API, and show it for those that do not. Slides that do not have an <code>id</code> are assigned one according to the <a href="#deck-hash-options">hashPrefix option</a>. In addition to the on-slide-(slideNumber) container state class kept by core, this module maintains an on-slide-(slideID) state class.</p>
+		
+		<section id="deck-hash-options" class="options">
+			<h3>Options</h3>
+			
+			<pre><code>$.<span class="fn">extend</span>(<span class="kw">true</span>, $.deck.defaults, {
+   <span class="key">selectors</span>: {
+      <span class="key">hashLink</span>: <span class="str">'.deck-permalink'</span>
+   },
+
+   <span class="key">hashPrefix</span>: <span class="str">'slide-'</span>,
+   <span class="key">preventFragmentScroll</span>: <span class="kw">true</span>
+});</code></pre>
+			
+			<dl>
+				<dt>options.selectors.hashLink</dt>
+				<dd>The element matching this selector has its href attribute updated to the hash of the current slide as the user navigates through the deck.</dd>
+				<dt>options.hashPrefix</dt>
+				<dd>Every slide that does not have an <code>id</code> is assigned one at initialization. Assigned ids take the form of hashPrefix + slideIndex, e.g., <code>slide-0</code>, <code>slide-12</code>, etc.</dd>
+				<dt>options.preventFragmentScroll</dt>
+				<dd>If true, when deep linking to a hash of a nested slide the deck container will be scrolled to the top on load, undoing the natural browser behavior of scrolling to the document fragment.</dd>
+			</dl>
+			
+		</section>
+		
+		<section id="deck-hash-theming" class="theming">
+			<h3>Theming</h3>
+			
+			<pre><code>&lt;<span class="kw">a</span> <span class="key">href</span>=<span class="str">&quot;.&quot;</span> <span class="key">class</span>=<span class="str">&quot;deck-permalink&quot;</span> <span class="key">title</span>=<span class="str">&quot;Permalink to this slide&quot;</span>&gt;#&lt;<span class="kw">/a</span>&gt;</code></pre>
+			
+			<dl>
+				<dt>.deck-permalink</dt>
+				<dd>
+					<p>By default, the <code>hashLink</code> anchor is hidden for browsers that support the History API, since the address bar will be updated. The link is hidden until the deck is hovered, similar to <a href="#deck-navigation">navigation links</a>.</p>
+					<pre><code><span class="key">display</span>: <span class="str">none</span>;
+<span class="key">position</span>: <span class="str">absolute</span>;
+<span class="key">z-index</span>: <span class="str">4</span>;
+<span class="key">bottom</span>: <span class="str">30px</span>;
+<span class="key">right</span>: <span class="str">0</span>;
+<span class="key">width</span>: <span class="str">48px</span>;
+<span class="key">text-align</span>: <span class="str">center</span>;
+
+<span class="cm">// .no-history .deck-container:hover .deck-permalink</span>
+<span class="key">display</span>: <span class="str">block</span>;</code></pre>
+				</dd>
+			</dl>
+		</section>
+	</section>
+	
+	<section id="deck-menu">
+		<h2>deck.menu</h2>
+		
+		<p>This module adds the necessary methods and key bindings to show and hide a menu of all slides in the deck.  The deck menu state is indicated by the presence of a class on the deck container.</p>
+
+		<section id="deck-menu-methods" class="methods">
+			<h3>Methods</h3>
+			
+			<section id="deck-menu-show">
+				<header>
+					<h4>showMenu - <code>$.deck('showMenu')</code></h4>
+				</header>
+				
+				<p>Shows the slide menu by adding the class specified by the <a href="#deck-menu-options">menu class option</a> to the deck container.</p>
+			</section>
+			
+			<section id="deck-menu-hide">
+				<header>
+					<h4>hideMenu - <code>$.deck('hideMenu')</code></h4>
+				</header>
+				
+				<p>Hides the slide menu by removing the class specified by the <a href="#deck-menu-options">menu class option</a> from the deck container.</p>
+			</section>
+			
+			<section id="deck-menu-toggle">
+				<header>
+					<h4>toggleMenu - <code>$.deck('toggleMenu')</code></h4>
+				</header>
+				
+				<p>Toggles between <a href="#deck-menu-show">showing</a> and <a href="#deck-menu-hide">hiding</a> the slide menu.</p>
+			</section>
+		</section>
+
+		<section id="deck-menu-options" class="options">
+			<h3>Options</h3>
+			
+			<pre><code>$.<span class="fn">extend</span>(<span class="kw">true</span>, $.deck.defaults, {
+   <span class="key">classes</span>: {
+      <span class="key">menu</span>: <span class="str">'deck-menu'</span>
+   },
+
+   <span class="key">keys</span>: {
+      <span class="key">menu</span>: <span class="str">77</span> <span class="cm">// 'm'</span>
+   }
+});</code></pre>
+
+			<dl>
+				<dt>options.classes.menu</dt>
+				<dd>This class is added to the deck container when showing the slide menu.</dd>
+				<dt>options.keys.menu</dt>
+				<dd>The numeric keycode used to toggle between showing and hiding the slide menu.</dd>
+				<dt>options.touch.doubletapWindow</dt>
+				<dd>Two consecutive touch events within this number of milliseconds will be considered a double tap, and will toggle the menu on touch devices.</dd>
+			</dl>
+		</section>
+
+		<section id="deck-menu-theming" class="theming">
+			<h3>Theming</h3>
+			
+			<pre><code>&lt;<span class="kw">body</span> <span class="key">class</span>=<span class="str">&quot;deck-container deck-menu&quot;</span>&gt;
+   ...
+&lt;<span class="kw">/body</span>&gt;</code></pre>
+
+			<dl>
+				<dt>.deck-menu .slide</dt>
+				<dd>
+					<p>Unhides all slides, including nested slides.</p>
+					<pre><code><span class="key">background</span>: <span class="str">#eee</span>;
+<span class="key">position</span>: <span class="str">static</span>;
+<span class="key">visibility</span>: <span class="str">visible</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-menu .deck-current</dt>
+				<dd>
+					<p>Highlights the active slide.</p>
+					<pre><code><span class="key">background</span>: <span class="str">#ddf</span>;</code></pre>
+				</dd>
+			</dl>
+		</section>
+	</section>
+	
+	<section id="deck-navigation">
+		<h2>deck.navigation</h2>
+		
+		<p>This module adds clickable previous and next links to the deck.</p>
+
+		<section id="deck-navigation-options" class="options">
+			<h3>Options</h3>
+			
+			<pre><code>$.<span class="fn">extend</span>(<span class="kw">true</span>, $.deck.defaults, {
+   <span class="key">classes</span>: {
+      <span class="key">navDisabled</span>: <span class="str">'deck-nav-disabled'</span>
+   },
+
+   <span class="key">selectors</span>: {
+      <span class="key">nextLink</span>: <span class="str">'.deck-next-link'</span>,
+      <span class="key">previousLink</span>: <span class="str">'.deck-prev-link'</span>
+   }
+});</code></pre>
+
+			<dl>
+				<dt>options.classes.navDisabled</dt>
+				<dd>This class is added to a navigation link when that action is disabled.  It is added to the previous link when on the first slide, and to the next link when on the last slide.</dd>
+				<dt>options.selectors.nextLink</dt>
+				<dd>The elements that match this selector will move the deck to the next slide when clicked.</dd>
+				<dt>options.selectors.previousLink</dt>
+				<dd>The elements that match this selector will move to deck to the previous slide when clicked.</dd>
+			</dl>
+		</section>
+
+		<section id="deck-navigation-theming" class="theming">
+			<h3>Theming</h3>
+			
+			<pre><code>&lt;<span class="kw">a</span> <span class="key">href</span>=<span class="str">&quot;#&quot;</span> <span class="key">class</span>=<span class="str">&quot;deck-prev-link&quot;</span> <span class="key">title</span>=<span class="str">&quot;Previous&quot;</span>&gt;&amp;#8592;&lt;<span class="kw">/a</span>&gt;
+&lt;<span class="kw">a</span> <span class="key">href</span>=<span class="str">&quot;#&quot;</span> <span class="key">class</span>=<span class="str">&quot;deck-next-link&quot;</span> <span class="key">title</span>=<span class="str">&quot;Next&quot;</span>&gt;&amp;#8594;&lt;<span class="kw">/a</span>&gt;</code></pre>
+
+			<dl>
+				<dt>.deck-prev-link, .deck-next-link</dt>
+				<dd>
+					<pre><code><span class="key">display</span>: <span class="str">none</span>;
+<span class="key">position</span>: <span class="str">absolute</span>;
+<span class="key">z-index</span>: <span class="str">3</span>;
+<span class="key">top</span>: <span class="str">50%</span>;
+<span class="key">width</span>: <span class="str">32px</span>;
+<span class="key">height</span>: <span class="str">32px</span>;
+<span class="key">margin-top</span>: <span class="str">-16px</span>;
+<span class="key">font-size</span>: <span class="str">26px</span>;
+<span class="key">line-height</span>: <span class="str">30px</span>;
+<span class="key">vertical-align</span>: <span class="str">middle</span>;
+<span class="key">text-align</span>: <span class="str">center</span>;
+<span class="key">text-decoration</span>: <span class="str">none</span>;
+<span class="key">color</span>: <span class="str">#fff</span>;
+<span class="key">background</span>: <span class="str">#888</span>;
+
+<span class="cm">// .border-radius only</span>
+<span class="key">-webkit-border-radius</span>: <span class="str">16px</span>;
+<span class="key">-moz-border-radius</span>: <span class="str">16px</span>;
+<span class="key">border-radius</span>: <span class="str">16px</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-container:hover .deck-prev/next-link</dt>
+				<dd>
+					<p>Only shows the navigation buttons if you hover over the deck continer.  Since the default deck container width is only 70%, this hides the nav when presenters move their mouse to a corner.</p>
+					<pre><code><span class="key">display</span>: <span class="str">block</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-prev-link</dt>
+				<dd>
+					<pre><code><span class="key">left</span>: <span class="str">0</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-next-link</dt>
+				<dd>
+					<pre><code><span class="key">right</span>: <span class="str">0</span>;</code></pre>
+				</dd>
+				
+				<dt>.deck-container:hover .deck-nav-disabled</dt>
+				<dd>
+					<p>Applied to the appropriate link to hide it when on the first or last slide.</p>
+					<pre><code><span class="key">display</span>: <span class="str">none</span>;</code></pre>
+				</dd>
+			</dl>
+		</section>
+	</section>
+	
+	<section id="deck-scale">
+		<h2>deck.scale</h2>
+		
+		<p>This module adds automatic scaling to the deck. Each slide is scaled down using CSS transforms to fit within the deck container. If the container is big enough to hold the slide without scaling, no scaling occurs. The user can disable and enable scaling with a keyboard shortcut.</p>
+		
+		<p class="warning"><strong>Note:</strong> CSS transforms may make Flash videos render incorrectly.  Presenters that need to use Flash videos may want to disable scaling to play them.  HTML5 video works fine.</p>
+		
+		<section id="deck-scale-methods" class="methods">
+			<h3>Methods</h3>
+			
+			<section id="deck-scale-enable">
+				<header>
+					<h4>enableScale - <code>$.deck('enableScale')</code></h4>
+				</header>
+				
+				<p>Enables scaling and adds the scale class to the deck container.</p>
+			</section>
+			
+			<section id="deck-scale-disable">
+				<header>
+					<h4>disableScale - <code>$.deck('disableScale')</code></h4>
+				</header>
+				
+				<p>Disables scaling and removes the scale class from the deck container.</p>
+			</section>
+			
+			<section id="deck-scale-toggle">
+				<header>
+					<h4>toggleScale - <code>$.deck('toggleScale')</code></h4>
+				</header>
+				
+				<p>Toggles between enabling and disabling scaling.</p>
+			</section>
+		</section>
+		
+		<section id="deck-scale-options" class="options">
+			<h3>Options</h3>
+			
+			<pre><code>$.<span class="fn">extend</span>(<span class="kw">true</span>, $[deck].defaults, {
+   <span class="key">classes</span>: {
+      <span class="key">scale</span>: <span class="str">'deck-scale'</span>
+   },
+
+   <span class="key">keys</span>: {
+      <span class="key">scale</span>: <span class="str">83</span> <span class="cm">// s</span>
+   },
+
+   <span class="key">baseHeight</span>: <span class="kw">null</span>,
+   <span class="key">scaleDebounce</span>: <span class="str">200</span>
+});</code></pre>
+
+			<dl>
+				<dt>options.classes.scale</dt>
+				<dd>This class is added to the deck container when scaling is enabled. It is enabled by default when the module is included.</dd>
+				<dt>options.keys.scale</dt>
+				<dd>The numeric keycode used to toggle enabling and disabling scaling.</dd>
+				<dt>options.baseHeight</dt>
+				<dd>When <code>baseHeight</code> is falsy, as it is by default, the deck is scaled in proportion to the height of the deck container.  You may instead specify a height as a number of <code>px</code>, and slides will be scaled against this height regardless of the container size.</dd>
+				<dt>options.scaleDebounce</dt>
+				<dd>Scaling on the browser resize event is debounced. This number is the threshold in milliseconds. Check out John Hann&rsquo;s <a href="http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/" rel="external">article on debouncing</a> to learn more about it.</dd>
+			</dl>
+		</section>
+	</section>
+	
+	<section id="deck-status">
+		<h2>deck.status</h2>
+		
+		<p>This module adds a (current)/(total) style status indicator to the deck.</p>
+		
+		<section id="deck-status-options" class="options">
+			<h3>Options</h3>
+			
+			<pre><code>$.<span class="fn">extend</span>(<span class="kw">true</span>, $.deck.defaults, {
+   <span class="key">selectors</span>: {
+      <span class="key">statusCurrent</span>: <span class="str">'.deck-status-current'</span>,
+      <span class="key">statusTotal</span>: <span class="str">'.deck-status-total'</span>
+   },
+
+   <span class="key">countNested</span>: <span class="kw">true</span>
+});</code></pre>
+
+			<dl>
+				<dt>options.selectors.statusCurrent</dt>
+				<dd>The element matching this selector displays the current slide number.</dd>
+				<dt>options.selectors.statusTotal</dt>
+				<dd>The element matching this selector displays the total number of slides.</dd>
+				<dt>options.countNested</dt>
+				<dd>If false, nested slides will be ignored in the total slide count and any navigation to them will be treated as navigation to the top level slide.</dd>
+			</dl>
+		</section>
+
+		<section id="deck-status-theming" class="theming">
+			<h3>Theming</h3>
+			
+			<pre><code>&lt;<span class="kw">p</span> <span class="key">class</span>=<span class="str">&quot;deck-status&quot;</span>&gt;
+   &lt;<span class="kw">span</span> <span class="key">class</span>=<span class="str">&quot;deck-status-current&quot;</span>&gt;&lt;<span class="kw">/span</span>&gt;
+   /
+   &lt;<span class="kw">span</span> <span class="key">class</span>=<span class="str">&quot;deck-status-total&quot;</span>&gt;&lt;<span class="kw">/span</span>&gt;
+&lt;<span class="kw">/p</span>&gt;</code></pre>
+
+			<dl>
+				<dt>.deck-status</dt>
+				<dd>
+					<p>The status indicator is placed in the bottom right padding of the deck container by default.  <code>.deck-status-current</code> and <code>.deck-status-total</code> are used by the extension&rsquo;s JS, but also provide hooks for styling. They inherit from <code>.deck-status</code> with no custom styles of their own.</p>
+					<pre><code><span class="key">position</span>: <span class="str">absolute</span>;
+<span class="key">bottom</span>: <span class="str">10px</span>;
+<span class="key">right</span>: <span class="str">0</span>;
+<span class="key">color</span>: <span class="str">#888</span>;
+<span class="key">z-index</span>: <span class="str">3</span>;
+<span class="key">margin</span>: <span class="str">0</span>;</code></pre>
+				</dd>
+			</dl>
+		</section>
+	</section>
+</article>
+
+<div id="sticky-wrapper" class="hidden">
+	<div class="inner">
+		<h2></h2>
+		<h3></h3>
+	</div>
+</div>
+
+<footer>
+	<p>A project of <a href="http://imakewebthings.com">I Make Web Things</a></p>
+</footer>
+
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
+
+<script src="waypoints.min.js"></script>
+<script src="docs.js"></script>
+</body>
+</html>
