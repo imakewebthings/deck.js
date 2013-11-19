@@ -92,9 +92,9 @@ works fine.
       window.clearTimeout(timer);
       timer = window.setTimeout(scaleDeck, options.scaleDebounce);
     });
-    $window.unbind('load.deckscale').bind('load.deckscale', function() {
-      $.deck('enableScale');
-    });
+    $.deck('enableScale');
+    $window.unbind('load.deckscale');
+    $window.bind('load.deckscale', scaleDeck);
   };
 
   var bindKeyEvents = function() {
