@@ -11,11 +11,11 @@
   font-family: "UltraRegular", Georgia, sans-serif;
 }
 
-/* 
+/*
 html5doctor.com Reset Stylesheet
 v1.6.1
 Last Updated: 2010-09-17
-Author: Richard Clark - http://richclarkdesign.com 
+Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 html, body, div, span, object, iframe,
@@ -206,4 +206,11 @@ body > footer > p {
 }
 body > footer > p > a {
   color: #599;
+}
+
+.version {
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid #ccc;
+  color: #888;
 }

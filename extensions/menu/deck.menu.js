@@ -1,9 +1,8 @@
 /*!
 Deck JS - deck.menu
-Copyright (c) 2011 Caleb Troughton
-Dual licensed under the MIT license and GPL license.
+Copyright (c) 2011-2013 Caleb Troughton
+Dual licensed under the MIT license.
 https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt
-https://github.com/imakewebthings/deck.js/blob/master/GPL-license.txt
 */
 
 /*
