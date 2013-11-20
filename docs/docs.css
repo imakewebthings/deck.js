@@ -23,8 +23,8 @@
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  -moz-border-radius: 10px/150px;
-  border-radius: 10px/150px;
+  -moz-border-radius: 10px / 150px;
+  border-radius: 10px / 150px;
 }
 .docs > article code {
   color: #888;
@@ -256,8 +256,8 @@
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-  -moz-border-radius: 200px/10px;
-  border-radius: 200px/10px;
+  -moz-border-radius: 200px / 10px;
+  border-radius: 200px / 10px;
 }
 #sticky-wrapper h3 {
   float: right;
