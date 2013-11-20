@@ -103,9 +103,6 @@ on the deck container.
   options.classes.menu
     This class is added to the deck container when showing the slide menu.
 
-  options.classes.htmlMenu
-    This class is added to the html element when showing the slide menu.
-
   options.keys.menu
     The numeric keycode used to toggle between showing and hiding the slide
     menu.
@@ -116,8 +113,7 @@ on the deck container.
   */
   $.extend(true, $.deck.defaults, {
     classes: {
-      menu: 'deck-menu',
-      htmlMenu: 'deck-menu-html'
+      menu: 'deck-menu'
     },
 
     keys: {
@@ -148,7 +144,6 @@ on the deck container.
       options.classes.loading,
       options.classes.menu
     ].join(' '));
-    $html.addClass(options.classes.htmlMenu);
 
     /* Forced to do this in JS until CSS learns second-grade math. Save old
     style value for restoration when menu is hidden. */
@@ -185,7 +180,6 @@ on the deck container.
     }
 
     $container.removeClass(options.classes.menu);
-    $html.removeClass(options.classes.htmlMenu);
     $container.addClass(options.classes.loading);
 
     /* Restore old style value */
