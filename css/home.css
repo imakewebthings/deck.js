@@ -133,8 +133,8 @@
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    -moz-border-radius: 10px/150px;
-    border-radius: 10px/150px;
+    -moz-border-radius: 10px / 150px;
+    border-radius: 10px / 150px;
   }
   #sample > pre > code {
     color: #aaa;
@@ -290,7 +290,6 @@
   }
   .boxshadow .deck-prev-link:hover, .boxshadow .deck-prev-link:focus {
     bottom: 37px;
-    margin-left: -137px;
     -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -313,7 +312,6 @@
   }
   .boxshadow .deck-next-link:hover, .boxshadow .deck-next-link:focus {
     bottom: 37px;
-    margin-left: 114px;
     -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
