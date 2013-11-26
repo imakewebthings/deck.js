@@ -176,6 +176,10 @@ that use the API provided by core.
 
   var bindTouchEvents = function() {
     var startTouch;
+    var direction = options.touch.swipeDirection;
+    var tolerance = options.touch.swipeTolerance;
+    var listenToHorizontal = ({ both: true, horizontal: true })[direction];
+    var listenToVertical = ({ both: true, vertical: true })[direction];
 
     $container.unbind('touchstart.deck');
     $container.bind('touchstart.deck', function(event) {
@@ -192,22 +196,25 @@ that use the API provided by core.
         }
         var xDistance = touch.screenX - startTouch.screenX;
         var yDistance = touch.screenY - startTouch.screenY;
-        var swipedLeftToRight = xDistance > options.touch.swipeTolerance;
-        var swipedRightToLeft = xDistance < -options.touch.swipeTolerance;
-        var swipedTopToBottom = yDistance > options.touch.swipeTolerance;
-        var swipedBottomToTop = yDistance < -options.touch.swipeTolerance;
+        var leftToRight = xDistance > tolerance && listenToHorizontal;
+        var rightToLeft = xDistance < -tolerance && listenToHorizontal;
+        var topToBottom = yDistance > tolerance && listenToVertical;
+        var bottomToTop = yDistance < -tolerance && listenToVertical;
 
-        if (swipedLeftToRight || swipedTopToBottom) {
+        if (leftToRight || topToBottom) {
           $.deck('prev');
           startTouch = undefined;
         }
-        else if (swipedRightToLeft || swipedBottomToTop) {
+        else if (rightToLeft || bottomToTop) {
           $.deck('next');
           startTouch = undefined;
         }
         return false;
       });
-      event.preventDefault();
+
+      if (listenToVertical) {
+        event.preventDefault();
+      }
     });
 
     $container.unbind('touchend.deck');
@@ -486,6 +493,11 @@ that use the API provided by core.
   options.keys.previous
     The numeric keycode used to go to the previous slide.
 
+  options.touch.swipeDirection
+    The direction swipes occur to cause slide changes. Can be 'horizontal',
+    'vertical', or 'both'. Any other value or a falsy value will disable
+    swipe gestures for navigation.
+
   options.touch.swipeTolerance
     The number of pixels the users finger must travel to produce a swipe
     gesture.
@@ -514,6 +526,7 @@ that use the API provided by core.
     },
 
     touch: {
+      swipeDirection: 'horizontal',
       swipeTolerance: 60
     }
   };
