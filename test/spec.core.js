@@ -242,41 +242,43 @@ describe('Deck JS', function() {
     });
 
     describe('events', function() {
-      var $d = $(document);
+      var $d;
 
       beforeEach(function() {
-        spyOnEvent($d, 'deck.init');
-        spyOnEvent($d, 'deck.beforeInit');
-        $.deck('.slide');
-        $.deck('go', 1);
-        spyOnEvent($d, 'deck.change');
+        $d = $(document);
       });
 
       describe('deck.change', function() {
+        var index, oldIndex;
+
+        beforeEach(function() {
+          $.deck('.slide');
+          $.deck('go', 1);
+          $d.one('deck.change', function(event, from, to) {
+            index = to;
+            oldIndex = from;
+          });
+        });
+
         it('should fire on go(i)', function() {
           $.deck('go', 3);
-          expect('deck.change').toHaveBeenTriggeredOn($d);
+          expect(index).toEqual(3);
         });
 
         it('should fire on next()', function() {
           $.deck('next');
-          expect('deck.change').toHaveBeenTriggeredOn($d);
+          expect(index).toEqual(2);
         });
 
         it('should fire on prev()', function() {
           $.deck('prev');
-          expect('deck.change').toHaveBeenTriggeredOn($d);
+          expect(index).toEqual(0);
         });
 
         it('should pass parameters with from and to indices', function() {
-          var f = function(e, from, to) {
-            expect(from).toEqual(1);
-            expect(to).toEqual(3);
-          };
-
-          $d.bind('deck.change', f);
           $.deck('go', 3);
-          $d.unbind('deck.change', f);
+          expect(index).toEqual(3);
+          expect(oldIndex).toEqual(1);
         });
 
         it('should not fire if default prevented in beforeChange', function() {
@@ -289,23 +291,24 @@ describe('Deck JS', function() {
 
       describe('deck.init', function() {
         it('should fire on deck initialization', function() {
-          expect('deck.init').toHaveBeenTriggeredOn($d);
-        });
-
-        it('should have already populated the slides array', function() {
-          var f = function() {
-            expect($.deck('getSlides').length).toBeGreaterThan(0);
-          };
-
-          $d.bind('deck.init', f);
           $.deck('.slide');
-          $d.unbind('deck.init', f);
+          expect($.deck('getSlides').length).toBeGreaterThan(0);
         });
       });
 
       describe('deck.beforeInit', function() {
+        var beforeHit;
+
+        beforeEach(function() {
+          beforeHit = false;
+          $d.on('deck.beforeInit', function() {
+            beforeHit = true;
+          });
+        });
+
         it('should fire on deck initialization', function() {
-          expect('deck.beforeInit').toHaveBeenTriggeredOn($d);
+          $.deck('.slide');
+          expect(beforeHit).toBeTruthy();
         });
 
         it('should have not populated the slides array', function() {
@@ -316,6 +319,67 @@ describe('Deck JS', function() {
           $d.bind('deck.beforeInit', f);
           $.deck('.slide');
           $d.unbind('deck.beforeInit', f);
+        });
+
+        it('should prevent the init event if lockInit is called', function() {
+          var initHit = false;
+          var f = function(event) {
+            event.lockInit();
+          };
+          var g = function() {
+            initHit = true;
+          };
+
+          $d.bind('deck.beforeInit', f);
+          $d.bind('deck.init', g);
+          $.deck('.slide');
+          $d.unbind('deck.beforeInit', f);
+          $d.unbind('deck.init', g);
+          expect(initHit).toBeFalsy();
+        });
+
+        it('should warn if locked without release', function() {
+          var warned = false;
+          var f = function(event) {
+            event.lockInit();
+          };
+          var warn = console.warn;
+          window.console.warn = function() {
+            warned = true;
+          };
+
+          $d.bind('deck.beforeInit', f);
+          $.deck('.slide', {
+            initLockTimeout: 20
+          });
+          $d.unbind('deck.beforeInit', f);
+
+          waitsFor(function() {
+            return warned;
+          }, 'warning', 2000);
+
+          runs(function() {
+            window.console.warn = warn;
+          });
+        });
+
+        it('should fire init event once releaseInit is called', function() {
+          var f = function(event) {
+            event.lockInit();
+            window.setTimeout(function() {
+              event.releaseInit();
+            }, 20);
+          };
+
+          runs(function() {
+            $d.bind('deck.beforeInit', f);
+            $.deck('.slide');
+            $d.unbind('deck.beforeInit', f);
+          });
+
+          waitsFor(function() {
+            return $.deck('getSlides').length > 0;
+          }, 'lock to release', 2000);
         });
       });
     });
