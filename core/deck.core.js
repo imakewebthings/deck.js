@@ -283,8 +283,12 @@ that use the API provided by core.
       // Hide the deck while states are being applied to kill transitions
       $container.addClass(options.classes.loading);
 
+      // populate the array of slides for pre-init
+      initSlidesArray(elements);
       // Pre init event for preprocessing hooks
       beforeInitEvent.done = function() {
+        // re-populate the array of slides
+        slides = [];
         initSlidesArray(elements);
         bindKeyEvents();
         bindTouchEvents();
