@@ -272,10 +272,20 @@ that use the API provided by core.
        '#etc'
     ]);
     */
-    init: function(elements, opts) {
+    init: function(opts) {
       var beforeInitEvent = createBeforeInitEvent();
+      var overrides = opts;
 
-      options = $.extend(true, {}, $.deck.defaults, opts);
+      if (!$.isPlainObject(opts)) {
+        overrides = arguments[1] || {};
+        $.extend(true, overrides, {
+          selectors: {
+            slides: arguments[0]
+          }
+        });
+      }
+
+      options = $.extend(true, {}, $.deck.defaults, overrides);
       slides = [];
       currentIndex = 0;
       $container = $(options.selectors.container);
@@ -284,12 +294,12 @@ that use the API provided by core.
       $container.addClass(options.classes.loading);
 
       // populate the array of slides for pre-init
-      initSlidesArray(elements);
+      initSlidesArray(options.selectors.slides);
       // Pre init event for preprocessing hooks
       beforeInitEvent.done = function() {
         // re-populate the array of slides
         slides = [];
-        initSlidesArray(elements);
+        initSlidesArray(options.selectors.slides);
         bindKeyEvents();
         bindTouchEvents();
         $container.scrollLeft(0).scrollTop(0);
@@ -504,6 +514,12 @@ that use the API provided by core.
     deck, as with the onPrefix option, or with extensions such as deck.goto
     and deck.menu.
 
+  options.selectors.slides
+    Elements matched by this selector make up the individual deck slides.
+    If a user chooses to pass the slide selector as the first argument to
+    $.deck() on initialization it does the same thing as passing in this
+    option and this option value will be set to the value of that parameter.
+
   options.keys.next
     The numeric keycode used to go to the next slide.
 
@@ -532,7 +548,8 @@ that use the API provided by core.
     },
 
     selectors: {
-      container: '.deck-container'
+      container: '.deck-container',
+      slides: '.slide'
     },
 
     keys: {

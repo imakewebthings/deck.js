@@ -11,9 +11,20 @@ describe('Deck JS', function() {
       }
     });
 
+    describe('init(options.selectors.slides)', function() {
+      it('should create slides', function() {
+        $.deck({
+          selectors: {
+            slides: '.slide3'
+          }
+        });
+        expect($.deck('getSlides').length).toEqual($('.slide3').length);
+      });
+    });
+
     describe('init(selector)', function() {
       it('should create slides', function() {
-        $.deck('.slide');
+        $.deck();
         expect($.deck('getSlides').length).toEqual($('.slide').length);
       });
     });
@@ -33,7 +44,7 @@ describe('Deck JS', function() {
 
     describe('navigation functions', function() {
       beforeEach(function() {
-        $.deck('.slide');
+        $.deck();
       });
 
       describe('go(i)', function() {
@@ -87,7 +98,7 @@ describe('Deck JS', function() {
 
     describe('getters', function() {
       beforeEach(function() {
-        $.deck('.slide');
+        $.deck();
       });
 
       describe('getSlide()', function() {
@@ -139,7 +150,7 @@ describe('Deck JS', function() {
 
     describe('container states', function() {
       beforeEach(function() {
-        $.deck('.slide');
+        $.deck();
       });
 
       it('should start at state 0', function() {
@@ -252,7 +263,7 @@ describe('Deck JS', function() {
         var index, oldIndex;
 
         beforeEach(function() {
-          $.deck('.slide');
+          $.deck();
           $.deck('go', 1);
           $d.one('deck.change', function(event, from, to) {
             index = to;
@@ -291,7 +302,7 @@ describe('Deck JS', function() {
 
       describe('deck.init', function() {
         it('should fire on deck initialization', function() {
-          $.deck('.slide');
+          $.deck();
           expect($.deck('getSlides').length).toBeGreaterThan(0);
         });
       });
@@ -307,17 +318,17 @@ describe('Deck JS', function() {
         });
 
         it('should fire on deck initialization', function() {
-          $.deck('.slide');
+          $.deck();
           expect(beforeHit).toBeTruthy();
         });
 
-        it('should have not populated the slides array', function() {
+        it('should have populated the slides array', function() {
           var f = function() {
-            expect($.deck('getSlides').length).toEqual(0);
+            expect($.deck('getSlides').length).toEqual($('.slide').length);
           };
 
           $d.bind('deck.beforeInit', f);
-          $.deck('.slide');
+          $.deck();
           $d.unbind('deck.beforeInit', f);
         });
 
@@ -332,7 +343,7 @@ describe('Deck JS', function() {
 
           $d.bind('deck.beforeInit', f);
           $d.bind('deck.init', g);
-          $.deck('.slide');
+          $.deck();
           $d.unbind('deck.beforeInit', f);
           $d.unbind('deck.init', g);
           expect(initHit).toBeFalsy();
@@ -373,7 +384,7 @@ describe('Deck JS', function() {
 
           runs(function() {
             $d.bind('deck.beforeInit', f);
-            $.deck('.slide');
+            $.deck();
             $d.unbind('deck.beforeInit', f);
           });
 
@@ -388,7 +399,7 @@ describe('Deck JS', function() {
   describe('empty deck', function() {
     beforeEach(function() {
       loadFixtures('empty.html');
-      $.deck('.slide');
+      $.deck();
     });
 
     describe('getSlide()', function() {
