@@ -15,7 +15,7 @@ slides.  More functionality is provided by wholly separate extension modules
 that use the API provided by core.
 */
 (function($, undefined) {
-  var slides, currentIndex, $container;
+  var slides, currentIndex, $container, $fragmentLinks;
 
   var events = {
     /*
@@ -69,6 +69,7 @@ that use the API provided by core.
 
   var options = {};
   var $document = $(document);
+  var $window = $(window);
   var stopPropagation = function(event) {
     event.stopPropagation();
   };
@@ -247,6 +248,70 @@ that use the API provided by core.
     return event;
   };
 
+  var goByHash = function(str) {
+    var id = str.substr(str.indexOf("#") + 1);
+
+    $.each(slides, function(i, $slide) {
+      if ($slide.attr('id') === id) {
+        $.deck('go', i);
+        return false;
+      }
+    });
+
+    // If we don't set these to 0 the container scrolls due to hashchange
+    if (options.preventFragmentScroll) {
+      $.deck('getContainer').scrollLeft(0).scrollTop(0);
+    }
+  };
+
+  var assignSlideId = function(i, $slide) {
+    var currentId = $slide.attr('id');
+    var previouslyAssigned = $slide.data('deckAssignedId') === currentId;
+    if (!currentId || previouslyAssigned) {
+      $slide.attr('id', options.hashPrefix + i);
+      $slide.data('deckAssignedId', options.hashPrefix + i);
+    }
+  };
+
+  var removeContainerHashClass = function(id) {
+    $container.removeClass(options.classes.onPrefix + id);
+  };
+
+  var addContainerHashClass = function(id) {
+    $container.addClass(options.classes.onPrefix + id);
+  };
+
+  var setupHashBehaviors = function() {
+    $fragmentLinks = $();
+    $.each(slides, function(i, $slide) {
+      var hash;
+
+      assignSlideId(i, $slide);
+      hash = '#' + $slide.attr('id');
+      if (hash === window.location.hash) {
+        setTimeout(function() {
+          $.deck('go', i);
+        }, 1);
+      }
+      $fragmentLinks = $fragmentLinks.add('a[href="' + hash + '"]');
+    });
+
+    if (slides.length) {
+      addContainerHashClass($.deck('getSlide').attr('id'));
+    };
+  };
+
+  var changeHash = function(from, to) {
+    var hash = '#' + $.deck('getSlide', to).attr('id');
+    var hashPath = window.location.href.replace(/#.*/, '') + hash;
+
+    removeContainerHashClass($.deck('getSlide', from).attr('id'));
+    addContainerHashClass($.deck('getSlide', to).attr('id'));
+    if (Modernizr.history) {
+      window.history.replaceState({}, "", hashPath);
+    }
+  };
+
   /* Methods exposed in the jQuery.deck namespace */
   var methods = {
 
@@ -300,6 +365,7 @@ that use the API provided by core.
         // re-populate the array of slides
         slides = [];
         initSlidesArray(options.selectors.slides);
+        setupHashBehaviors();
         bindKeyEvents();
         bindTouchEvents();
         $container.scrollLeft(0).scrollTop(0);
@@ -365,6 +431,7 @@ that use the API provided by core.
       $document.trigger(beforeChangeEvent, [currentIndex, index]);
       if (!beforeChangeEvent.isDefaultPrevented()) {
         $document.trigger(events.change, [currentIndex, index]);
+        changeHash(currentIndex, index);
         currentIndex = index;
         updateStates();
       }
@@ -534,6 +601,16 @@ that use the API provided by core.
   options.touch.swipeTolerance
     The number of pixels the users finger must travel to produce a swipe
     gesture.
+
+  options.hashPrefix
+    Every slide that does not have an id is assigned one at initialization.
+    Assigned ids take the form of hashPrefix + slideIndex, e.g., slide-0,
+    slide-12, etc.
+
+  options.preventFragmentScroll
+    When deep linking to a hash of a nested slide, this scrolls the deck
+    container to the top, undoing the natural browser behavior of scrolling
+    to the document fragment on load.
   */
   $.deck.defaults = {
     classes: {
@@ -564,10 +641,27 @@ that use the API provided by core.
       swipeTolerance: 60
     },
 
-    initLockTimeout: 10000
+    initLockTimeout: 10000,
+    hashPrefix: 'slide-',
+    preventFragmentScroll: true
   };
 
   $document.ready(function() {
     $('html').addClass('ready');
+  });
+
+  $window.bind('hashchange.deck', function(event) {
+    if (event.originalEvent && event.originalEvent.newURL) {
+      goByHash(event.originalEvent.newURL);
+    }
+    else {
+      goByHash(window.location.hash);
+    }
+  });
+
+  $window.bind('load.deck', function() {
+    if (options.preventFragmentScroll) {
+      $container.scrollLeft(0).scrollTop(0);
+    }
   });
 })(jQuery);
