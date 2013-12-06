@@ -483,6 +483,44 @@ that use the API provided by core.
     },
 
     /*
+    jQuery.deck('getTopLevelSlides')
+
+    Returns all slides that are not subslides.
+    */
+    getTopLevelSlides: function() {
+      var topLevelSlides = [];
+      var slideSelector = options.selectors.slides;
+      var subSelector = [slideSelector, slideSelector].join(' ');
+      $.each(slides, function(i, $slide) {
+        if (!$slide.is(subSelector)) {
+          topLevelSlides.push($slide);
+        }
+      });
+      return topLevelSlides;
+    },
+
+    /*
+    jQuery.deck('getNestedSlides', index)
+
+    index: integer, optional
+
+    Returns all the nested slides of the current slide. If index is
+    specified it returns the nested slides of the slide at that index.
+    If there are no nested slides this will return an empty array.
+    */
+    getNestedSlides: function(index) {
+      debugger;
+      var targetIndex = index == null ? currentIndex : index;
+      var $targetSlide = $.deck('getSlide', targetIndex);
+      var $nesteds = $targetSlide.find(options.selectors.slides);
+      var nesteds = $nesteds.get();
+      return $.map(nesteds, function(slide, i) {
+        return $(slide);
+      });
+    },
+
+
+    /*
     jQuery.deck('getContainer')
 
     Returns a jQuery object containing the deck container as defined by the

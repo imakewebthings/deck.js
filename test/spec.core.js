@@ -146,6 +146,33 @@ describe('Deck JS', function() {
           expect($.deck('getOptions')).toEqual(defaults);
         });
       });
+
+      describe('getTopLevelSlides()', function() {
+        it('should return only root slides', function() {
+          loadFixtures('nesteds.html');
+          $.deck();
+          var expectation = [];
+          var topLevelSlides = $.deck('getTopLevelSlides');
+          $('.toplevel').each(function() {
+            expectation.push($(this));
+          });
+          expect(topLevelSlides).toEqual(expectation);
+        });
+      });
+
+      describe('getNestedSlides()', function() {
+        it('should return nested slides for current slide', function() {
+          loadFixtures('nesteds.html');
+          $.deck();
+          $.deck('go', 2);
+          var expectation = [];
+          var nestedSlides = $.deck('getNestedSlides');
+          $.deck('getSlide').find('.slide').each(function() {
+            expectation.push($(this));
+          });
+          expect(nestedSlides).toEqual(expectation);
+        });
+      });
     });
 
     describe('container states', function() {
