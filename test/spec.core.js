@@ -67,6 +67,36 @@ describe('Deck JS', function() {
           $.deck('go', 'i-dont-exist');
           expect($.deck('getSlide')).toHaveClass('slide1');
         });
+
+        describe('aria attribute updates', function() {
+          beforeEach(function() {
+            loadFixtures('nesteds.html');
+            $.deck();
+            $.deck('go', 5);
+          });
+
+          it('should set offscreen slides to hidden true', function() {
+            $([
+              '.toplevel.deck-before:not(.deck-child-current)',
+              '.toplevel.deck-previous:not(.deck-child-current)',
+              '.deck-next',
+              '.deck-after'
+            ].join(', ')).each(function() {
+              expect($(this)).toHaveAttr('aria-hidden', 'true');
+            });
+          });
+
+          it('should set onscreen slides to hidden false', function() {
+            $([
+              '.deck-child-current.slide',
+              '.deck-child-current .deck-before',
+              '.deck-child-current .deck-previous',
+              '.deck-current'
+            ].join(', ')).each(function() {
+              expect($(this)).toHaveAttr('aria-hidden', 'false');
+            });
+          });
+        });
       });
 
       describe('next()', function() {

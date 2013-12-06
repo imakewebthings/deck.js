@@ -124,11 +124,27 @@ that use the API provided by core.
     }
   };
 
+  var setAriaHiddens = function() {
+    $(options.selectors.slides).each(function() {
+      var $slide = $(this);
+      var isSub = $slide.closest('.' + options.classes.childCurrent).length;
+      var isBefore = $slide.hasClass(options.classes.before) && !isSub;
+      var isPrevious = $slide.hasClass(options.classes.previous) && !isSub;
+      var isNext = $slide.hasClass(options.classes.next);
+      var isAfter = $slide.hasClass(options.classes.after);
+      var ariaHiddenValue = isBefore || isPrevious || isNext || isAfter;
+      $slide.attr('aria-hidden', ariaHiddenValue);
+    });
+  };
+
   var updateStates = function() {
     updateContainerState();
     updateChildCurrent();
     removeOldSlideStates();
     addNewSlideStates();
+    if (options.setAriaHiddens) {
+      setAriaHiddens();
+    }
   };
 
   var initSlidesArray = function(elements) {
@@ -509,7 +525,6 @@ that use the API provided by core.
     If there are no nested slides this will return an empty array.
     */
     getNestedSlides: function(index) {
-      debugger;
       var targetIndex = index == null ? currentIndex : index;
       var $targetSlide = $.deck('getSlide', targetIndex);
       var $nesteds = $targetSlide.find(options.selectors.slides);
@@ -649,6 +664,13 @@ that use the API provided by core.
     When deep linking to a hash of a nested slide, this scrolls the deck
     container to the top, undoing the natural browser behavior of scrolling
     to the document fragment on load.
+
+  options.setAriaHiddens
+    When set to true, deck.js will set aria hidden attributes for slides
+    that do not appear offscreen according to a typical heirarchical
+    deck structure. You may want to turn this off if you are using a theme
+    where slides besides the current slide are visible on screen and should
+    be accessible to screenreaders.
   */
   $.deck.defaults = {
     classes: {
@@ -681,7 +703,8 @@ that use the API provided by core.
 
     initLockTimeout: 10000,
     hashPrefix: 'slide-',
-    preventFragmentScroll: true
+    preventFragmentScroll: true,
+    setAriaHiddens: true
   };
 
   $document.ready(function() {
