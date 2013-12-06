@@ -152,6 +152,7 @@ the deck container.
   $.deck('extend', 'showGoTo', function() {
     var options = $.deck('getOptions');
     $.deck('getContainer').addClass(options.classes.goto);
+    $(options.selectors.gotoForm).attr('aria-hidden', false);
     $(options.selectors.gotoInput).focus();
   });
 
@@ -165,6 +166,7 @@ the deck container.
     var options = $.deck('getOptions');
     $(options.selectors.gotoInput).blur();
     $.deck('getContainer').removeClass(options.classes.goto);
+    $(options.selectors.gotoForm).attr('aria-hidden', true);
   });
 
   /*
