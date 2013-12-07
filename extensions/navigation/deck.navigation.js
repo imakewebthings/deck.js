@@ -1,6 +1,6 @@
 /*!
 Deck JS - deck.navigation
-Copyright (c) 2011 Caleb Troughton
+Copyright (c) 2011-2013 Caleb Troughton
 Dual licensed under the MIT license.
 https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt
 */
@@ -24,8 +24,10 @@ This module adds clickable previous and next links to the deck.
     var $nextButton = $(options.selectors.nextLink);
 
     $prevButton.toggleClass(options.classes.navDisabled, to === 0);
+    $prevButton.attr('aria-disabled', to === 0);
     $prevButton.attr('href', hrefBase + '#' + (prevId ? prevId : ''));
     $nextButton.toggleClass(options.classes.navDisabled, to === lastIndex);
+    $nextButton.attr('aria-disabled', to === lastIndex);
     $nextButton.attr('href', hrefBase + '#' + (nextId ? nextId : ''));
   };
 

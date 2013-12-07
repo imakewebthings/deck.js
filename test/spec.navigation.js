@@ -29,10 +29,20 @@ describe('Deck JS Navigation Buttons', function() {
     expect($(defaults.selectors.previousLink)).toHaveClass(defaults.classes.navDisabled);
   });
 
+  it('should add aria-disabled to previous link if on first slide', function() {
+    $.deck('go', 0);
+    expect($(defaults.selectors.previousLink)).toHaveAttr('aria-disabled', 'true');
+  });
+
   it('should add the disabled class to the next link if on last slide', function() {
     expect($(defaults.selectors.nextLink)).not.toHaveClass(defaults.classes.navDisabled);
     $.deck('go', $.deck('getSlides').length - 1);
     expect($(defaults.selectors.nextLink)).toHaveClass(defaults.classes.navDisabled);
+  });
+
+  it('should add aria-disabled to next link if on last slide', function() {
+    $.deck('go', $.deck('getSlides').length - 1);
+    expect($(defaults.selectors.nextLink)).toHaveAttr('aria-disabled', 'true');
   });
 
   it('should not start disabled if deck initialized in the middle', function() {
