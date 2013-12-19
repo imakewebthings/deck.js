@@ -62,3 +62,8 @@ If you would like to contribute a patch to deck.js please do as much as you can 
 Copyright (c) 2011-2013 Caleb Troughton
 
 Dual licensed under the [MIT license](https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt)
+
+## Donations
+
+[![Gittip donate
+button](http://img.shields.io/gittip/imakewebthings.png)](https://www.gittip.com/imakewebthings/ "Donate weekly to this project using Gittip")
