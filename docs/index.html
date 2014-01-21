@@ -67,13 +67,6 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#deck-hash">deck.hash</a>
-					<ul>
-						<li><a href="#deck-hash-options">Options</a></li>
-						<li><a href="#deck-hash-theming">Theming</a></li>
-					</ul>
-				</li>
-				<li>
 					<a href="#deck-menu">deck.menu</a>
 					<ul>
 						<li class="expandable">
@@ -135,12 +128,13 @@
 
 				<dl>
 					<dt>selector:</dt>
-					<dd class="type">string | jQuery | array</dd>
+					<dd class="type">string | jQuery | array, optional</dd>
 					<dt>options:</dt>
 					<dd class="type">object, optional</dd>
 				</dl>
 
 				<p>Initializes the deck, using each element matched by <code>selector</code> as a slide.  May also be passed an array of string selectors or jQuery objects, in which case each selector in the array is considered a slide. The second parameter is an optional <a href="#deck-core-options">options object</a> which will extend the default values.</p>
+        <p>Users may also pass only an options object to init. In this case the slide selector will be <code>options.selectors.slides</code> which defaults to <code>.slide</code>.</p>
 				<pre><code>$.<span class="fn">deck</span>(<span class="str">'.slide'</span>);</code></pre>
 				<pre><code>$.<span class="fn">deck</span>([
    <span class="str">'#first-slide'</span>,
@@ -187,10 +181,10 @@
 
 				<dl>
 					<dt>index:</dt>
-					<dd class="type">integer, optional</dd>
+					<dd class="type">integer | string, optional</dd>
 				</dl>
 
-				<p>Returns a jQuery object containing the slide at <code>index</code>.  If <code>index</code> is not specified, the current slide is returned.</p>
+        <p>Returns a jQuery object containing the slide at <code>index</code>. If <code>index</code> is not specified, the current slide is returned.</p>
 			</section>
 
 			<section id="deck-core-getslides">
@@ -201,6 +195,29 @@
 
 				<p>Returns all slides as an array of jQuery objects.</p>
 			</section>
+
+      <section id="deck-core-gettoplevelslides">
+        <header>
+          <h4>getTopLevelSlides - <code>$.deck('getTopLevelSlides')</code></h4>
+          <p><strong>Returns:</strong> array</p>
+        </header>
+
+        <p>Returns all slides that are not subslides as an array of jQuery objects.</p>
+      </section>
+
+      <section id="getNestedSlides">
+        <header>
+          <h4>getNestedSlides - <code>$.deck('getNestedSlides', index)</code></h4>
+          <p><strong>Returns:</strong> array</p>
+        </header>
+
+        <dl>
+          <dt>index</dt>
+          <dd class="type">integer, optional</dd>
+        </dl>
+
+        <p>Returns all nested slides of the current slide as an array of jQuery objects. If <code>index</code> is specified it returns nested slides of the slide at that index. If there are no nested slides this will return an empty array.</p>
+      </section>
 
 			<section id="deck-core-getcontainer">
 				<header>
@@ -260,7 +277,8 @@ $.<span class="fn">deck</span>(<span class="str">'alert'</span>, <span class="st
    },
 
    <span class="key">selectors</span>: {
-      <span class="key">container</span>: <span class="str">'.deck-container'</span>
+      <span class="key">container</span>: <span class="str">'.deck-container'</span>,
+      <span class="key">slides</span>: <span class="str">'.slide'</span>
    },
 
    <span class="key">keys</span>: {
@@ -271,8 +289,14 @@ $.<span class="fn">deck</span>(<span class="str">'alert'</span>, <span class="st
    },
 
    <span class="key">touch</span>: {
+      <span class="key">swipeDirection</span>: <span class="str">'horizontal'</span>,
       <span class="key">swipeTolerance</span>: <span class="str">60</span>
-   }
+   },
+
+   <span class="key">initLockTimeout</span>: <span class="str">10000</span>,
+   <span class="key">hashPrefix</span>: <span class="str">'slide'</span>,
+   <span class="key">preventFragmentScroll</span>: <span class="str">true</span>,
+   <span class="key">setAriaHiddens</span>: <span class="str">true</span>
 }</code></pre>
 
 			<dl>
@@ -294,12 +318,24 @@ $.<span class="fn">deck</span>(<span class="str">'alert'</span>, <span class="st
 				<dd>This class is added to the slide immediately preceding the 'current' slide.</dd>
 				<dt>options.selectors.container</dt>
 				<dd>Elements matched by this CSS selector will be considered the deck container.  The deck container is used to scope certain states of the deck, as with the <code>onPrefix</code> option, or with extensions such as <a href="#deck-goto">deck.goto</a> and <a href="#deck-menu">deck.menu</a>. For standard full screen decks, this should be the <code>body</code> element.</dd>
+        <dt>options.selectors.slides</dt>
+        <dd>Elements matched by this selector make up the individual deck slides. If a user chooses to pass the slide selector as teh first argument to $.deck() on initialization it does the same thing as passing an override for this option.</dd>
 				<dt>options.keys.next</dt>
 				<dd>The numeric keycode used to go to the next slide.</dd>
 				<dt>options.keys.previous</dt>
 				<dd>The numeric keycode used to go to the previous slide.</dd>
+        <dt>options.touch.swipeDirection</dt>
+        <dd>The direction swipes occur to cause slide changes. Can be 'horizontal', 'vertical', or 'both'. Any other value or a falsy value will disable swipe gestures for navigation.</dd>
 				<dt>options.touch.swipeTolerance</dt>
 				<dd>The number of pixels the user&rsquo;s finger must travel to produce a swipe gesture.</dd>
+        <dt>options.initLockTimeout</dt>
+        <dd>The number of milliseconds the init event will wait for beforeInit event locks to be released before firing the init event regardless.</dd>
+        <dt>options.hashPrefix</dt>
+        <dd>Every slide that does not have an id is assigned one at initialization. Assigned ids take the form of hashPrefix + slideIndex, e.g., slide-0, slide-12, etc.</dd>
+        <dt>options.preventFragmentScroll</dt>
+        <dd>When deep linking to a hash of a nested slide, this scrolls the deck container to the top, undoing the natural browser behavior of scrolling to the document fragment on load.</dd>
+        <dt>options.setAriaHiddens</dt>
+        <dd>When set to true, deck.js will set aria-hidden attributes for slides that do not appear onscreen according to a typical hierarchical deck structure. You may want to turn this off if you are using a theme where slides besides the current slide are visiblee on the screen and should be accessible to screenreaders.</dd>
 			</dl>
 		</section>
 
@@ -322,7 +358,14 @@ $.<span class="fn">deck</span>(<span class="str">'alert'</span>, <span class="st
 				</dd>
 				<dt>deck.beforeInit</dt>
 				<dd>
-					This event fires at the beginning of deck initialization, after the options are set but before the slides array is created. This event makes a good hook for preprocessing extensions looking to modify the deck.
+        This event fires at the beginning of deck initialization. This event makes a good hook for preprocessing extensions looking to modify the DOM before the deck is fully initialized. It is also possible to halt the <code>deck.init</code> event from firing while you do things in beforeInit. This can be done by calling <code>lockInit</code> on the event object. The init can be released by calling <code>releaseInit</code>.
+          <pre><code><span class="fn">$</span>(document).<span class="fn">bind</span>(<span class="str">'deck.beforeInit'</span>, <span class="kw">function</span>(<span class="var">event</span>) {
+  <span class="var">event</span>.<span class="fn">lockInit</span>(); <span class="cm">// halts deck.init event</span>
+  window.<span class="fn">setTimeout</span>(<span class="kw">function</span>() {
+    <span class="var">event</span>.<span class="fn">releaseInit</span>(); <span class="cm">// deck.init will now fire 2 seconds later</span>
+  }, 2000);
+});</code></pre>
+          The init event will be fired regardless after <code>options.initLockTimeout</code> milliseconds if locks still persist.
 				</dd>
 				<dt>deck.init</dt>
 				<dd>
@@ -542,58 +585,6 @@ $d.<span class="fn">bind</span>(<span class="str">'deck.init'</span>, <span clas
 					<pre><code><span class="key">width</span>: <span class="str">8.375em</span>;
 <span class="key">margin</span>: <span class="str">0 0.625em</span>;
 <span class="key">height</span>: <span class="str">1.4375em</span>;</code></pre>
-				</dd>
-			</dl>
-		</section>
-	</section>
-
-	<section id="deck-hash">
-		<h2>deck.hash</h2>
-
-		<p>This module adds deep linking to individual slides, enables internal links to slides within decks, and updates the address bar with the hash as the user moves through the deck. A permalink anchor is also updated. Standard themes hide this link in browsers that support the History API, and show it for those that do not. Slides that do not have an <code>id</code> are assigned one according to the <a href="#deck-hash-options">hashPrefix option</a>. In addition to the on-slide-(slideNumber) container state class kept by core, this module maintains an on-slide-(slideID) state class.</p>
-
-		<section id="deck-hash-options" class="options">
-			<h3>Options</h3>
-
-			<pre><code>$.<span class="fn">extend</span>(<span class="kw">true</span>, $.deck.defaults, {
-   <span class="key">selectors</span>: {
-      <span class="key">hashLink</span>: <span class="str">'.deck-permalink'</span>
-   },
-
-   <span class="key">hashPrefix</span>: <span class="str">'slide-'</span>,
-   <span class="key">preventFragmentScroll</span>: <span class="kw">true</span>
-});</code></pre>
-
-			<dl>
-				<dt>options.selectors.hashLink</dt>
-				<dd>The element matching this selector has its href attribute updated to the hash of the current slide as the user navigates through the deck.</dd>
-				<dt>options.hashPrefix</dt>
-				<dd>Every slide that does not have an <code>id</code> is assigned one at initialization. Assigned ids take the form of hashPrefix + slideIndex, e.g., <code>slide-0</code>, <code>slide-12</code>, etc.</dd>
-				<dt>options.preventFragmentScroll</dt>
-				<dd>If true, when deep linking to a hash of a nested slide the deck container will be scrolled to the top on load, undoing the natural browser behavior of scrolling to the document fragment.</dd>
-			</dl>
-
-		</section>
-
-		<section id="deck-hash-theming" class="theming">
-			<h3>Theming</h3>
-
-			<pre><code>&lt;<span class="kw">a</span> <span class="key">href</span>=<span class="str">&quot;.&quot;</span> <span class="key">class</span>=<span class="str">&quot;deck-permalink&quot;</span> <span class="key">title</span>=<span class="str">&quot;Permalink to this slide&quot;</span>&gt;#&lt;<span class="kw">/a</span>&gt;</code></pre>
-
-			<dl>
-				<dt>.deck-permalink</dt>
-				<dd>
-					<p>By default, the <code>hashLink</code> anchor is hidden for browsers that support the History API, since the address bar will be updated. The link is hidden until the deck is hovered, similar to <a href="#deck-navigation">navigation links</a>.</p>
-					<pre><code><span class="key">display</span>: <span class="str">none</span>;
-<span class="key">position</span>: <span class="str">absolute</span>;
-<span class="key">z-index</span>: <span class="str">4</span>;
-<span class="key">bottom</span>: <span class="str">30px</span>;
-<span class="key">right</span>: <span class="str">0</span>;
-<span class="key">width</span>: <span class="str">48px</span>;
-<span class="key">text-align</span>: <span class="str">center</span>;
-
-<span class="cm">// .no-history .deck-container:hover .deck-permalink</span>
-<span class="key">display</span>: <span class="str">block</span>;</code></pre>
 				</dd>
 			</dl>
 		</section>
@@ -888,10 +879,10 @@ $d.<span class="fn">bind</span>(<span class="str">'deck.init'</span>, <span clas
 </div>
 
 <footer>
-	<p><span class="version">1.0.0</span> A project of <a href="http://imakewebthings.com">I Make Web Things</a></p>
+	<p><span class="version">1.1.0</span> A project of <a href="http://imakewebthings.com">I Make Web Things</a></p>
 </footer>
 
-<script src="jquery.min.js"></script>
+<script src="../jquery.min.js"></script>
 <script src="waypoints.min.js"></script>
 <script src="docs.js"></script>
 </body>

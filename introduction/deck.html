@@ -19,14 +19,13 @@
   <link rel="stylesheet" media="screen" href="../extensions/menu/deck.menu.css">
   <link rel="stylesheet" media="screen" href="../extensions/navigation/deck.navigation.css">
   <link rel="stylesheet" media="screen" href="../extensions/status/deck.status.css">
-  <link rel="stylesheet" media="screen" href="../extensions/hash/deck.hash.css">
   <link rel="stylesheet" media="screen" href="../extensions/scale/deck.scale.css">
 
   <!-- Style theme. More available in /themes/style/ or create your own. -->
-  <link rel="stylesheet" media="screen" id="style-theme-link" href="../themes/style/web-2.0.css">
+  <link rel="stylesheet" media="screen" href="../themes/style/web-2.0.css">
 
   <!-- Transition theme. More available in /themes/transition/ or create your own. -->
-  <link rel="stylesheet" media="screen" id="transition-theme-link" href="../themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" media="screen" href="../themes/transition/horizontal-slide.css">
 
   <!-- Basic black and white print styles -->
   <link rel="stylesheet" media="print" href="../core/print.css">
@@ -102,10 +101,6 @@
           <strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
         </li>
 
-        <li class="slide" id="extensions-hash">
-          <strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
-        </li>
-
         <li class="slide" id="extensions-menu">
           <strong>deck.menu</strong>: Adds a menu view, letting you see all slides in a grid. Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal view. Touch devices can double-tap the deck to switch between&nbsp;views.
         </li>
@@ -178,11 +173,13 @@
     </section>
 
     <!-- deck.navigation snippet -->
-    <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-    <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
 
     <!-- deck.status snippet -->
-    <p class="deck-status">
+    <p class="deck-status" aria-role="status">
       <span class="deck-status-current"></span>
       /
       <span class="deck-status-total"></span>
@@ -195,16 +192,12 @@
       <datalist id="goto-datalist"></datalist>
       <input type="submit" value="Go">
     </form>
-
-    <!-- deck.hash snippet -->
-    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
   </div>
 
 <script src="../jquery.min.js"></script>
 
 <!-- Deck Core and extensions -->
 <script src="../core/deck.core.js"></script>
-<script src="../extensions/hash/deck.hash.js"></script>
 <script src="../extensions/menu/deck.menu.js"></script>
 <script src="../extensions/goto/deck.goto.js"></script>
 <script src="../extensions/status/deck.status.js"></script>

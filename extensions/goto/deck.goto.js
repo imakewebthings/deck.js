@@ -1,6 +1,6 @@
 /*!
 Deck JS - deck.goto
-Copyright (c) 2011-2013 Caleb Troughton
+Copyright (c) 2011-2014 Caleb Troughton
 Dual licensed under the MIT license.
 https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt
 */
@@ -152,6 +152,7 @@ the deck container.
   $.deck('extend', 'showGoTo', function() {
     var options = $.deck('getOptions');
     $.deck('getContainer').addClass(options.classes.goto);
+    $(options.selectors.gotoForm).attr('aria-hidden', false);
     $(options.selectors.gotoInput).focus();
   });
 
@@ -165,6 +166,7 @@ the deck container.
     var options = $.deck('getOptions');
     $(options.selectors.gotoInput).blur();
     $.deck('getContainer').removeClass(options.classes.goto);
+    $(options.selectors.gotoForm).attr('aria-hidden', true);
   });
 
   /*
