@@ -1,6 +1,6 @@
 /*!
 Deck JS - deck.navigation
-Copyright (c) 2011-2013 Caleb Troughton
+Copyright (c) 2011-2014 Caleb Troughton
 Dual licensed under the MIT license.
 https://github.com/imakewebthings/deck.js/blob/master/MIT-license.txt
 */
