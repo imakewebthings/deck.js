@@ -1,6 +1,6 @@
 # Changelog
 
-#v1.1.0
+## v1.1.0
 
 - Expand `beforeInit` event to allow halting of init event.
 - Create alternative init signature with single options object using new `options.selectors.slides` option.
