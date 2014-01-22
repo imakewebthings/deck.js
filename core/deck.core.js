@@ -41,9 +41,22 @@ that use the API provided by core.
     change: 'deck.change',
 
     /*
-    This event fires at the beginning of deck initialization, after the options
-    are set but before the slides array is created.  This event makes a good hook
-    for preprocessing extensions looking to modify the deck.
+    This event fires at the beginning of deck initialization. This event makes
+    a good hook for preprocessing extensions looking to modify the DOM before
+    the deck is fully initialized. It is also possible to halt the deck.init
+    event from firing while you do things in beforeInit. This can be done by
+    calling lockInit on the event object passed to this event. The init can be
+    released by calling releaseInit.
+
+    $(document).bind('deck.beforeInit', function(event) {
+      event.lockInit(); // halts deck.init event
+      window.setTimeout(function() {
+        event.releaseInit(); // deck.init will now fire 2 seconds later
+      }, 2000);
+    });
+
+    The init event will be fired regardless of locks after
+    options.initLockTimeout milliseconds.
     */
     beforeInitialize: 'deck.beforeInit',
 
@@ -342,6 +355,9 @@ that use the API provided by core.
     which case each selector in the array is considered a slide. The second
     parameter is an optional options object which will extend the default
     values.
+
+    Users may also pass only an options object to init. In this case the slide
+    selector will be options.selectors.slides which defaults to .slide.
 
     $.deck('.slide');
 
@@ -655,6 +671,10 @@ that use the API provided by core.
     The number of pixels the users finger must travel to produce a swipe
     gesture.
 
+  options.initLockTimeout
+    The number of milliseconds the init event will wait for BeforeInit event
+    locks to be released before firing the init event regardless.
+
   options.hashPrefix
     Every slide that does not have an id is assigned one at initialization.
     Assigned ids take the form of hashPrefix + slideIndex, e.g., slide-0,
@@ -667,7 +687,7 @@ that use the API provided by core.
 
   options.setAriaHiddens
     When set to true, deck.js will set aria hidden attributes for slides
-    that do not appear offscreen according to a typical heirarchical
+    that do not appear onscreen according to a typical heirarchical
     deck structure. You may want to turn this off if you are using a theme
     where slides besides the current slide are visible on screen and should
     be accessible to screenreaders.
