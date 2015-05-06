@@ -185,6 +185,11 @@ that use the API provided by core.
     ].join(', ');
 
     $document.unbind('keydown.deck').bind('keydown.deck', function(event) {
+      if (event.altKey) {
+        // ignore events when the ALT key is down
+        // NB: browsers use ALT+arrow to navigate history
+        return;
+      }
       var isNext = event.which === options.keys.next;
       var isPrev = event.which === options.keys.previous;
       isNext = isNext || $.inArray(event.which, options.keys.next) > -1;
