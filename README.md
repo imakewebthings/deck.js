@@ -8,7 +8,7 @@ This repository includes a `boilerplate.html` as a starting point, with all the 
 
 ## Documentation
 
-Check out the [documentation page](http://imakewebthings.github.com/deck.js/docs) for more information on the methods, events, and options available in core and all the included extensions.  A sample standard slide deck is included in the package under the `introduction` folder.  You can also [view that sample deck](http://imakewebthings.github.com/deck.js/introduction) online to play with the available style and transition themes.
+Check out the [documentation page](http://imakewebthings.com/deck.js/docs) for more information on the methods, events, and options available in core and all the included extensions.  A sample standard slide deck is included in the package under the `introduction` folder.  You can also [view that sample deck](http://imakewebthings.com/deck.js/introduction) online to play with the available style and transition themes.
 
 ## Extensions, Themes, and Related Projects
 
@@ -21,7 +21,7 @@ Take a look at [the wiki](https://github.com/imakewebthings/deck.js/wiki) for li
 
 ## Tests & Support
 
-Unit tests are written with [Jasmine](http://jasmine.github.io/) and [jasmine-jquery](https://github.com/velesin/jasmine-jquery). You can [run them here](http://imakewebthings.github.com/deck.js/test).
+Unit tests are written with [Jasmine](http://jasmine.github.io/) and [jasmine-jquery](https://github.com/velesin/jasmine-jquery). You can [run them here](http://imakewebthings.com/deck.js/test).
 
 deck.js has been tested with jQuery 1.6+ and works in IE7+, Chrome, FF, Safari, and Opera. The more capable browsers receive greater enhancements, but a basic cutaway slideshow will work for all browsers listed above. Please don't give your presentations in IE6.
 
